@@ -1,0 +1,47 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression evlist, pages, flag;
+@@
+- perf_evlist__mmap(evlist, pages, flag)
++ perf_evlist__mmap(evlist, pages)
+
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_sw-clock___test__sw_clock_freq.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 73
+               with rule_elem: -perf_evlist__mmap
+                                 >>> perf_evlist__mmap(evlist, pages)
+                               -(-evlist-, -pages-, -flag-)
+               with binding: [rule starting on line 1.pages --> 128;
+                             rule starting on line 1.evlist --> evlist]
+     binding out = []
+     transform one node: 73
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_sw-clock___test__sw_clock_freq.c.sanitized.c
++++ /tmp/cocci-output-4113475-af2d4f-1512266437_2017-12-03_f74b9d3a1ac2_sw-clock___test__sw_clock_freq.c.sanitized.c
+@@ -50,7 +50,7 @@ static int __test__sw_clock_freq(enum pe
+       pr_debug("Couldn't open evlist: %s\nHint: check %s, using %" PRIu64 " in this test.\n", str_error_r(errno, sbuf, sizeof(sbuf)), knob, (u64)attr.sample_freq);
+       goto out_delete_evlist;
+     }
+-  err = perf_evlist__mmap(evlist, 128, false);
++  err = perf_evlist__mmap(evlist, 128);
+   if (err < 0)
+     {
+       pr_debug("failed to mmap event: %d (%s)\n", errno, str_error_r(errno, sbuf, sizeof(sbuf)));
+Check duplication for 1 files

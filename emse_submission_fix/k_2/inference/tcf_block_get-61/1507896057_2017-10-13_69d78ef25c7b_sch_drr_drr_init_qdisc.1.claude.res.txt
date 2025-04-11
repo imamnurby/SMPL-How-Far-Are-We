@@ -1,0 +1,72 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(...) {
+<...
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+...>
+}
+@add_extack depends on add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(..., struct netlink_ext_ack *extack, ...) {
+<...
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+...>
+}
+
+warning: line 15: should extack be a metavariable?
+warning: line 17: should sch be a metavariable?
+HANDLING: ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_drr_drr_init_qdisc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+add_sch = 
+-----------------------------------------------------------------------
+dependencies for rule add_sch satisfied:
+binding in = []
+binding relevant in = []
+     (ONCE) USING optional_storage builtin isomorphism
+     transformation info returned:
+          transform state: 8
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [add_sch.filter_list --> &q->filter_list;
+                             add_sch.block --> &q->block]
+     binding out = []
+     transform one node: 8
+-----------------------------------------------------------------------
+add_extack = 
+-----------------------------------------------------------------------
+dependencies for rule add_extack satisfied:
+add_sch satisfied
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_drr_drr_init_qdisc.c.sanitized.c
++++ /tmp/cocci-output-4113068-542ace-1507896057_2017-10-13_69d78ef25c7b_sch_drr_drr_init_qdisc.c.sanitized.c
+@@ -2,7 +2,7 @@ static int drr_init_qdisc(struct Qdisc *
+ {
+   struct drr_sched *q = qdisc_priv(sch);
+   int err;
+-  err = tcf_block_get(&q->block, &q->filter_list);
++  err = tcf_block_get(&q->block, &q->filter_list, sch);
+   if (err)
+     return err;
+   err = qdisc_class_hash_init(&q->clhash);
+Check duplication for 1 files

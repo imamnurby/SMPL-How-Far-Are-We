@@ -1,0 +1,32 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer;
+expression func;
+expression data;
+@@
+(
+- init_timer(&timer);
+- timer.function = func;
+- timer.data = data;
++ setup_timer(&timer, func, data);
+|
+- init_timer(&timer);
+- timer.data = data;
+- timer.function = func;
++ setup_timer(&timer, func, data);
+|
+- init_timer(&timer);
+- timer.function = &func;
+- timer.data = data;
++ setup_timer(&timer, &func, data);
+)
+
+minus: parse error: 
+  File "./kees_timer1/final_response_2.claude.cocci", line 9, column 8, charpos = 115
+  around = 'data',
+  whole content = - timer.data = data;
+

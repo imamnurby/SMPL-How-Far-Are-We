@@ -1,0 +1,35 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier exts, a;
+@@
+-LIST_HEAD(actions);
++int i;
+...
+-tcf_exts_to_list(exts, &actions);
+...
+-list_for_each_entry(a, &actions, list)
++tcf_exts_for_each_action(i, a, exts)
+
+warning: line 4: should actions be a metavariable?
+warning: line 7: should actions be a metavariable?
+warning: line 9: should actions be a metavariable?
+warning: line 9: should list be a metavariable?
+HANDLING: ./tcaction/1534706529_2018-08-19_244cd96adb5f_en_tc_parse_tc_fdb_actions.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

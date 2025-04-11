@@ -1,0 +1,39 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags;
+expression E1, E2;
+expression ptr;
+type T;
+@@
+(
+-ptr = dma_pool_alloc(pool, flags, E1);
++ptr = dma_pool_zalloc(pool, flags, E1);
+ ...
+-memset(ptr, 0, sizeof(T));
+)
+|
+(
+-ptr = dma_pool_alloc(pool, flags, E1);
++ptr = dma_pool_zalloc(pool, flags, E1);
+ ...
+ if (!ptr)
+ ...
+-memset(ptr, 0, E2);
+)
+|
+(
+-ptr = dma_pool_alloc(pool, flags, E1);
++ptr = dma_pool_zalloc(pool, flags, E1);
+ ...
+-memset(ptr, 0, E2);
+)
+
+minus: parse error: 
+  File "./dma_pool_alloc-52/final_response_0.claude.cocci", line 13, column 0, charpos = 191
+  around = '|',
+  whole content = |
+

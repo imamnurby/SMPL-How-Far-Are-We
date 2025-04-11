@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type btrfs_root_type;
+expression root_var;
+@@
+- root_var->objectid
++ root_var->root_key.objectid
+
+warning: rule starting on line 1: metavariable btrfs_root_type not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 38
+               with rule_elem: -root_var
+                                 >>> root_var->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root_var --> BTRFS_I(inode)->root]
+     binding out = []
+     transform one node: 38
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
++++ /tmp/cocci-output-4112446-62677d-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
+@@ -15,7 +15,9 @@ static int __btrfs_qgroup_release_data(s
+     trace_op = QGROUP_FREE;
+   trace_btrfs_qgroup_release_data(inode, start, len, changeset.bytes_changed, trace_op);
+   if (free)
+-    btrfs_qgroup_free_refroot(BTRFS_I(inode)->root->fs_info, BTRFS_I(inode)->root->objectid, changeset.bytes_changed, BTRFS_QGROUP_RSV_DATA);
++    btrfs_qgroup_free_refroot(BTRFS_I(inode)->root->fs_info,
++                              BTRFS_I(inode)->root->root_key.objectid,
++                              changeset.bytes_changed, BTRFS_QGROUP_RSV_DATA);
+   ret = changeset.bytes_changed;
+ out:
+   extent_changeset_release(&changeset);
+Check duplication for 1 files

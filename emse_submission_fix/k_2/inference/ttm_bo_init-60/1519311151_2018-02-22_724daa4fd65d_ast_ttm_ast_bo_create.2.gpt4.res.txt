@@ -1,0 +1,27 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2, E3, E4, E5, E6, E7;
+@@
+- ttm_bo_init(E1, E2, E3, E4, E5, false, NULL, E6, E7)
++ ttm_bo_init(E1, E2, E3, E4, E5, false, E6, E7)
+
+warning: line 4: should false be a metavariable?
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

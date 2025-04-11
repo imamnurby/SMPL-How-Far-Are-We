@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ 
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 14
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+     binding out = []
+     transform one node: 14
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
++++ /tmp/cocci-output-4112757-a2a02f-1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
+@@ -9,7 +9,7 @@ int btrfs_check_shared(struct btrfs_root
+   struct seq_list elem = SEQ_LIST_INIT(elem);
+   int ret = 0;
+   struct share_check shared = {
+-      .root_objectid = root->objectid,
++      .root_objectid = root->root_key.objectid,
+       .inum = inum,
+       .share_count = 0,
+   };
+Check duplication for 1 files

@@ -1,0 +1,38 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression sch, q, err;
+@@
+static int (...)(
+  struct Qdisc *sch,
+  ...)
+{
+  <+...
+- err = tcf_block_get(&q->block, &q->filter_list);
++ err = tcf_block_get(&q->block, &q->filter_list, sch);
+  ...+>
+}
+@@
+expression sch, q, err;
+struct netlink_ext_ack *extack;
+@@
+static int (...)(
+  struct Qdisc *sch,
+  ...,
+  struct netlink_ext_ack *extack,
+  ...)
+{
+  <+...
+- err = tcf_block_get(&q->block, &q->filter_list, sch);
++ err = tcf_block_get(&q->block, &q->filter_list, sch, extack);
+  ...+>
+}
+
+minus: parse error: 
+  File "./tcf_block_get-61/final_response_1.deepseek-chat.cocci", line 4, column 12, charpos = 42
+  around = '...',
+  whole content = static int (...)(
+

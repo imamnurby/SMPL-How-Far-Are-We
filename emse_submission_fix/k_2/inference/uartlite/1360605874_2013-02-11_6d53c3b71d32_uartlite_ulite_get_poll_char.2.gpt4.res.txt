@@ -1,0 +1,18 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier port;
+expression membase;
+constant offset;
+@@
+- ioread32be(port->membase + offset)
++ uart_in32(offset, port)
+
+minus: parse error: 
+  File "./uartlite/final_response_2.gpt4.cocci", line 6, column 19, charpos = 79
+  around = 'membase',
+  whole content = - ioread32be(port->membase + offset)
+

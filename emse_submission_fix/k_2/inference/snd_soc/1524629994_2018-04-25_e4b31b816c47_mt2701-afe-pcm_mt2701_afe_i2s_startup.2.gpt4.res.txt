@@ -1,0 +1,15 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./snd_soc/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier substream, dai, rtd, component, afe;
+@@
+- struct snd_soc_pcm_runtime *rtd = substream->private_data;
+- struct snd_soc_component *component = snd_soc_rtdcom_lookup(rtd, ...);
+- struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component);
++ struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+
+warning: rule starting on line 1: metavariable dai not used in the - or context code
+error: rule starting on line 1: dai appears only in + code

@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier timer_var;
+expression func, data;
+@@
+- init_timer(&timer_var);
+- timer_var.function = func;
+- timer_var.data = (unsigned long)data;
++ setup_timer(&timer_var, func, (unsigned long)data);
+
+minus: parse error: 
+  File "./kees_timer1/final_response_2.gpt4.cocci", line 7, column 12, charpos = 118
+  around = 'data',
+  whole content = - timer_var.data = (unsigned long)data;
+

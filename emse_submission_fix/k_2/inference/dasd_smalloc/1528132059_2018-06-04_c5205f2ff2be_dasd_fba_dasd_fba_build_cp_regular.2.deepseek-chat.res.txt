@@ -1,0 +1,22 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/final_response_2.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic, cplength, datasize, device;
+identifier req;
+@@
+dasd_smalloc_request(
+  magic,
+  cplength,
+  datasize,
+  device
++ , \( NULL \| blk_mq_rq_to_pdu(req) \)
+  )
+
+minus: parse error: 
+  File "./dasd_smalloc/final_response_2.deepseek-chat.cocci", line 10, column 4, charpos = 136
+  around = '\(',
+  whole content = + , \( NULL \| blk_mq_rq_to_pdu(req) \)
+

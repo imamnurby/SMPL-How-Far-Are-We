@@ -1,0 +1,47 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type T;
+identifier I;
+@@
+T I(...) {
+  ...
+  expression e1, e2, e3;
+  identifier extack;
+  ...
+- tcf_block_get(e1, e2)
++ tcf_block_get(e1, e2, e3)
+  ...
+}
+@@
+type T;
+identifier I;
+@@
+T I(...) {
+  ...
+  expression e1, e2, e3;
+  identifier extack;
+  ...
+- tcf_block_get(e1, e2, e3)
++ tcf_block_get(e1, e2, e3, extack)
+  ...
+}
+
+warning: line 7: should e1 be a metavariable?
+warning: line 7: should e2 be a metavariable?
+warning: line 7: should e3 be a metavariable?
+warning: line 8: should extack be a metavariable?
+warning: line 10: should e1 be a metavariable?
+warning: line 10: should e2 be a metavariable?
+warning: line 20: should e1 be a metavariable?
+warning: line 20: should e2 be a metavariable?
+warning: line 20: should e3 be a metavariable?
+warning: line 21: should extack be a metavariable?
+warning: line 23: should e1 be a metavariable?
+warning: line 23: should e2 be a metavariable?
+warning: line 23: should e3 be a metavariable?
+line 7: index 52 47 already used
+

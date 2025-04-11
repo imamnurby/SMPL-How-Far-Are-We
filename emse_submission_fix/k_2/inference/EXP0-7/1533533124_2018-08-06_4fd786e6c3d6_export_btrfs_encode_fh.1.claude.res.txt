@@ -1,0 +1,79 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_1.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+@@
+expression E;
+@@
+- BTRFS_I(E)->root->objectid
++ BTRFS_I(E)->root->root_key.objectid
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 38
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> fid]
+          transform state: 39
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> BTRFS_I(inode)->root]
+          transform state: 50
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> BTRFS_I(parent)->root]
+     binding out = []
+     transform one node: 50
+     transform one node: 39
+     transform one node: 38
+-----------------------------------------------------------------------
+rule starting on line 6 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 6 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c
++++ /tmp/cocci-output-4112780-3f63f7-1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c
+@@ -15,15 +15,15 @@ static int btrfs_encode_fh(struct inode
+     }
+   len = BTRFS_FID_SIZE_NON_CONNECTABLE;
+   type = FILEID_BTRFS_WITHOUT_PARENT;
+-  fid->objectid = btrfs_ino(BTRFS_I(inode));
+-  fid->root_objectid = BTRFS_I(inode)->root->objectid;
++  fid->root_key.objectid = btrfs_ino(BTRFS_I(inode));
++  fid->root_objectid = BTRFS_I(inode)->root->root_key.objectid;
+   fid->gen = inode->i_generation;
+   if (parent)
+     {
+       u64 parent_root_id;
+       fid->parent_objectid = BTRFS_I(parent)->location.objectid;
+       fid->parent_gen = parent->i_generation;
+-      parent_root_id = BTRFS_I(parent)->root->objectid;
++      parent_root_id = BTRFS_I(parent)->root->root_key.objectid;
+       if (parent_root_id != fid->root_objectid)
+         {
+           fid->parent_root_objectid = parent_root_id;
+Check duplication for 1 files

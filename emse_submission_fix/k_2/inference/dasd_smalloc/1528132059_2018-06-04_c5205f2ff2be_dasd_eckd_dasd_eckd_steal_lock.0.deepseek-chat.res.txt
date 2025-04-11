@@ -1,0 +1,51 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic, cplength, datasize, device;
+@@
+- dasd_smalloc_request(magic, cplength, datasize, device)
++ dasd_smalloc_request(magic, cplength, datasize, device, NULL)
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_steal_lock.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 18
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(magic, cplength,
+                                                          datasize, device,
+                                                          NULL)
+                               -(-magic-, -cplength-, -datasize-, -device-)
+               with binding: [rule starting on line 1.device --> device;
+                             rule starting on line 1.datasize --> 32;
+                             rule starting on line 1.cplength --> 1;
+                             rule starting on line 1.magic --> DASD_ECKD_MAGIC]
+     binding out = []
+     transform one node: 18
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_steal_lock.c.sanitized.c
++++ /tmp/cocci-output-4113296-5cb53b-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_steal_lock.c.sanitized.c
+@@ -7,7 +7,7 @@ static int dasd_eckd_steal_lock(struct d
+   if (!capable(CAP_SYS_ADMIN))
+     return -EACCES;
+   useglobal = 0;
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1, 32, device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1, 32, device, NULL);
+   if (IS_ERR(cqr))
+     {
+       mutex_lock(&dasd_reserve_mutex);
+Check duplication for 1 files

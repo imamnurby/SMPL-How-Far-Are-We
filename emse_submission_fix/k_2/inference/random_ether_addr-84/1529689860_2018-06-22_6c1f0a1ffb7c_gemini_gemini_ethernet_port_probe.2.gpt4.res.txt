@@ -1,0 +1,26 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./random_ether_addr-84/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier arg;
+@@
+- random_ether_addr(arg)
++ eth_random_addr(arg)
+
+HANDLING: ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

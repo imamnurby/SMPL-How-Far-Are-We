@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/final_response_0.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I0;
+expression E1;
+@@
+- ioread32be(E1->membase + I0) 
++ uart_in32(I0, E1) 
+  ... when any
+// Infered from: (./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_receive.{c.sanitized.c,res.c.sanitized.res.c}: ulite_receive), (./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_get_poll_char.{c.sanitized.c,res.c.sanitized.res.c}: ulite_get_poll_char)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 2/2(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_receive.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 23
+               with rule_elem: -ioread32be
+                                 >>> uart_in32(I0, E1)
+                               -(-E1-->-membase -+ -I0-)
+               with binding: [rule starting on line 1.I0 --> id ULITE_RX;
+                             rule starting on line 1.E1 --> port]
+     binding out = []
+     transform one node: 23
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_receive.c.sanitized.c
++++ /tmp/cocci-output-4113883-f144b7-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_receive.c.sanitized.c
+@@ -9,7 +9,7 @@ static int ulite_receive(struct uart_por
+   if (stat & ULITE_STATUS_RXVALID)
+     {
+       port->icount.rx++;
+-      ch = ioread32be(port->membase + ULITE_RX);
++      ch = uart_in32(ULITE_RX, port);
+       if (stat & ULITE_STATUS_PARITY)
+         port->icount.parity++;
+     }
+Check duplication for 1 files

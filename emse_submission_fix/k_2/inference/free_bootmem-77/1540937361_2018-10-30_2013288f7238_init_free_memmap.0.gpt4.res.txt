@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression arg1, arg2;
+@@
+- free_bootmem(arg1, arg2)
++ memblock_free(arg1, arg2)
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_init_free_memmap.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 17
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(arg1, arg2)
+                               -(-arg1-, -arg2-)
+               with binding: [rule starting on line 1.arg2 --> pgend - pg;
+                             rule starting on line 1.arg1 --> pg]
+     binding out = []
+     transform one node: 17
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_init_free_memmap.c.sanitized.c
++++ /tmp/cocci-output-4112525-085cf7-1540937361_2018-10-30_2013288f7238_init_free_memmap.c.sanitized.c
+@@ -10,5 +10,5 @@ static inline void free_memmap(unsigned
+   pgend = __pa(end_pg) & PAGE_MASK;
+ 
+   if (pg < pgend)
+-    free_bootmem(pg, pgend - pg);
++    memblock_free(pg, pgend - pg);
+ }
+\ No newline at end of file
+Check duplication for 1 files
