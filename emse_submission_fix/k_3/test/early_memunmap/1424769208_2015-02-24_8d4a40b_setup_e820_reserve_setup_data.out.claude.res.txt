@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./early_memunmap/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, size;
+@@
+- early_iounmap(addr, size)
++ early_memunmap(addr, size)
+
+
+
+HANDLING: ./early_memunmap/1424769208_2015-02-24_8d4a40b_setup_e820_reserve_setup_data.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 19
+               with rule_elem: -early_iounmap
+                                 >>> early_memunmap(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> sizeof(*data);
+                             rule starting on line 1.addr --> data]
+     binding out = []
+     transform one node: 19
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./early_memunmap/1424769208_2015-02-24_8d4a40b_setup_e820_reserve_setup_data.c.sanitized.c
++++ /tmp/cocci-output-64775-7c8e76-1424769208_2015-02-24_8d4a40b_setup_e820_reserve_setup_data.c.sanitized.c
+@@ -10,7 +10,7 @@ static void __init e820_reserve_setup_da
+       e820_update_range(pa_data, sizeof(*data) + data->len, E820_RAM, E820_RESERVED_KERN);
+       found = 1;
+       pa_data = data->next;
+-      early_iounmap(data, sizeof(*data));
++      early_memunmap(data, sizeof(*data));
+     }
+   if (!found)
+     return;
+Check duplication for 1 files

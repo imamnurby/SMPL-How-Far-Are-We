@@ -1,0 +1,60 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./early_memunmap/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, len;
+@@
+- early_iounmap(addr, len)
++ early_memunmap(addr, len)
+
+
+
+HANDLING: ./early_memunmap/1402317686_2014-06-09_98a716b_quirks_efi_reuse_config.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 71
+               with rule_elem: -early_iounmap
+                                 >>> early_memunmap(addr, len)
+                               -(-addr-, -len-)
+               with binding: [rule starting on line 1.len --> nr_tables * sz;
+                             rule starting on line 1.addr --> tablep]
+          transform state: 72
+               with rule_elem: -early_iounmap
+                                 >>> early_memunmap(addr, len)
+                               -(-addr-, -len-)
+               with binding: [rule starting on line 1.len --> sizeof(*data);
+                             rule starting on line 1.addr --> data]
+     binding out = []
+     transform one node: 72
+     transform one node: 71
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./early_memunmap/1402317686_2014-06-09_98a716b_quirks_efi_reuse_config.c.sanitized.c
++++ /tmp/cocci-output-65610-01748c-1402317686_2014-06-09_98a716b_quirks_efi_reuse_config.c.sanitized.c
+@@ -31,9 +31,9 @@ int __init efi_reuse_config(u64 tables,
+         ((efi_config_table_64_t *)p)->table = data->smbios;
+       p += sz;
+     }
+-  early_iounmap(tablep, nr_tables * sz);
++  early_memunmap(tablep, nr_tables * sz);
+ out_memremap:
+-  early_iounmap(data, sizeof(*data));
++  early_memunmap(data, sizeof(*data));
+ out:
+   return ret;
+ }
+\ No newline at end of file
+Check duplication for 1 files

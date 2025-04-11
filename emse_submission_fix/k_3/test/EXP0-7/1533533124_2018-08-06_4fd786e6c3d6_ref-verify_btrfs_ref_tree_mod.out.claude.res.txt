@@ -1,0 +1,90 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E;
+@@
+// Match and transform root->objectid to root->root_key.objectid
+(
+- E->objectid
++ E->root_key.objectid
+)
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 60
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+          transform state: 146
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+          transform state: 147
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+          transform state: 304
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+     binding out = []
+     transform one node: 304
+     transform one node: 147
+     transform one node: 146
+     transform one node: 60
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
++++ /tmp/cocci-output-64656-b231be-1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
+@@ -37,7 +37,7 @@ int btrfs_ref_tree_mod(struct btrfs_root
+   __save_stack_trace(ra);
+   INIT_LIST_HEAD(&ra->list);
+   ra->action = action;
+-  ra->root = root->objectid;
++  ra->root = root->root_key.objectid;
+ 
+   ret = -EINVAL;
+   if (action == BTRFS_ADD_DELAYED_EXTENT)
+@@ -82,8 +82,8 @@ int btrfs_ref_tree_mod(struct btrfs_root
+               goto out;
+             }
+ 
+-          ref_root = root->objectid;
+-          re->root_objectid = root->objectid;
++          ref_root = root->root_key.objectid;
++          re->root_objectid = root->root_key.objectid;
+           re->num_refs = 0;
+         }
+       spin_lock(&root->fs_info->ref_verify_lock);
+@@ -157,7 +157,8 @@ int btrfs_ref_tree_mod(struct btrfs_root
+       if (!re)
+         {
+ 
+-          btrfs_err(fs_info, "failed to find root %llu for %llu", root->objectid, be->bytenr);
++          btrfs_err(fs_info, "failed to find root %llu for %llu",
++                    root->root_key.objectid, be->bytenr);
+           dump_block_entry(fs_info, be);
+           dump_ref_action(fs_info, ra);
+           kfree(ra);
+Check duplication for 1 files

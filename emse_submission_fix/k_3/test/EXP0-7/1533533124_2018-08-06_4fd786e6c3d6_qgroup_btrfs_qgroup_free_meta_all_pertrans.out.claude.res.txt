@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E;
+@@
+// Match and transform root->objectid to root->root_key.objectid
+(
+- E->objectid
++ E->root_key.objectid
+)
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_free_meta_all_pertrans.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 7
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+          transform state: 15
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+     binding out = []
+     transform one node: 15
+     transform one node: 7
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_free_meta_all_pertrans.c.sanitized.c
++++ /tmp/cocci-output-64635-590a7c-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_free_meta_all_pertrans.c.sanitized.c
+@@ -1,10 +1,11 @@
+ void btrfs_qgroup_free_meta_all_pertrans(struct btrfs_root *root)
+ {
+   struct btrfs_fs_info *fs_info = root->fs_info;
+-  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &fs_info->flags) || !is_fstree(root->objectid))
++  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &fs_info->flags) || !is_fstree(root->root_key.objectid))
+     return;
+ 
+   trace_qgroup_meta_free_all_pertrans(root);
+ 
+-  btrfs_qgroup_free_refroot(fs_info, root->objectid, (u64)-1, BTRFS_QGROUP_RSV_META_PERTRANS);
++  btrfs_qgroup_free_refroot(fs_info, root->root_key.objectid, (u64)-1,
++                            BTRFS_QGROUP_RSV_META_PERTRANS);
+ }
+\ No newline at end of file
+Check duplication for 1 files

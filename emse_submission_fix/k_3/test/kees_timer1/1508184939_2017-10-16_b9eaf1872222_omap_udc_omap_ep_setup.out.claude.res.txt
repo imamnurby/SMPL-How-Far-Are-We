@@ -1,0 +1,76 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression T, F, D;
+@@
+-init_timer(&T);
+-T.function = F;
+-T.data = D;
++setup_timer(&T, F, D);
+@@
+expression T, F;
+@@
+-init_timer(&T);
+-T.function = F;
++setup_timer(&T, F, 0UL);
+
+
+
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 109
+               with rule_elem: -init_timer-(-&-T-)-;
+               with binding: [rule starting on line 1.T --> ep->timer]
+          transform state: 110
+               with rule_elem: -T-.-function -= -F-;
+               with binding: [rule starting on line 1.F --> pio_out_timer;
+                             rule starting on line 1.T --> ep->timer]
+          transform state: 111
+               with rule_elem: -T
+                                 >>> setup_timer(&T, F, D);
+                               -.-data -= -D-;
+               with binding: [rule starting on line 1.D --> (unsigned
+                             long)ep;
+                             rule starting on line 1.F --> pio_out_timer;
+                             rule starting on line 1.T --> ep->timer]
+     binding out = []
+     transform one node: 111
+     transform one node: 110
+     transform one node: 109
+-----------------------------------------------------------------------
+rule starting on line 8 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 8 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
++++ /tmp/cocci-output-64947-f4cd23-1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
+@@ -64,9 +64,7 @@ static unsigned omap_ep_setup(char *name
+         }
+       if (dbuf && addr)
+         epn_rxtx |= UDC_EPN_RX_DB;
+-      init_timer(&ep->timer);
+-      ep->timer.function = pio_out_timer;
+-      ep->timer.data = (unsigned long)ep;
++      setup_timer(&ep->timer, pio_out_timer, (unsigned long)ep);
+     }
+   if (addr)
+     epn_rxtx |= UDC_EPN_RX_VALID;
+Check duplication for 1 files

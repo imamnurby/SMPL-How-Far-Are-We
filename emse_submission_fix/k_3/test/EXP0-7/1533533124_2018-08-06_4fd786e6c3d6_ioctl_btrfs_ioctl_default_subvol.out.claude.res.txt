@@ -1,0 +1,51 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E;
+@@
+// Match and transform root->objectid to root->root_key.objectid
+(
+- E->objectid
++ E->root_key.objectid
+)
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 64
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> new_root]
+     binding out = []
+     transform one node: 64
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
++++ /tmp/cocci-output-64607-4808e3-1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
+@@ -33,7 +33,7 @@ static long btrfs_ioctl_default_subvol(s
+       ret = PTR_ERR(new_root);
+       goto out;
+     }
+-  if (!is_fstree(new_root->objectid))
++  if (!is_fstree(new_root->root_key.objectid))
+     {
+       ret = -ENOENT;
+       goto out;
+Check duplication for 1 files

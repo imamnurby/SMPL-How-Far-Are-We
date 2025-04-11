@@ -1,0 +1,91 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@rule1@
+expression block, filter_list;
+@@
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+@rule2@
+expression block, filter_list, sch;
+@@
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+
+
+
+HANDLING: ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [rule1.filter_list --> &dev->ingress_cl_list;
+                             rule1.block --> &q->ingress_block]
+          transform state: 17
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [rule1.filter_list --> &dev->egress_cl_list;
+                             rule1.block --> &q->egress_block]
+     binding out = []
+     transform one node: 17
+     transform one node: 9
+-----------------------------------------------------------------------
+rule2 = 
+-----------------------------------------------------------------------
+dependencies for rule rule2 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [rule2.sch --> sch;
+                             rule2.filter_list --> &dev->ingress_cl_list;
+                             rule2.block --> &q->ingress_block]
+          transform state: 17
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [rule2.sch --> sch;
+                             rule2.filter_list --> &dev->egress_cl_list;
+                             rule2.block --> &q->egress_block]
+     binding out = []
+     transform one node: 17
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
++++ /tmp/cocci-output-65293-a1c76d-1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
+@@ -3,10 +3,10 @@ static int clsact_init(struct Qdisc *sch
+   struct clsact_sched_data *q = qdisc_priv(sch);
+   struct net_device *dev = qdisc_dev(sch);
+   int err;
+-  err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list);
++  err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list, sch, extack);
+   if (err)
+     return err;
+-  err = tcf_block_get(&q->egress_block, &dev->egress_cl_list);
++  err = tcf_block_get(&q->egress_block, &dev->egress_cl_list, sch, extack);
+   if (err)
+     return err;
+   net_inc_ingress_queue();
+Check duplication for 1 files
