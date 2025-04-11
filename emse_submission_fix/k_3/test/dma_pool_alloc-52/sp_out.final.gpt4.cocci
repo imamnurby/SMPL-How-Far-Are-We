@@ -1,12 +1,14 @@
 @@
-identifier pool_func = dma_pool_alloc, pool_zalloc = dma_pool_zalloc;
-expression pool, gfp, dma_ptr;
-type T;
+expression alloc_function = dma_pool_alloc;
+identifier pool;
+expression flags;
+identifier dma_variable;
+identifier mem_variable;
+type data_type;
 @@
-- T *res = pool_func(pool, gfp, &dma_ptr);
-+ T *res = pool_zalloc(pool, gfp, &dma_ptr);
-  ... when != res == NULL
-      when != (T *)res = pool_func(...)
-- memset(res, 0, sizeof(T));
+- mem_variable = alloc_function(pool, flags, &dma_variable);
++ mem_variable = dma_pool_zalloc(pool, flags, &dma_variable);
+...
+- memset(mem_variable, 0, sizeof(data_type));
 
 

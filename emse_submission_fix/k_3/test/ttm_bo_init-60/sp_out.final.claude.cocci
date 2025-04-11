@@ -1,8 +1,18 @@
 @@
-expression E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11;
+expression dev, bo, size, type, placement, page_align, interruptible;
+expression acc_size, sg, res_obj, destroy;
+expression ret;
 @@
-ttm_bo_init(E1, E2, E3, E4, E5, E6, E7, 
--           NULL, 
-            E8, E9, E10, E11)
+(
+ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
+-                 NULL, acc_size,
++                 acc_size,
+                  sg, res_obj, destroy)
+|
+ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
+-                 NULL, acc_size,
++                 acc_size,
+                  sg, res_obj, destroy);
+)
 
 

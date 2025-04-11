@@ -1,8 +1,7 @@
 @@
-identifier file, sock;
-expression wait;
+identifier f, w, sock;
 @@
-- sock_poll_wait(file, wait);
-+ sock_poll_wait(file, sock, wait);
+- sock_poll_wait(f, w)
++ sock_poll_wait(f, sock, w)
 
 
