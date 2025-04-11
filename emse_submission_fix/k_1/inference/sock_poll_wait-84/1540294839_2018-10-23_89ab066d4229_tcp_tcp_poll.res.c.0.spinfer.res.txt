@@ -1,0 +1,70 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/final_response_0.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I0, I1, I2;
+expression E3, E4;
+typedef __poll_t;
+typedef poll_table;
+@@
+  __poll_t tcp_poll(struct file *I0, struct socket *I1, poll_table *I2)  
+  {
+  ...
+- sock_poll_wait(E3, E4); 
++ sock_poll_wait(E3, I1, E4); 
+  ...
+  }
+// Infered from: (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 1/1(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 10
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(E3, I1, E4);
+                               -(-E3-, -E4-)-;
+               with binding: [rule starting on line 1.E4 --> wait;
+                             rule starting on line 1.E3 --> file;
+                             rule starting on line 1.I1 --> id sock]
+     binding out = []
+     transform one node: 10
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.c.sanitized.c
++++ /tmp/cocci-output-4043309-7e549a-1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.c.sanitized.c
+@@ -4,7 +4,7 @@ __poll_t tcp_poll(struct file *file, str
+   struct sock *sk = sock->sk;
+   const struct tcp_sock *tp = tcp_sk(sk);
+   int state;
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   state = inet_sk_state_load(sk);
+   if (state == TCP_LISTEN)
+     return inet_csk_listen_poll(sk);
+Check duplication for 1 files
