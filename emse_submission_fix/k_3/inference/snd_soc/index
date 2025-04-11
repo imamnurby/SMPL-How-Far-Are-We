@@ -1,0 +1,6 @@
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_afe_i2s_startup.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_afe_i2s_startup.res.c.sanitized.res.c
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_btmrg_hw_params.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_btmrg_hw_params.res.c.sanitized.res.c
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_dlm_fe_startup.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mt2701-afe-pcm_mt2701_dlm_fe_startup.res.c.sanitized.res.c
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_shutdown.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_shutdown.res.c.sanitized.res.c
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_startup.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_startup.res.c.sanitized.res.c
+./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_trigger.c.sanitized.c ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_trigger.res.c.sanitized.res.c

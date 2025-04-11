@@ -1,0 +1,3 @@
+./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.c.sanitized.c ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.res.c.sanitized.res.c
+./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_llcp_sock_llcp_sock_poll.c.sanitized.c ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_llcp_sock_llcp_sock_poll.res.c.sanitized.res.c
+./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.c.sanitized.c ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.res.c.sanitized.res.c
