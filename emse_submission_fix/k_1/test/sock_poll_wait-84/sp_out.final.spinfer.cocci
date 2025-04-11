@@ -1,17 +1,17 @@
 @@
-identifier I0, I1, I2, I3;
-expression E4, E5;
+identifier I0, I1, I2;
+expression E3, E4;
 typedef __poll_t;
 typedef poll_table;
 @@
-  __poll_t I0(struct file *I1, struct socket *I2, poll_table *I3)  
+  __poll_t tcp_poll(struct file *I0, struct socket *I1, poll_table *I2)  
   {
   ...
-- sock_poll_wait(E4, E5); 
-+ sock_poll_wait(E4, I2, E5); 
+- sock_poll_wait(E3, E4); 
++ sock_poll_wait(E3, I1, E4); 
   ...
   }
-// Infered from: (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.{c,res.c}: rxrpc_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.{c,res.c}: rxrpc_poll)
+// Infered from: (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll)
 // Recall: 1.00, Precision: 1.00, Matching recall: 1.00
 
 // ---------------------------------------------
@@ -21,7 +21,7 @@ typedef poll_table;
 // -- Node Change --
 // Recall: 1.00, Precision: 1.00
 // -- General --
-// Functions fully changed: 2/2(100%)
+// Functions fully changed: 1/1(100%)
 
 
 // ---------------------------------------------

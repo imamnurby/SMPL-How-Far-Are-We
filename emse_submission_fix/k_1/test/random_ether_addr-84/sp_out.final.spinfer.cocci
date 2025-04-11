@@ -1,9 +1,9 @@
 @@
-expression E0, E1, E2;
+expression E0;
 @@
-- early_iounmap(E0, E1 + E2); 
-+ early_memunmap(E0, E1 + E2); 
-// Infered from: (./early_memunmap/1424769208_2015-02-24_8d4a40bc0651_setup_relocate_initrd.{c,res.c}: relocate_initrd), (./early_memunmap/1424769208_2015-02-24_8d4a40bc0651_setup_relocate_initrd.{c,res.c}: relocate_initrd)
+- random_ether_addr(E0->dev_addr); 
++ eth_random_addr(E0->dev_addr); 
+// Infered from: (./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.{c.sanitized.c,res.c.sanitized.res.c}: gemini_ethernet_port_probe)
 // Recall: 1.00, Precision: 1.00, Matching recall: 1.00
 
 // ---------------------------------------------
