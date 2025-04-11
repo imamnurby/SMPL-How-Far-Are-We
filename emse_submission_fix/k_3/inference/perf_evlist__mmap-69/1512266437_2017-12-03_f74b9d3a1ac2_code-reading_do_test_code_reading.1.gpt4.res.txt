@@ -1,0 +1,47 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression x, y, z;
+@@
+- perf_evlist__mmap(x, y, z)
++ perf_evlist__mmap(x, y)
+
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_code-reading_do_test_code_reading.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 202
+               with rule_elem: -perf_evlist__mmap
+                                 >>> perf_evlist__mmap(x, y)
+                               -(-x-, -y-, -z-)
+               with binding: [rule starting on line 1.y --> UINT_MAX;
+                             rule starting on line 1.x --> evlist]
+     binding out = []
+     transform one node: 202
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_code-reading_do_test_code_reading.c.sanitized.c
++++ /tmp/cocci-output-30731-0828f9-1512266437_2017-12-03_f74b9d3a1ac2_code-reading_do_test_code_reading.c.sanitized.c
+@@ -124,7 +124,7 @@ static int do_test_code_reading(bool try
+         }
+       break;
+     }
+-  ret = perf_evlist__mmap(evlist, UINT_MAX, false);
++  ret = perf_evlist__mmap(evlist, UINT_MAX);
+   if (ret < 0)
+     {
+       pr_debug("perf_evlist__mmap failed\n");
+Check duplication for 1 files

@@ -1,0 +1,39 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type T;
+identifier a, exts;
+expression E;
+@@
+- LIST_HEAD(actions);
++ int i;
+  ... when != i
+  when != a
+  when != exts
+  when strict
+(
+  T mlxsw_sp_flower_parse_actions(...)
+|
+  T parse_tc_fdb_actions(...)
+|
+  T tc_fill_actions(...)
+)
+{
+  <...
+- tcf_exts_to_list(exts, &actions);
+- list_for_each_entry(a, &actions, list)
++ tcf_exts_for_each_action(i, a, exts)
+  {
+    E;
+  }
+  ...>
+}
+
+minus: parse error: 
+  File "./tcaction/final_response_1.deepseek-chat.cocci", line 14, column 0, charpos = 177
+  around = '|',
+  whole content = |
+

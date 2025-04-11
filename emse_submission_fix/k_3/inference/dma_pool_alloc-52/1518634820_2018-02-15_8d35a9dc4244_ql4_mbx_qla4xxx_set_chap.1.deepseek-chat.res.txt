@@ -1,0 +1,22 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags, handle;
+identifier mem;
+type T;
+@@
+- mem = dma_pool_alloc(pool, flags, handle);
++ mem = dma_pool_zalloc(pool, flags, handle);
+  if (mem == NULL)
+    ... when != mem
+    return ...;
+- memset(mem, 0, sizeof(T));
+
+minus: parse error: 
+  File "./dma_pool_alloc-52/final_response_1.deepseek-chat.cocci", line 9, column 4, charpos = 176
+  around = '...',
+  whole content =     ... when != mem
+

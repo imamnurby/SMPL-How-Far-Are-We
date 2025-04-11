@@ -1,0 +1,52 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2, E3, E4, E5, E6, E7, E8, E9;
+expression size_exp;
+@@
+ttm_bo_init(E1, E2, E3, E4, E5, E6, E7,
+-           NULL, size_exp,
++           size_exp,
+            E8, E9, ...)
+
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 181
+               with rule_elem: ttm_bo_init(E1, E2, E3, E4, E5, E6, E7,
+                                           -NULL-, -size_exp-,
+                                           
+                                             <<< size_exp, 
+                                           E8, E9, ...)
+               with binding: [rule starting on line 1.size_exp --> acc_size]
+     binding out = []
+     transform one node: 181
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.c.sanitized.c
++++ /tmp/cocci-output-31554-4e2680-1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.c.sanitized.c
+@@ -84,7 +84,8 @@ int nouveau_bo_new(struct nouveau_cli *c
+   nvbo->bo.mem.num_pages = size >> PAGE_SHIFT;
+   nouveau_bo_placement_set(nvbo, flags, 0);
+   acc_size = ttm_bo_dma_acc_size(&drm->ttm.bdev, size, sizeof(struct nouveau_bo));
+-  ret = ttm_bo_init(&drm->ttm.bdev, &nvbo->bo, size, type, &nvbo->placement, align >> PAGE_SHIFT, false, NULL, acc_size, sg, robj, nouveau_bo_del_ttm);
++  ret = ttm_bo_init(&drm->ttm.bdev, &nvbo->bo, size, type, &nvbo->placement, align >> PAGE_SHIFT, false,
++                    acc_size, sg, robj, nouveau_bo_del_ttm);
+   if (ret)
+     {
+ 
+Check duplication for 1 files

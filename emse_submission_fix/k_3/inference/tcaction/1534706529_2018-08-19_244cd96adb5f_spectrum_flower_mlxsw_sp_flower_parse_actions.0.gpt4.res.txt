@@ -1,0 +1,30 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type list_head_type;
+identifier actions;
+@@
+- LIST_HEAD(actions);
++ int i;
+@@
+expression exts;
+identifier actions;
+@@
+- tcf_exts_to_list(exts, &actions);
+@@
+identifier actions;
+iterator list_for_each_entry;
+identifier a;
+@@
+- list_for_each_entry(a, &actions, list)
++ tcf_exts_for_each_action(i, a, exts)
+
+warning: rule starting on line 1: metavariable list_head_type not used in the - or context code
+minus: parse error: 
+  File "./tcaction/final_response_0.gpt4.cocci", line 18, column 38, charpos = 306
+  around = '',
+  whole content = + tcf_exts_for_each_action(i, a, exts)
+

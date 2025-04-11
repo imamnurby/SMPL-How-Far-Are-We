@@ -1,0 +1,20 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier ioread = "ioread32be";
+identifier uart_in = "uart_in32";
+identifier membase_field = "membase";
+identifier reg_macro;
+expression port;
+@@
+- ioread(port->membase_field + reg_macro)
++ uart_in(reg_macro, port)
+
+meta: parse error: 
+  File "./uartlite/final_response_0.gpt4.cocci", line 2, column 31, charpos = 34
+  around = '"',
+  whole content = identifier ioread = "ioread32be";
+

@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression port;
+constant offset;
+@@
+- ioread32be(port->membase + offset)
++ uart_in32(offset, port)
+
+HANDLING: ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_isr.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     (ONCE) warning: ULITE_STATUS treated as a constant
+     transformation info returned:
+          transform state: 15
+               with rule_elem: -ioread32be
+                                 >>> uart_in32(offset, port)
+                               -(-port-->-membase -+ -offset-)
+               with binding: [rule starting on line 1.offset --> ULITE_STATUS;
+                             rule starting on line 1.port --> port]
+     binding out = []
+     transform one node: 15
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_isr.c.sanitized.c
++++ /tmp/cocci-output-32239-064a5c-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_isr.c.sanitized.c
+@@ -4,7 +4,7 @@ static irqreturn_t ulite_isr(int irq, vo
+   int busy, n = 0;
+   do
+     {
+-      int stat = ioread32be(port->membase + ULITE_STATUS);
++      int stat = uart_in32(ULITE_STATUS, port);
+       busy = ulite_receive(port, stat);
+       busy |= ulite_transmit(port, stat);
+       n++;
+Check duplication for 1 files

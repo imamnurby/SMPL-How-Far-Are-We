@@ -1,0 +1,20 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier func_name; // Matches the function name
+parameter p1, p2, p3; // Matches the function parameters
+@@
+<...>
+ // Matches contexts where sock_poll_wait is used
+- sock_poll_wait(p1, p3);
++ sock_poll_wait(p1, p2, p3);
+<...>
+
+minus: parse error: 
+  File "./sock_poll_wait-84/final_response_1.gpt4.cocci", line 5, column 4, charpos = 118
+  around = '>',
+  whole content = <...>
+

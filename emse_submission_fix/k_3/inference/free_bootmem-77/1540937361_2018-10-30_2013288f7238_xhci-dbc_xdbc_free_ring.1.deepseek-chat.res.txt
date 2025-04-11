@@ -1,0 +1,47 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, size;
+@@
+- free_bootmem(addr, size)
++ memblock_free(addr, size)
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_free_ring.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 14
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> seg->dma]
+     binding out = []
+     transform one node: 14
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_free_ring.c.sanitized.c
++++ /tmp/cocci-output-31922-7aeb45-1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_free_ring.c.sanitized.c
+@@ -3,6 +3,6 @@ static void __init xdbc_free_ring(struct
+   struct xdbc_segment *seg = ring->segment;
+   if (!seg)
+     return;
+-  free_bootmem(seg->dma, PAGE_SIZE);
++  memblock_free(seg->dma, PAGE_SIZE);
+   ring->segment = NULL;
+ }
+\ No newline at end of file
+Check duplication for 1 files

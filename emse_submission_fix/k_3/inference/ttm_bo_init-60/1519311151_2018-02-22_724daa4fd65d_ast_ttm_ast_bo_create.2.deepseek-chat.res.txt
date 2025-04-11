@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_2.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression bdev, bo, size, type, placement, align, kernel, acc_size, sg, robj, destroy;
+@@
+- ttm_bo_init(bdev, bo, size, type, placement, align, kernel, NULL, acc_size, sg, robj, destroy)
++ ttm_bo_init(bdev, bo, size, type, placement, align, kernel, acc_size, sg, robj, destroy)
+
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 29
+               with rule_elem: -ttm_bo_init
+                                 >>> ttm_bo_init(bdev, bo, size, type,
+                                                 placement, align, kernel,
+                                                 acc_size, sg, robj, destroy)
+                               -(-bdev-, -bo-, -size-, -type-, -placement-,
+                                 -align-, -kernel-, -NULL-, -acc_size-, -sg-,
+                                 -robj-, -destroy-)
+               with binding: [rule starting on line 1.destroy --> ast_bo_ttm_destroy;
+                             rule starting on line 1.robj --> NULL;
+                             rule starting on line 1.sg --> NULL;
+                             rule starting on line 1.acc_size --> acc_size;
+                             rule starting on line 1.kernel --> false;
+                             rule starting on line 1.align --> align >>
+                             PAGE_SHIFT;
+                             rule starting on line 1.placement --> &astbo->placement;
+                             rule starting on line 1.type --> ttm_bo_type_device;
+                             rule starting on line 1.size --> size;
+                             rule starting on line 1.bo --> &astbo->bo;
+                             rule starting on line 1.bdev --> &ast->ttm.bdev]
+     binding out = []
+     transform one node: 29
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.c.sanitized.c
++++ /tmp/cocci-output-32163-4d1a84-1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.c.sanitized.c
+@@ -13,7 +13,9 @@ int ast_bo_create(struct drm_device *dev
+   astbo->bo.bdev = &ast->ttm.bdev;
+   ast_ttm_placement(astbo, TTM_PL_FLAG_VRAM | TTM_PL_FLAG_SYSTEM);
+   acc_size = ttm_bo_dma_acc_size(&ast->ttm.bdev, size, sizeof(struct ast_bo));
+-  ret = ttm_bo_init(&ast->ttm.bdev, &astbo->bo, size, ttm_bo_type_device, &astbo->placement, align >> PAGE_SHIFT, false, NULL, acc_size, NULL, NULL, ast_bo_ttm_destroy);
++  ret = ttm_bo_init(&ast->ttm.bdev, &astbo->bo, size, ttm_bo_type_device,
++                    &astbo->placement, align >> PAGE_SHIFT, false, acc_size,
++                    NULL, NULL, ast_bo_ttm_destroy);
+   if (ret)
+     goto error;
+   *pastbo = astbo;
+Check duplication for 1 files

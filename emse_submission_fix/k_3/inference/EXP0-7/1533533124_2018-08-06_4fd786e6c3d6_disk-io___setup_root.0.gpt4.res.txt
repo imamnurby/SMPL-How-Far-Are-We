@@ -1,0 +1,502 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+struct field root_key_field;
+identifier root_field;
+@@
+- root->root_field
++ root->root_key.root_field
+
+warning: line 5: should root be a metavariable?
+warning: rule starting on line 1: metavariable root_key_field not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 7
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id node]
+          transform state: 8
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id commit_root]
+          transform state: 9
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id state]
+          transform state: 10
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id orphan_cleanup_state]
+          transform state: 11
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id objectid]
+          transform state: 12
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id last_trans]
+          transform state: 13
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id highest_objectid]
+          transform state: 14
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id nr_delalloc_inodes]
+          transform state: 15
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id nr_ordered_extents]
+          transform state: 16
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id inode_tree]
+          transform state: 17
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id delayed_nodes_tree]
+          transform state: 18
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id block_rsv]
+          transform state: 19
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id dirty_list]
+          transform state: 20
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_list]
+          transform state: 21
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id delalloc_inodes]
+          transform state: 22
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id delalloc_root]
+          transform state: 23
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id ordered_extents]
+          transform state: 24
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id ordered_root]
+          transform state: 25
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id logged_list]
+          transform state: 26
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id logged_list]
+          transform state: 27
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id inode_lock]
+          transform state: 28
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id delalloc_lock]
+          transform state: 29
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id ordered_extent_lock]
+          transform state: 30
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id accounting_lock]
+          transform state: 31
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_extents_lock]
+          transform state: 32
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_extents_lock]
+          transform state: 33
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id qgroup_meta_rsv_lock]
+          transform state: 34
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id objectid_mutex]
+          transform state: 35
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_mutex]
+          transform state: 36
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id ordered_extent_mutex]
+          transform state: 37
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id delalloc_mutex]
+          transform state: 38
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_writer_wait]
+          transform state: 39
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_commit_wait]
+          transform state: 40
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_commit_wait]
+          transform state: 41
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_ctxs]
+          transform state: 42
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_ctxs]
+          transform state: 43
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_commit]
+          transform state: 44
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_commit]
+          transform state: 45
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_writers]
+          transform state: 46
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_batch]
+          transform state: 47
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id refs]
+          transform state: 48
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id will_be_snapshotted]
+          transform state: 49
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id snapshot_force_cow]
+          transform state: 50
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_transid]
+          transform state: 51
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id log_transid_committed]
+          transform state: 52
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id last_log_commit]
+          transform state: 58
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id dirty_log_pages]
+          transform state: 59
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_key]
+          transform state: 59
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_key]
+          transform state: 60
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_item]
+          transform state: 60
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_item]
+          transform state: 61
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id defrag_progress]
+          transform state: 61
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id defrag_progress]
+          transform state: 66
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id defrag_trans_start]
+          transform state: 67
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id defrag_trans_start]
+          transform state: 70
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_key]
+          transform state: 71
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id anon_dev]
+          transform state: 72
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_item_lock]
+     binding out = []
+     transform one node: 72
+     transform one node: 71
+     transform one node: 70
+     transform one node: 67
+     transform one node: 66
+     transform one node: 61
+     transform one node: 61
+     transform one node: 60
+     transform one node: 60
+     transform one node: 59
+     transform one node: 59
+     transform one node: 58
+     transform one node: 52
+     transform one node: 51
+     transform one node: 50
+     transform one node: 49
+     transform one node: 48
+     transform one node: 47
+     transform one node: 46
+     transform one node: 45
+     transform one node: 44
+     transform one node: 43
+     transform one node: 42
+     transform one node: 41
+     transform one node: 40
+     transform one node: 39
+     transform one node: 38
+     transform one node: 37
+     transform one node: 36
+     transform one node: 35
+     transform one node: 34
+     transform one node: 33
+     transform one node: 32
+     transform one node: 31
+     transform one node: 30
+     transform one node: 29
+     transform one node: 28
+     transform one node: 27
+     transform one node: 26
+     transform one node: 25
+     transform one node: 24
+     transform one node: 23
+     transform one node: 22
+     transform one node: 21
+     transform one node: 20
+     transform one node: 19
+     transform one node: 18
+     transform one node: 17
+     transform one node: 16
+     transform one node: 15
+     transform one node: 14
+     transform one node: 13
+     transform one node: 12
+     transform one node: 11
+     transform one node: 10
+     transform one node: 9
+     transform one node: 8
+     transform one node: 7
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
++++ /tmp/cocci-output-30379-a5f100-1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
+@@ -1,62 +1,63 @@
+ static void __setup_root(struct btrfs_root *root, struct btrfs_fs_info *fs_info, u64 objectid)
+ {
+   bool dummy = test_bit(BTRFS_FS_STATE_DUMMY_FS_INFO, &fs_info->fs_state);
+-  root->node = NULL;
+-  root->commit_root = NULL;
+-  root->state = 0;
+-  root->orphan_cleanup_state = 0;
+-  root->objectid = objectid;
+-  root->last_trans = 0;
+-  root->highest_objectid = 0;
+-  root->nr_delalloc_inodes = 0;
+-  root->nr_ordered_extents = 0;
+-  root->inode_tree = RB_ROOT;
+-  INIT_RADIX_TREE(&root->delayed_nodes_tree, GFP_ATOMIC);
+-  root->block_rsv = NULL;
+-  INIT_LIST_HEAD(&root->dirty_list);
+-  INIT_LIST_HEAD(&root->root_list);
+-  INIT_LIST_HEAD(&root->delalloc_inodes);
+-  INIT_LIST_HEAD(&root->delalloc_root);
+-  INIT_LIST_HEAD(&root->ordered_extents);
+-  INIT_LIST_HEAD(&root->ordered_root);
+-  INIT_LIST_HEAD(&root->logged_list[0]);
+-  INIT_LIST_HEAD(&root->logged_list[1]);
+-  spin_lock_init(&root->inode_lock);
+-  spin_lock_init(&root->delalloc_lock);
+-  spin_lock_init(&root->ordered_extent_lock);
+-  spin_lock_init(&root->accounting_lock);
+-  spin_lock_init(&root->log_extents_lock[0]);
+-  spin_lock_init(&root->log_extents_lock[1]);
+-  spin_lock_init(&root->qgroup_meta_rsv_lock);
+-  mutex_init(&root->objectid_mutex);
+-  mutex_init(&root->log_mutex);
+-  mutex_init(&root->ordered_extent_mutex);
+-  mutex_init(&root->delalloc_mutex);
+-  init_waitqueue_head(&root->log_writer_wait);
+-  init_waitqueue_head(&root->log_commit_wait[0]);
+-  init_waitqueue_head(&root->log_commit_wait[1]);
+-  INIT_LIST_HEAD(&root->log_ctxs[0]);
+-  INIT_LIST_HEAD(&root->log_ctxs[1]);
+-  atomic_set(&root->log_commit[0], 0);
+-  atomic_set(&root->log_commit[1], 0);
+-  atomic_set(&root->log_writers, 0);
+-  atomic_set(&root->log_batch, 0);
+-  refcount_set(&root->refs, 1);
+-  atomic_set(&root->will_be_snapshotted, 0);
+-  atomic_set(&root->snapshot_force_cow, 0);
+-  root->log_transid = 0;
+-  root->log_transid_committed = -1;
+-  root->last_log_commit = 0;
++  root->root_key.node = NULL;
++  root->root_key.commit_root = NULL;
++  root->root_key.state = 0;
++  root->root_key.orphan_cleanup_state = 0;
++  root->root_key.objectid = objectid;
++  root->root_key.last_trans = 0;
++  root->root_key.highest_objectid = 0;
++  root->root_key.nr_delalloc_inodes = 0;
++  root->root_key.nr_ordered_extents = 0;
++  root->root_key.inode_tree = RB_ROOT;
++  INIT_RADIX_TREE(&root->root_key.delayed_nodes_tree, GFP_ATOMIC);
++  root->root_key.block_rsv = NULL;
++  INIT_LIST_HEAD(&root->root_key.dirty_list);
++  INIT_LIST_HEAD(&root->root_key.root_list);
++  INIT_LIST_HEAD(&root->root_key.delalloc_inodes);
++  INIT_LIST_HEAD(&root->root_key.delalloc_root);
++  INIT_LIST_HEAD(&root->root_key.ordered_extents);
++  INIT_LIST_HEAD(&root->root_key.ordered_root);
++  INIT_LIST_HEAD(&root->root_key.logged_list[0]);
++  INIT_LIST_HEAD(&root->root_key.logged_list[1]);
++  spin_lock_init(&root->root_key.inode_lock);
++  spin_lock_init(&root->root_key.delalloc_lock);
++  spin_lock_init(&root->root_key.ordered_extent_lock);
++  spin_lock_init(&root->root_key.accounting_lock);
++  spin_lock_init(&root->root_key.log_extents_lock[0]);
++  spin_lock_init(&root->root_key.log_extents_lock[1]);
++  spin_lock_init(&root->root_key.qgroup_meta_rsv_lock);
++  mutex_init(&root->root_key.objectid_mutex);
++  mutex_init(&root->root_key.log_mutex);
++  mutex_init(&root->root_key.ordered_extent_mutex);
++  mutex_init(&root->root_key.delalloc_mutex);
++  init_waitqueue_head(&root->root_key.log_writer_wait);
++  init_waitqueue_head(&root->root_key.log_commit_wait[0]);
++  init_waitqueue_head(&root->root_key.log_commit_wait[1]);
++  INIT_LIST_HEAD(&root->root_key.log_ctxs[0]);
++  INIT_LIST_HEAD(&root->root_key.log_ctxs[1]);
++  atomic_set(&root->root_key.log_commit[0], 0);
++  atomic_set(&root->root_key.log_commit[1], 0);
++  atomic_set(&root->root_key.log_writers, 0);
++  atomic_set(&root->root_key.log_batch, 0);
++  refcount_set(&root->root_key.refs, 1);
++  atomic_set(&root->root_key.will_be_snapshotted, 0);
++  atomic_set(&root->root_key.snapshot_force_cow, 0);
++  root->root_key.log_transid = 0;
++  root->root_key.log_transid_committed = -1;
++  root->root_key.last_log_commit = 0;
+   if (!dummy)
+-    extent_io_tree_init(&root->dirty_log_pages, NULL);
+-  memset(&root->root_key, 0, sizeof(root->root_key));
+-  memset(&root->root_item, 0, sizeof(root->root_item));
+-  memset(&root->defrag_progress, 0, sizeof(root->defrag_progress));
++    extent_io_tree_init(&root->root_key.dirty_log_pages, NULL);
++  memset(&root->root_key.root_key, 0, sizeof(root->root_key.root_key));
++  memset(&root->root_key.root_item, 0, sizeof(root->root_key.root_item));
++  memset(&root->root_key.defrag_progress, 0,
++         sizeof(root->root_key.defrag_progress));
+   if (!dummy)
+-    root->defrag_trans_start = fs_info->generation;
++    root->root_key.defrag_trans_start = fs_info->generation;
+   else
+-    root->defrag_trans_start = 0;
+-  root->root_key.objectid = objectid;
+-  root->anon_dev = 0;
+-  spin_lock_init(&root->root_item_lock);
++    root->root_key.defrag_trans_start = 0;
++  root->root_key.root_key.objectid = objectid;
++  root->root_key.anon_dev = 0;
++  spin_lock_init(&root->root_key.root_item_lock);
+ }
+\ No newline at end of file
+Check duplication for 1 files

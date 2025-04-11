@@ -1,0 +1,27 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression dev, bo, size, type, placement, page_align, interruptible;
+expression acc_size, sg, res_obj, destroy;
+expression ret;
+@@
+(
+ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
+-                 NULL, acc_size,
++                 acc_size,
+                  sg, res_obj, destroy)
+|
+ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
+-                 NULL, acc_size,
++                 acc_size,
+                  sg, res_obj, destroy);
+)
+
+minus: parse error: 
+  File "./ttm_bo_init-60/final_response_0.claude.cocci", line 15, column 39, charpos = 496
+  around = ';',
+  whole content =                   sg, res_obj, destroy);
+

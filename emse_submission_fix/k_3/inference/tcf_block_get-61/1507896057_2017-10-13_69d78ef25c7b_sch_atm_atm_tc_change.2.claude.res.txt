@@ -1,0 +1,69 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@rule1@
+expression block, filter_list;
+@@
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+@rule2@
+expression block, filter_list, sch;
+@@
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+
+HANDLING: ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_atm_atm_tc_change.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 171
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [rule1.filter_list --> &flow->filter_list;
+                             rule1.block --> &flow->block]
+     binding out = []
+     transform one node: 171
+-----------------------------------------------------------------------
+rule2 = 
+-----------------------------------------------------------------------
+dependencies for rule rule2 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 171
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [rule2.sch --> sch;
+                             rule2.filter_list --> &flow->filter_list;
+                             rule2.block --> &flow->block]
+     binding out = []
+     transform one node: 171
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_atm_atm_tc_change.c.sanitized.c
++++ /tmp/cocci-output-31479-296963-1507896057_2017-10-13_69d78ef25c7b_sch_atm_atm_tc_change.c.sanitized.c
+@@ -89,7 +89,7 @@ static int atm_tc_change(struct Qdisc *s
+       error = -ENOBUFS;
+       goto err_out;
+     }
+-  error = tcf_block_get(&flow->block, &flow->filter_list);
++  error = tcf_block_get(&flow->block, &flow->filter_list, sch, extack);
+   if (error)
+     {
+       kfree(flow);
+Check duplication for 1 files

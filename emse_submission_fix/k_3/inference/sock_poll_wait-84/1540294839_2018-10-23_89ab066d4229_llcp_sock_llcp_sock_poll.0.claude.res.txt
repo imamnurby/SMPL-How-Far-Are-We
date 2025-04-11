@@ -1,0 +1,47 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+@@
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock, wait)
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_llcp_sock_llcp_sock_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(file, sock, wait)
+                               -(-file-, -wait-)
+               with binding: [rule starting on line 1.wait --> wait;
+                             rule starting on line 1.file --> file]
+     binding out = []
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_llcp_sock_llcp_sock_poll.c.sanitized.c
++++ /tmp/cocci-output-31450-43ba28-1540294839_2018-10-23_89ab066d4229_llcp_sock_llcp_sock_poll.c.sanitized.c
+@@ -3,7 +3,7 @@ static __poll_t llcp_sock_poll(struct fi
+   struct sock *sk = sock->sk;
+   __poll_t mask = 0;
+   pr_debug("%p\n", sk);
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   if (sk->sk_state == LLCP_LISTEN)
+     return llcp_accept_poll(sk);
+   if (sk->sk_err || !skb_queue_empty(&sk->sk_error_queue))
+Check duplication for 1 files

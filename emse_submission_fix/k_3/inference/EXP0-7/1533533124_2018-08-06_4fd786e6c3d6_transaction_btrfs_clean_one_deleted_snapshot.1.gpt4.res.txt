@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier root;
+@@
+- root->objectid
++ root->root_key.objectid
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 23
+               with rule_elem: -root
+                                 >>> root->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root --> id root]
+     binding out = []
+     transform one node: 23
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
++++ /tmp/cocci-output-30445-b0df25-1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
+@@ -11,7 +11,7 @@ int btrfs_clean_one_deleted_snapshot(str
+   root = list_first_entry(&fs_info->dead_roots, struct btrfs_root, root_list);
+   list_del_init(&root->root_list);
+   spin_unlock(&fs_info->trans_lock);
+-  btrfs_debug(fs_info, "cleaner removing %llu", root->objectid);
++  btrfs_debug(fs_info, "cleaner removing %llu", root->root_key.objectid);
+   btrfs_kill_all_delayed_nodes(root);
+   if (btrfs_header_backref_rev(root->node) < BTRFS_MIXED_BACKREF_REV)
+     ret = btrfs_drop_snapshot(root, NULL, 0, 0);
+Check duplication for 1 files

@@ -1,0 +1,43 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type T1, T2;
+expression size_exp, placement_exp, align_exp, acc_size_exp;
+identifier bdev_id, bo_id, init_func;
+@@
+(
+T1 acc_size_exp;
+|
+)
+...
+  acc_size_exp =
+    ttm_bo_dma_acc_size(&bdev_id, size_exp, sizeof(*bo_id));
+...
+- init_func(&bdev_id, bo_id, size_exp, T2, placement_exp,
+-          align_exp >> PAGE_SHIFT, ..., NULL, acc_size_exp,
+-          ...);
++ init_func(&bdev_id, bo_id, size_exp, T2, placement_exp,
++          align_exp >> PAGE_SHIFT, ..., acc_size_exp,
++          ...);
+@@
+type T;
+identifier bdev_id, bo_id, align_exp, placement_exp, acc_size_exp;
+expression size_exp;
+@@
+... when != acc_size_exp =
+    ttm_bo_dma_acc_size(&bdev_id, size_exp, sizeof(*bo_id));
+if (
+    align_exp >> PAGE_SHIFT, ..., NULL, ...
+) {
+  T acc_size_exp;
+  acc_size_exp =
+    ttm_bo_dma_acc_size(&bdev_id, size_exp, sizeof(*bo_id));
+  ...
+}
+
+File "./ttm_bo_init-60/final_response_2.gpt4.cocci", line 18, column 36, charpos = 457
+  around = '...',
+  whole content = +          align_exp >> PAGE_SHIFT, ..., acc_size_exp,

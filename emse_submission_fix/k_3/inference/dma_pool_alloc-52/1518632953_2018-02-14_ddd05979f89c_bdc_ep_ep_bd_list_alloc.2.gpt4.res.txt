@@ -1,0 +1,33 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression alloc_function = dma_pool_alloc;
+identifier pool;
+expression flags;
+identifier dma_variable;
+identifier mem_variable;
+type data_type;
+@@
+- mem_variable = alloc_function(pool, flags, &dma_variable);
++ mem_variable = dma_pool_zalloc(pool, flags, &dma_variable);
+...
+- memset(mem_variable, 0, sizeof(data_type));
+
+HANDLING: ./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

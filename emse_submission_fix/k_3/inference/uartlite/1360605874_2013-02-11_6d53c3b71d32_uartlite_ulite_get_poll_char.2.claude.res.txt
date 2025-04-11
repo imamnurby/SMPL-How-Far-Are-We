@@ -1,0 +1,56 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression port;
+identifier reg;
+@@
+- ioread32be(port->membase + reg)
++ uart_in32(reg, port)
+
+HANDLING: ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_get_poll_char.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 6
+               with rule_elem: -ioread32be
+                                 >>> uart_in32(reg, port)
+                               -(-port-->-membase -+ -reg-)
+               with binding: [rule starting on line 1.reg --> id ULITE_STATUS;
+                             rule starting on line 1.port --> port]
+          transform state: 13
+               with rule_elem: -ioread32be
+                                 >>> uart_in32(reg, port)
+                               -(-port-->-membase -+ -reg-)
+               with binding: [rule starting on line 1.reg --> id ULITE_RX;
+                             rule starting on line 1.port --> port]
+     binding out = []
+     transform one node: 13
+     transform one node: 6
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_get_poll_char.c.sanitized.c
++++ /tmp/cocci-output-31590-8bf269-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_get_poll_char.c.sanitized.c
+@@ -1,6 +1,6 @@
+ static int ulite_get_poll_char(struct uart_port *port)
+ {
+-  if (!(ioread32be(port->membase + ULITE_STATUS) & ULITE_STATUS_RXVALID))
++  if (!(uart_in32(ULITE_STATUS, port) & ULITE_STATUS_RXVALID))
+     return NO_POLL_CHAR;
+-  return ioread32be(port->membase + ULITE_RX);
++  return uart_in32(ULITE_RX, port);
+ }
+\ No newline at end of file
+Check duplication for 1 files

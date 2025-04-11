@@ -1,0 +1,22 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier pool;
+identifier alloc_func = "dma_pool_zalloc";
+expression dest, args;
+type ttype;
+@@
+- dest = dma_pool_alloc(pool, args);
++ dest = alloc_func(pool, args);
+... when != dest == NULL
+    when any
+- memset(dest, 0, sizeof(ttype));
+
+meta: parse error: 
+  File "./dma_pool_alloc-52/final_response_1.gpt4.cocci", line 3, column 40, charpos = 60
+  around = '"',
+  whole content = identifier alloc_func = "dma_pool_zalloc";
+

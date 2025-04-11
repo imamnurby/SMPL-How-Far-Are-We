@@ -1,0 +1,66 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2, E3;
+expression ptr;
+expression size;
+@@
+-ptr = dma_pool_alloc(E1, E2, E3);
++ptr = dma_pool_zalloc(E1, E2, E3);
+...
+when != ptr = E1
+-memset(ptr, 0, size);
+
+HANDLING: ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_bsg_qla84xx_updatefw.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 70
+               with rule_elem: -ptr
+                                 >>> ptr = dma_pool_zalloc(E1, E2, E3);
+                                -= -dma_pool_alloc-(-E1-, -E2-, -E3-)-;
+               with binding: [rule starting on line 1.E3 --> &mn_dma;
+                             rule starting on line 1.E2 --> GFP_KERNEL;
+                             rule starting on line 1.E1 --> ha->s_dma_pool;
+                             rule starting on line 1.ptr --> mn]
+          transform state: 84
+               with rule_elem: -memset-(-ptr-, -0-, -size-)-;
+               with binding: [rule starting on line 1.ptr --> mn]
+     binding out = []
+     transform one node: 84
+     transform one node: 70
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_bsg_qla84xx_updatefw.c.sanitized.c
++++ /tmp/cocci-output-31075-fa3b6d-1518639038_2018-02-15_501017f6d4e1_qla_bsg_qla84xx_updatefw.c.sanitized.c
+@@ -46,7 +46,7 @@ static int qla84xx_updatefw(struct bsg_j
+       goto done_unmap_sg;
+     }
+   sg_copy_to_buffer(bsg_job->request_payload.sg_list, bsg_job->request_payload.sg_cnt, fw_buf, data_len);
+-  mn = dma_pool_alloc(ha->s_dma_pool, GFP_KERNEL, &mn_dma);
++  mn = dma_pool_zalloc(ha->s_dma_pool, GFP_KERNEL, &mn_dma);
+   if (!mn)
+     {
+       ql_log(ql_log_warn, vha, 0x7036, "DMA alloc failed for fw buffer.\n");
+@@ -55,7 +55,6 @@ static int qla84xx_updatefw(struct bsg_j
+     }
+   flag = bsg_request->rqst_data.h_vendor.vendor_cmd[1];
+   fw_ver = le32_to_cpu(*((uint32_t *)((uint32_t *)fw_buf + 2)));
+-  memset(mn, 0, sizeof(struct access_chip_84xx));
+   mn->entry_type = VERIFY_CHIP_IOCB_TYPE;
+   mn->entry_count = 1;
+   options = VCO_FORCE_UPDATE | VCO_END_OF_DATA;
+Check duplication for 1 files

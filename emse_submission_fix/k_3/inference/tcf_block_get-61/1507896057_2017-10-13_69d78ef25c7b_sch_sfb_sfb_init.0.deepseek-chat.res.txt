@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression block, filter_list, sch, extack;
+@@
+- tcf_block_get(&block, &filter_list)
++ tcf_block_get(&block, &filter_list, sch)
+|
+- tcf_block_get(&block, &filter_list, sch)
++ tcf_block_get(&block, &filter_list, sch, extack)
+
+minus: parse error: 
+  File "./tcf_block_get-61/final_response_0.deepseek-chat.cocci", line 6, column 0, charpos = 131
+  around = '|',
+  whole content = |
+

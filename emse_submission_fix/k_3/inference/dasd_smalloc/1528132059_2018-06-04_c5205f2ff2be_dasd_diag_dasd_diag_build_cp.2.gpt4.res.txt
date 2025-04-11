@@ -1,0 +1,29 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type T;
+identifier func, magic, length, data_size, device;
+identifier blk_mq_rq_to_pdu, req;
+@@
+T func(..., struct request *req, ...) {
+  ...
+-  dasd_smalloc_request(magic, length, data_size, device)
++  dasd_smalloc_request(magic, length, data_size, device, blk_mq_rq_to_pdu(req))
+  ...
+}
+@@
+type T;
+identifier func, magic, length, data_size, device;
+@@
+T func(..., ...) {
+  ...
+-  dasd_smalloc_request(magic, length, data_size, device)
++  dasd_smalloc_request(magic, length, data_size, device, NULL)
+  ...
+}
+
+warning: rule starting on line 1: metavariable blk_mq_rq_to_pdu not used in the - or context code
+error: rule starting on line 1: blk_mq_rq_to_pdu appears only in + code

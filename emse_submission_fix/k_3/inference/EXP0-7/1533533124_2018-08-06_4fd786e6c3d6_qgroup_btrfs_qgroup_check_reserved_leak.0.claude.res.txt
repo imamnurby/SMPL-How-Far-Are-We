@@ -1,0 +1,65 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ expression E; @@
+- E->objectid
++ E->root_key.objectid
+@@ expression E; @@
+- E.objectid
++ E.root_key.objectid
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_check_reserved_leak.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 28
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> BTRFS_I(inode)->root]
+     binding out = []
+     transform one node: 28
+-----------------------------------------------------------------------
+rule starting on line 4 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 4 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 28
+               with rule_elem: -E
+                                 >>> E.root_key.objectid
+                               -.-objectid
+               with binding: [rule starting on line 4.E --> BTRFS_I(inode)->root->root_key]
+     binding out = []
+     transform one node: 28
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_check_reserved_leak.c.sanitized.c
++++ /tmp/cocci-output-31001-736dfa-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_check_reserved_leak.c.sanitized.c
+@@ -14,7 +14,10 @@ void btrfs_qgroup_check_reserved_leak(st
+         {
+           btrfs_warn(BTRFS_I(inode)->root->fs_info, "leaking qgroup reserved space, ino: %lu, start: %llu, end: %llu", inode->i_ino, unode->val, unode->aux);
+         }
+-      btrfs_qgroup_free_refroot(BTRFS_I(inode)->root->fs_info, BTRFS_I(inode)->root->objectid, changeset.bytes_changed, BTRFS_QGROUP_RSV_DATA);
++      btrfs_qgroup_free_refroot(BTRFS_I(inode)->root->fs_info,
++                                BTRFS_I(inode)->root->root_key.root_key.objectid,
++                                changeset.bytes_changed,
++                                BTRFS_QGROUP_RSV_DATA);
+     }
+   extent_changeset_release(&changeset);
+ }
+\ No newline at end of file
+Check duplication for 1 files

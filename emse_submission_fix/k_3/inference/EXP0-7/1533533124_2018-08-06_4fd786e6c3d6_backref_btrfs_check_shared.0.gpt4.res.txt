@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+struct field root_key_field;
+identifier root_field;
+@@
+- root->root_field
++ root->root_key.root_field
+
+warning: line 5: should root be a metavariable?
+warning: rule starting on line 1: metavariable root_key_field not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 6
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id fs_info]
+          transform state: 14
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id objectid]
+     binding out = []
+     transform one node: 14
+     transform one node: 6
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
++++ /tmp/cocci-output-30358-a2a56b-1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c
+@@ -1,6 +1,6 @@
+ int btrfs_check_shared(struct btrfs_root *root, u64 inum, u64 bytenr)
+ {
+-  struct btrfs_fs_info *fs_info = root->fs_info;
++  struct btrfs_fs_info *fs_info = root->root_key.fs_info;
+   struct btrfs_trans_handle *trans;
+   struct ulist *tmp = NULL;
+   struct ulist *roots = NULL;
+@@ -9,7 +9,7 @@ int btrfs_check_shared(struct btrfs_root
+   struct seq_list elem = SEQ_LIST_INIT(elem);
+   int ret = 0;
+   struct share_check shared = {
+-      .root_objectid = root->objectid,
++      .root_objectid = root->root_key.objectid,
+       .inum = inum,
+       .share_count = 0,
+   };
+Check duplication for 1 files

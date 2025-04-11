@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, gfp, ptr;
+expression var;
+expression size;
+@@
+- var = dma_pool_alloc(pool, gfp, ptr);
++ var = dma_pool_zalloc(pool, gfp, ptr);
+  ...
+  if (var == NULL) {
+    ...
+  }
+  ...
+- memset(var, 0, size);
+@@
+expression pool, gfp, ptr;
+expression var;
+expression size;
+@@
+- var = dma_pool_alloc(pool, gfp, ptr);
++ var = dma_pool_zalloc(pool, gfp, ptr);
+  ...
+  if (!var) {
+    ...
+  }
+  ...
+- memset(var, 0, size);
+@@
+expression pool, gfp, ptr;
+expression var, member;
+expression size;
+@@
+- var->member = dma_pool_alloc(pool, gfp, ptr);
++ var->member = dma_pool_zalloc(pool, gfp, ptr);
+  ...
+  if (!var->member) {
+    ...
+  }
+  ...
+- memset(var->member, 0, size);
+
+minus: parse error: 
+  File "./dma_pool_alloc-52/final_response_2.claude.cocci", line 32, column 7, charpos = 506
+  around = 'member',
+  whole content = - var->member = dma_pool_alloc(pool, gfp, ptr);
+

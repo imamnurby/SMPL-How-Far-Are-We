@@ -1,0 +1,29 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+struct field root_key_field;
+identifier root_field;
+@@
+- root->root_field
++ root->root_key.root_field
+
+warning: line 5: should root be a metavariable?
+warning: rule starting on line 1: metavariable root_key_field not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

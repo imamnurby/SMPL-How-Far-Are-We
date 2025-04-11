@@ -1,0 +1,24 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier poll_fn;
+struct file *file;
+struct socket *sock;
+poll_table *wait;
+@@
+// Find functions matching the poll function signature
+function poll_fn(...) {
+  ...
+- sock_poll_wait(file, wait);
++ sock_poll_wait(file, sock, wait);
+  ...
+}
+
+minus: parse error: 
+  File "./sock_poll_wait-84/final_response_2.claude.cocci", line 8, column 9, charpos = 148
+  around = 'poll_fn',
+  whole content = function poll_fn(...) {
+

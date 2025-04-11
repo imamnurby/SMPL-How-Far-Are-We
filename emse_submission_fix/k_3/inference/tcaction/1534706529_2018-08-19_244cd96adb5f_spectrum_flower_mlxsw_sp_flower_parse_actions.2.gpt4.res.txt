@@ -1,0 +1,28 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type list_type;
+identifier list_name;
+iterator old_iter_macro;
+expression exts;
+identifier action_var, func_param;
+@@
+- list_type list_name;
++ int func_param;
+  
+<... when != list_name>
+- tcf_exts_to_list(exts, &list_name);
+- old_iter_macro(action_var, &list_name, list)
++ tcf_exts_for_each_action(func_param, action_var, exts)
+  {
+  ...
+  }
+
+minus: parse error: 
+  File "./tcaction/final_response_2.gpt4.cocci", line 11, column 5, charpos = 170
+  around = 'when',
+  whole content = <... when != list_name>
+

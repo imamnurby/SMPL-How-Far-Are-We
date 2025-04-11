@@ -1,0 +1,82 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+struct field root_key_field;
+identifier root_field;
+@@
+- root->root_field
++ root->root_key.root_field
+
+warning: line 5: should root be a metavariable?
+warning: rule starting on line 1: metavariable root_key_field not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 7
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id fs_info]
+          transform state: 21
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id root_list]
+          transform state: 23
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id objectid]
+          transform state: 25
+               with rule_elem: -root
+                                 >>> root->root_key.root_field
+                               -->-root_field
+               with binding: [rule starting on line 1.root_field --> id node]
+     binding out = []
+     transform one node: 25
+     transform one node: 23
+     transform one node: 21
+     transform one node: 7
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
++++ /tmp/cocci-output-30435-f93c48-1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.c.sanitized.c
+@@ -1,7 +1,7 @@
+ int btrfs_clean_one_deleted_snapshot(struct btrfs_root *root)
+ {
+   int ret;
+-  struct btrfs_fs_info *fs_info = root->fs_info;
++  struct btrfs_fs_info *fs_info = root->root_key.fs_info;
+   spin_lock(&fs_info->trans_lock);
+   if (list_empty(&fs_info->dead_roots))
+     {
+@@ -9,11 +9,11 @@ int btrfs_clean_one_deleted_snapshot(str
+       return 0;
+     }
+   root = list_first_entry(&fs_info->dead_roots, struct btrfs_root, root_list);
+-  list_del_init(&root->root_list);
++  list_del_init(&root->root_key.root_list);
+   spin_unlock(&fs_info->trans_lock);
+-  btrfs_debug(fs_info, "cleaner removing %llu", root->objectid);
++  btrfs_debug(fs_info, "cleaner removing %llu", root->root_key.objectid);
+   btrfs_kill_all_delayed_nodes(root);
+-  if (btrfs_header_backref_rev(root->node) < BTRFS_MIXED_BACKREF_REV)
++  if (btrfs_header_backref_rev(root->root_key.node) < BTRFS_MIXED_BACKREF_REV)
+     ret = btrfs_drop_snapshot(root, NULL, 0, 0);
+   else
+     ret = btrfs_drop_snapshot(root, NULL, 1, 0);
+Check duplication for 1 files

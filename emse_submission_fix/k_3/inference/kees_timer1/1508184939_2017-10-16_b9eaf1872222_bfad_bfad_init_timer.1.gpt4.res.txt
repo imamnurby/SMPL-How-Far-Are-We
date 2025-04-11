@@ -1,0 +1,62 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer_obj, handler_func, timer_data;
+@@
+- init_timer(&timer_obj);
+- timer_obj.function = handler_func;
+- timer_obj.data = timer_data;
++ setup_timer(&timer_obj, handler_func, timer_data);
+
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_bfad_bfad_init_timer.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 6
+               with rule_elem: -init_timer-(-&-timer_obj-)-;
+               with binding: [rule starting on line 1.timer_obj --> bfad->hal_tmo]
+          transform state: 7
+               with rule_elem: -timer_obj-.-function -= -handler_func-;
+               with binding: [rule starting on line 1.handler_func --> bfad_bfa_tmo;
+                             rule starting on line 1.timer_obj --> bfad->hal_tmo]
+          transform state: 8
+               with rule_elem: -timer_obj
+                                 >>> setup_timer(&timer_obj, handler_func,
+                                                 timer_data);
+                               -.-data -= -timer_data-;
+               with binding: [rule starting on line 1.timer_data --> (unsigned
+                             long)bfad;
+                             rule starting on line 1.handler_func --> bfad_bfa_tmo;
+                             rule starting on line 1.timer_obj --> bfad->hal_tmo]
+     binding out = []
+     transform one node: 8
+     transform one node: 7
+     transform one node: 6
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_bfad_bfad_init_timer.c.sanitized.c
++++ /tmp/cocci-output-30637-5074a3-1508184939_2017-10-16_b9eaf1872222_bfad_bfad_init_timer.c.sanitized.c
+@@ -1,7 +1,5 @@
+ void bfad_init_timer(struct bfad_s *bfad)
+ {
+-  init_timer(&bfad->hal_tmo);
+-  bfad->hal_tmo.function = bfad_bfa_tmo;
+-  bfad->hal_tmo.data = (unsigned long)bfad;
++  setup_timer(&bfad->hal_tmo, bfad_bfa_tmo, (unsigned long)bfad);
+   mod_timer(&bfad->hal_tmo, jiffies + msecs_to_jiffies(BFA_TIMER_FREQ));
+ }
+\ No newline at end of file
+Check duplication for 1 files

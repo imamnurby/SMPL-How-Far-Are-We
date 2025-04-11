@@ -1,0 +1,15 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_0.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier dev, bo;
+expression size, type, placement, align, replacement;
+@@
+- ttm_bo_init(dev, bo, size, type, placement, align, false, NULL, ...)
++ ttm_bo_init(dev, bo, size, type, placement, align, false, replacement, ...)
+
+File "./ttm_bo_init-60/final_response_0.gpt4.cocci", line 6, column 73, charpos = 224
+  around = '...',
+  whole content = + ttm_bo_init(dev, bo, size, type, placement, align, false, replacement, ...)

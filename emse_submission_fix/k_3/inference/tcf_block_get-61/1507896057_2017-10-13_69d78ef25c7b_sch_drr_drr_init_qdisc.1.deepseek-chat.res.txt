@@ -1,0 +1,22 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier x;
+expression sch, extack;
+@@
+- tcf_block_get(&x->block, &x->filter_list)
++ tcf_block_get(&x->block, &x->filter_list, sch)
+@@
+identifier x;
+expression sch;
+struct netlink_ext_ack *extack;
+@@
+- tcf_block_get(&x->block, &x->filter_list, sch)
++ tcf_block_get(&x->block, &x->filter_list, sch, extack)
+
+warning: rule starting on line 1: metavariable sch not used in the - or context code
+warning: rule starting on line 1: metavariable extack not used in the - or context code
+error: rule starting on line 1: sch appears only in + code
