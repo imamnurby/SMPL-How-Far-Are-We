@@ -1,0 +1,4 @@
+static void ulite_start_tx(struct uart_port *port)
+{
+	ulite_transmit(port, ioread32be(port->membase + ULITE_STATUS));
+}

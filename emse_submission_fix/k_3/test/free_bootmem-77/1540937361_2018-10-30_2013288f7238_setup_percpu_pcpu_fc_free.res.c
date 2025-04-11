@@ -1,0 +1,1 @@
+static void __init pcpu_fc_free(void *ptr, size_t size) { memblock_free(__pa(ptr), size); }
