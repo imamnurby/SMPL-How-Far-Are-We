@@ -1,7 +1,8 @@
 @@
-identifier root;
+type btrfs_root_type;
+expression root_var;
 @@
-- root->objectid
-+ root->root_key.objectid
+- root_var->objectid
++ root_var->root_key.objectid
 
 
