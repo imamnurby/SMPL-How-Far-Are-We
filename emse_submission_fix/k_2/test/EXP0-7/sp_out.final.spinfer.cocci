@@ -1,0 +1,46 @@
+@@
+expression E0, E1;
+@@
+- E0->objectid = E1; 
++ E0->root_key.objectid = E1; 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.{c.sanitized.c,res.c.sanitized.res.c}: __setup_root)
+// False positives: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.res.c.sanitized.res.c: btrfs_encode_fh)
+// Recall: 0.20, Precision: 0.50, Matching recall: 0.33
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- E0 = BTRFS_I(E1)->root->objectid; 
++ E0 = BTRFS_I(E1)->root->root_key.objectid; 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_encode_fh), (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_encode_fh)
+// Recall: 0.40, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->objectid, E1.bytes_changed,                           BTRFS_QGROUP_RSV_DATA); 
++ btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->root_key.objectid,                           E1.bytes_changed, BTRFS_QGROUP_RSV_DATA); 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.{c.sanitized.c,res.c.sanitized.res.c}: __btrfs_qgroup_release_data)
+// Recall: 0.20, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 3 rules):
+// -- Edit Location --
+// Recall: 0.75, Precision: 1.00
+// -- Node Change --
+// Recall: 0.80, Precision: 0.80
+// -- General --
+// Functions fully changed: 2/4(50%)
+
+/*
+Functions where the patch did not apply:
+ - ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c: btrfs_check_shared
+*/
+/*
+Functions where the patch produced incorrect changes:
+ - ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c: btrfs_encode_fh
+*/
+
+// ---------------------------------------------
