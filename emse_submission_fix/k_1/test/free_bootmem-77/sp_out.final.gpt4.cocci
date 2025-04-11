@@ -1,7 +1,7 @@
 @@
-expression pg, pgend;
+expression x, y;
 @@
-- if (pg < pgend) free_bootmem(pg, pgend - pg);
-+ if (pg < pgend) memblock_free(pg, pgend - pg);
+- free_bootmem(x, y)
++ memblock_free(x, y)
 
 

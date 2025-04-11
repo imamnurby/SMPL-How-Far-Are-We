@@ -1,8 +1,12 @@
 @@
-identifier f;
-expression sock, wait;
+identifier f, sock_fn;
+expression file, wait;
 @@
-- sock_poll_wait(f, wait)
-+ sock_poll_wait(f, sock, wait)
+f(...) {
+  <...
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock_fn, wait)
+  ...>
+}
 
 
