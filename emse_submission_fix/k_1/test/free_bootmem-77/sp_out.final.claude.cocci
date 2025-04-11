@@ -1,7 +1,7 @@
 @@
-expression addr, size;
+expression E1, E2;
 @@
-- free_bootmem(addr, size)
-+ memblock_free(addr, size)
+- free_bootmem(E1, E2)
++ memblock_free(E1, E2)
 
 
