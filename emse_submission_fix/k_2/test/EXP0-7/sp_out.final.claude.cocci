@@ -1,13 +1,12 @@
 @@
-expression root;
+expression E;
 @@
-(
-- root->objectid
-+ root->root_key.objectid
-|
-// The initialization in the __setup_root function is a special case
-- root->objectid = objectid;
-+ root->root_key.objectid = objectid;
-)
+- E->objectid
++ E->root_key.objectid
+@@
+expression E;
+@@
+- BTRFS_I(E)->root->objectid
++ BTRFS_I(E)->root->root_key.objectid
 
 

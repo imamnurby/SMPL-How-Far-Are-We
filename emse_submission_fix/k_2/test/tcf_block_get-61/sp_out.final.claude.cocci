@@ -1,14 +1,22 @@
+@add_sch@
+expression block, filter_list;
+identifier fn;
 @@
-expression q_block, q_filter_list;
-identifier sch;
+fn(...) {
+<...
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+...>
+}
+@add_extack depends on add_sch@
+expression block, filter_list;
+identifier fn;
 @@
--tcf_block_get(q_block, q_filter_list)
-+tcf_block_get(q_block, q_filter_list, sch)
-@@
-expression q_block, q_filter_list;
-identifier sch, extack;
-@@
--tcf_block_get(q_block, q_filter_list, sch)
-+tcf_block_get(q_block, q_filter_list, sch, extack)
+fn(..., struct netlink_ext_ack *extack, ...) {
+<...
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+...>
+}
 
 

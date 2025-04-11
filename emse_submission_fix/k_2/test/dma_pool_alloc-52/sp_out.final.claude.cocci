@@ -1,30 +1,17 @@
 @@
-expression pool, flags;
-expression E1, E2;
+expression E1, E2, E3;
 expression ptr;
-type T;
+expression size;
 @@
+- ptr = dma_pool_alloc(E1, E2, E3);
++ ptr = dma_pool_zalloc(E1, E2, E3);
+  ... when != ptr = E1
 (
--ptr = dma_pool_alloc(pool, flags, E1);
-+ptr = dma_pool_zalloc(pool, flags, E1);
- ...
--memset(ptr, 0, sizeof(T));
-)
+- memset(ptr, 0, size);
 |
-(
--ptr = dma_pool_alloc(pool, flags, E1);
-+ptr = dma_pool_zalloc(pool, flags, E1);
- ...
- if (!ptr)
- ...
--memset(ptr, 0, E2);
-)
+- memset((void *)ptr, 0, size);
 |
-(
--ptr = dma_pool_alloc(pool, flags, E1);
-+ptr = dma_pool_zalloc(pool, flags, E1);
- ...
--memset(ptr, 0, E2);
+- memset((void *) ptr, 0, size);
 )
 
 

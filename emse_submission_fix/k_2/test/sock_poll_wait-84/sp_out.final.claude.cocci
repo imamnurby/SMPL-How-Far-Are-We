@@ -1,8 +1,16 @@
 @@
 expression file, wait;
-struct socket *sock;
+identifier sock;
 @@
-- sock_poll_wait(file, wait)
-+ sock_poll_wait(file, sock, wait)
+(
+struct socket *sock;
+|
+struct socket *sock = ...;
+|
+sock = ...;
+)
+...
+- sock_poll_wait(file, wait);
++ sock_poll_wait(file, sock, wait);
 
 
