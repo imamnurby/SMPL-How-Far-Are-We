@@ -1,0 +1,37 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I0, I1, I2;
+expression E3, E4;
+typedef __poll_t;
+typedef poll_table;
+@@
+  __poll_t tcp_poll(struct file *I0, struct socket *I1, poll_table *I2)  
+  {
+  ...
+- sock_poll_wait(E3, E4); 
++ sock_poll_wait(E3, I1, E4); 
+  ...
+  }
+// Infered from: (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 1/1(100%)
+
+
+// ---------------------------------------------
+
+(ONCE) Expected tokens tcp_poll socket sock_poll_wait poll_table file __poll_t
+Skipping: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
+Check duplication for 0 files
+-o can not be applied because there are no modified files

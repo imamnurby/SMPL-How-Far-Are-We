@@ -1,0 +1,76 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I1;
+expression E0, E2, E3, E4;
+@@
+- E0 = dasd_smalloc_request(I1, E2, E3, E4); 
++ E0 = dasd_smalloc_request(DASD_ECKD_MAGIC, E2, E3, E4, NULL); 
+// Infered from: (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.{c.sanitized.c,res.c.sanitized.res.c}: dasd_eckd_analysis_ccw)
+// False positives: (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_diag_dasd_diag_build_cp.res.c.sanitized.res.c: dasd_diag_build_cp)
+// Recall: 0.75, Precision: 0.75, Matching recall: 0.75
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 0.75, Precision: 0.75
+// -- General --
+// Functions fully changed: 1/2(50%)
+
+/*
+Functions where the patch produced incorrect changes:
+ - ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_diag_dasd_diag_build_cp.c.sanitized.c: dasd_diag_build_cp
+*/
+
+// ---------------------------------------------
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 12
+               with rule_elem: -E0
+                                 >>> E0 = dasd_smalloc_request(DASD_ECKD_MAGIC,
+                                                               E2, E3, E4,
+                                                               NULL);
+                                -= -dasd_smalloc_request-(-I1-, -E2-, -E3-,
+                                                          -E4-)-;
+               with binding: [rule starting on line 1.E4 --> device;
+                             rule starting on line 1.E3 --> (sizeof(struct
+                             dasd_psf_prssd_data) + sizeof(struct
+                             dasd_rssd_messages));
+                             rule starting on line 1.E2 --> 1 + 1;
+                             rule starting on line 1.E0 --> cqr]
+     binding out = []
+     transform one node: 12
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
++++ /tmp/cocci-output-4101432-819fdf-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
+@@ -5,7 +5,9 @@ static int dasd_eckd_read_message_buffer
+   struct dasd_ccw_req *cqr;
+   struct ccw1 *ccw;
+   int rc;
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1 + 1, (sizeof(struct dasd_psf_prssd_data) + sizeof(struct dasd_rssd_messages)), device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1 + 1,
++                             (sizeof(struct dasd_psf_prssd_data) + sizeof(struct dasd_rssd_messages)),
++                             device, NULL);
+   if (IS_ERR(cqr))
+     {
+       DBF_EVENT_DEVID(DBF_WARNING, device->cdev, "%s", "Could not allocate read message buffer request");
+Check duplication for 1 files

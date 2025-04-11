@@ -1,0 +1,40 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./random_ether_addr-84/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E0;
+@@
+- random_ether_addr(E0->dev_addr); 
++ eth_random_addr(E0->dev_addr); 
+// Infered from: (./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.{c.sanitized.c,res.c.sanitized.res.c}: gemini_ethernet_port_probe)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 1/1(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_cpsw_cpsw_probe_dual_emac.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

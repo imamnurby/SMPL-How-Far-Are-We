@@ -1,0 +1,55 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E0, E1;
+@@
+- E0->objectid = E1; 
++ E0->root_key.objectid = E1; 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.{c.sanitized.c,res.c.sanitized.res.c}: __setup_root)
+// Recall: 0.50, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->objectid, E1.bytes_changed,                           BTRFS_QGROUP_RSV_DATA); 
++ btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->root_key.objectid,                           E1.bytes_changed, BTRFS_QGROUP_RSV_DATA); 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.{c.sanitized.c,res.c.sanitized.res.c}: __btrfs_qgroup_release_data)
+// Recall: 0.50, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 2 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 2/2(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule starting on line 10 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 10 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

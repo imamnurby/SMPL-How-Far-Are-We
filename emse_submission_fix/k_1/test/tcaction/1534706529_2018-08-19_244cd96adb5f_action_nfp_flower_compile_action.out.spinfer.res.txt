@@ -1,0 +1,95 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E0, E1;
+iterator name list_for_each_entry;
+iterator name tcf_exts_for_each_action;
+@@
+- LIST_HEAD(actions); 
++ int i; 
+  ...
+- tcf_exts_to_list(E0, &actions); 
+- list_for_each_entry (E1, &actions, list)  
++ tcf_exts_for_each_action (i, E1, E0)  
+  {
+  ...
+  }
+// Infered from: (./tcaction/1534706529_2018-08-19_244cd96adb5f_en_tc_parse_tc_fdb_actions.{c.sanitized.c,res.c.sanitized.res.c}: parse_tc_fdb_actions)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 1/1(100%)
+
+
+// ---------------------------------------------
+
+warning: line 6: should actions be a metavariable?
+warning: line 9: should actions be a metavariable?
+warning: line 10: should actions be a metavariable?
+warning: line 10: should list be a metavariable?
+HANDLING: ./tcaction/1534706529_2018-08-19_244cd96adb5f_action_nfp_flower_compile_action.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 10
+               with rule_elem: -LIST_HEAD
+                                 >>> int i;
+                               -(-actions-)-;
+               with binding: []
+          transform state: 18
+               with rule_elem: -tcf_exts_to_list-(-E0-, -&-actions-)-;
+               with binding: [rule starting on line 1.E0 --> flow->exts]
+          transform state: 19
+               with rule_elem: -list_for_each_entry -(-E1-, -&-actions-,
+                                                      -list-)
+                                 >>> tcf_exts_for_each_action(i, E1, E0)
+                                
+               with binding: [rule starting on line 1.E1 --> a;
+                             rule starting on line 1.E0 --> flow->exts]
+     binding out = []
+     transform one node: 19
+     transform one node: 18
+     transform one node: 10
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcaction/1534706529_2018-08-19_244cd96adb5f_action_nfp_flower_compile_action.c.sanitized.c
++++ /tmp/cocci-output-4101702-1073cd-1534706529_2018-08-19_244cd96adb5f_action_nfp_flower_compile_action.c.sanitized.c
+@@ -4,7 +4,7 @@ int nfp_flower_compile_action(struct nfp
+   enum nfp_flower_tun_type tun_type;
+   const struct tc_action *a;
+   u32 csum_updated = 0;
+-  LIST_HEAD(actions);
++  int i;
+   memset(nfp_flow->action_data, 0, NFP_FL_MAX_A_SIZ);
+   nfp_flow->meta.act_len = 0;
+   tun_type = NFP_FL_TUNNEL_NONE;
+@@ -12,8 +12,7 @@ int nfp_flower_compile_action(struct nfp
+   act_cnt = 0;
+   tun_out_cnt = 0;
+   out_cnt = 0;
+-  tcf_exts_to_list(flow->exts, &actions);
+-  list_for_each_entry(a, &actions, list)
++  tcf_exts_for_each_action(i, a, flow->exts)
+   {
+     err = nfp_flower_loop_action(app, a, flow, nfp_flow, &act_len, netdev, &tun_type, &tun_out_cnt, &out_cnt, &csum_updated);
+     if (err)
+Check duplication for 1 files
