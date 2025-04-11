@@ -4,23 +4,6 @@ import pdb
 import re
 import subprocess
 
-
-# Initialize Logging
-os.makedirs("logs", exist_ok=True)
-log_output_filepath = os.path.join("logs", "sanitize_data.log")
-if os.path.exists(log_output_filepath):
-    os.remove(log_output_filepath)
-for handler in logging.root.handlers[:]:
-    logging.root.removeHandler(handler)
-logging.basicConfig(
-    level=logging.DEBUG,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler(log_output_filepath),
-        logging.StreamHandler()
-    ]
-) 
-
 def remove_comments(c_code):
     # Regular expression to match both single-line and multi-line comments
     pattern = r"//.*?$|/\*.*?\*/"
@@ -54,9 +37,9 @@ def sanitize_files(path: str):
 if __name__ == "__main__":
     try:
         PATH = (
-            # "/media/hdd2/yusuf/smpl/emse_submission/experiment0_1_example/test",
-            "/media/hdd2/yusuf/smpl/emse_submission/fix_bug",
-            # "/media/hdd2/yusuf/smpl/emse_submission/experiment0_2_examples/test",
+            "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_1/inference",
+            "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_2/inference",
+            "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_3/inference",
         )
         for path in PATH:
             sanitize_files(path)
