@@ -1,0 +1,4 @@
+init_defs_builtins : / usr / bin /../ lib / coccinelle / standard.h-- ---------------------------------------------------------------------processing semantic patch file :./ snd_soc / final_response_0.spinfer.cocci with isos from : / usr / bin /../ lib / coccinelle /
+                                                                                                                                                                                                                                        standard.iso-- ---------------------------------------------------------------------
+
+                                                                                                                                                                                                                                        unexpected code before the first rule : [0; (69, ("", [15], (544, 544)))]
