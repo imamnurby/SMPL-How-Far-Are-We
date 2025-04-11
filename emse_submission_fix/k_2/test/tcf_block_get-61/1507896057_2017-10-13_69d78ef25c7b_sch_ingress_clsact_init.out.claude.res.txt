@@ -1,0 +1,85 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(...) {
+<...
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+...>
+}
+@add_extack depends on add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(..., struct netlink_ext_ack *extack, ...) {
+<...
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+...>
+}
+
+
+
+warning: line 15: should extack be a metavariable?
+warning: line 17: should sch be a metavariable?
+HANDLING: ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+add_sch = 
+-----------------------------------------------------------------------
+dependencies for rule add_sch satisfied:
+binding in = []
+binding relevant in = []
+     (ONCE) USING optional_storage builtin isomorphism
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [add_sch.filter_list --> &dev->ingress_cl_list;
+                             add_sch.block --> &q->ingress_block]
+          transform state: 17
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [add_sch.filter_list --> &dev->egress_cl_list;
+                             add_sch.block --> &q->egress_block]
+     binding out = []
+     transform one node: 17
+     transform one node: 9
+-----------------------------------------------------------------------
+add_extack = 
+-----------------------------------------------------------------------
+dependencies for rule add_extack satisfied:
+add_sch satisfied
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
++++ /tmp/cocci-output-18988-6f2f16-1507896057_2017-10-13_69d78ef25c7b_sch_ingress_clsact_init.c.sanitized.c
+@@ -3,10 +3,10 @@ static int clsact_init(struct Qdisc *sch
+   struct clsact_sched_data *q = qdisc_priv(sch);
+   struct net_device *dev = qdisc_dev(sch);
+   int err;
+-  err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list);
++  err = tcf_block_get(&q->ingress_block, &dev->ingress_cl_list, sch);
+   if (err)
+     return err;
+-  err = tcf_block_get(&q->egress_block, &dev->egress_cl_list);
++  err = tcf_block_get(&q->egress_block, &dev->egress_cl_list, sch);
+   if (err)
+     return err;
+   net_inc_ingress_queue();
+Check duplication for 1 files

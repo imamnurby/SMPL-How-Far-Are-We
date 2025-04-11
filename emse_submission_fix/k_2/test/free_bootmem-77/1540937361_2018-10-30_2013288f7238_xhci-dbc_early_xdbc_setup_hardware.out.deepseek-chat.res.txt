@@ -1,0 +1,59 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, size;
+@@
+- free_bootmem(addr, size)
++ memblock_free(addr, size)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 32
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> xdbc.table_dma]
+          transform state: 38
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> xdbc.out_dma]
+     binding out = []
+     transform one node: 38
+     transform one node: 32
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
++++ /tmp/cocci-output-19458-23012d-1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
+@@ -13,9 +13,9 @@ int __init early_xdbc_setup_hardware(voi
+       xdbc_free_ring(&xdbc.out_ring);
+       xdbc_free_ring(&xdbc.in_ring);
+       if (xdbc.table_dma)
+-        free_bootmem(xdbc.table_dma, PAGE_SIZE);
++        memblock_free(xdbc.table_dma, PAGE_SIZE);
+       if (xdbc.out_dma)
+-        free_bootmem(xdbc.out_dma, PAGE_SIZE);
++        memblock_free(xdbc.out_dma, PAGE_SIZE);
+       xdbc.table_base = NULL;
+       xdbc.out_buf = NULL;
+     }
+Check duplication for 1 files

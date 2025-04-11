@@ -1,0 +1,64 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression e1, e2, e3;
+identifier x;
+@@
+- x = dma_pool_alloc(e1, e2, e3);
++ x = dma_pool_zalloc(e1, e2, e3);
+  ...
+- memset(x, 0, ...);
+
+
+
+HANDLING: ./dma_pool_alloc-52/1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 89
+               with rule_elem: -x
+                                 >>> x = dma_pool_zalloc(e1, e2, e3);
+                                -= -dma_pool_alloc-(-e1-, -e2-, -e3-)-;
+               with binding: [rule starting on line 1.e3 --> &dma_addr;
+                             rule starting on line 1.e2 --> GFP_KERNEL;
+                             rule starting on line 1.e1 --> ioa_cfg->ipr_cmd_pool;
+                             rule starting on line 1.x --> id ipr_cmd]
+          transform state: 103
+               with rule_elem: -memset-(-x-, -0-, -...-)-;
+               with binding: [rule starting on line 1.x --> id ipr_cmd]
+     binding out = []
+     transform one node: 103
+     transform one node: 89
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dma_pool_alloc-52/1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
++++ /tmp/cocci-output-19336-f7288c-1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
+@@ -48,13 +48,12 @@ static int ipr_alloc_cmd_blks(struct ipr
+     }
+   for (i = 0; i < IPR_NUM_CMD_BLKS; i++)
+     {
+-      ipr_cmd = dma_pool_alloc(ioa_cfg->ipr_cmd_pool, GFP_KERNEL, &dma_addr);
++      ipr_cmd = dma_pool_zalloc(ioa_cfg->ipr_cmd_pool, GFP_KERNEL, &dma_addr);
+       if (!ipr_cmd)
+         {
+           ipr_free_cmd_blks(ioa_cfg);
+           return -ENOMEM;
+         }
+-      memset(ipr_cmd, 0, sizeof(*ipr_cmd));
+       ioa_cfg->ipr_cmnd_list[i] = ipr_cmd;
+       ioa_cfg->ipr_cmnd_list_dma[i] = dma_addr;
+       ioarcb = &ipr_cmd->ioarcb;
+Check duplication for 1 files

@@ -1,0 +1,29 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression dev, bo, size, type, placement, align, acc_size, sg, robj, destroy;
+@@
+- ttm_bo_init(dev, bo, size, type, placement, align, false, NULL, acc_size, sg, robj, destroy)
++ ttm_bo_init(dev, bo, size, type, placement, align, false, acc_size, sg, robj, destroy)
+
+
+
+warning: line 4: should false be a metavariable?
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

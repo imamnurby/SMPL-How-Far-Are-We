@@ -1,0 +1,37 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier func;
+identifier q;
+expression block, filter_list;
+identifier sch, extack;
+@@
+func(...) {
+  ...
+- tcf_block_get(&q->block, &q->filter_list)
++ tcf_block_get(&q->block, &q->filter_list, sch, extack)
+  ...
+}
+@@
+identifier func;
+identifier q;
+expression block, filter_list;
+identifier sch;
+@@
+func(...) {
+  ...
+- tcf_block_get(&q->block, &q->filter_list)
++ tcf_block_get(&q->block, &q->filter_list, sch)
+  ...
+}
+
+
+
+minus: parse error: 
+  File "./tcf_block_get-61/sp_out.final.gpt4.cocci", line 9, column 20, charpos = 130
+  around = 'block',
+  whole content = - tcf_block_get(&q->block, &q->filter_list)
+

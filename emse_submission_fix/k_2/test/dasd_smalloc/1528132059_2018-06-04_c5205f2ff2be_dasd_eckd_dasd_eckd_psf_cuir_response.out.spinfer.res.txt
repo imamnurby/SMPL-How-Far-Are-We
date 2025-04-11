@@ -1,0 +1,76 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I1;
+expression E2, E3, E0, E4;
+@@
+- E0 = dasd_smalloc_request(I1, E2, E3, E4); 
++ E0 = dasd_smalloc_request(DASD_ECKD_MAGIC, E2, E3, E4, NULL); 
+// Infered from: (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_steal_lock.{c.sanitized.c,res.c.sanitized.res.c}: dasd_eckd_steal_lock), (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.{c.sanitized.c,res.c.sanitized.res.c}: dasd_eckd_analysis_ccw)
+// False positives: (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_diag_dasd_diag_build_cp.res.c.sanitized.res.c: dasd_diag_build_cp), (./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_fba_dasd_fba_build_cp_regular.res.c.sanitized.res.c: dasd_fba_build_cp_regular)
+// Recall: 0.75, Precision: 0.75, Matching recall: 0.75
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 0.75, Precision: 0.75
+// -- General --
+// Functions fully changed: 2/4(50%)
+
+/*
+Functions where the patch produced incorrect changes:
+ - ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_diag_dasd_diag_build_cp.c.sanitized.c: dasd_diag_build_cp
+ - ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_fba_dasd_fba_build_cp_regular.c.sanitized.c: dasd_fba_build_cp_regular
+*/
+
+// ---------------------------------------------
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 11
+               with rule_elem: -E0
+                                 >>> E0 = dasd_smalloc_request(DASD_ECKD_MAGIC,
+                                                               E2, E3, E4,
+                                                               NULL);
+                                -= -dasd_smalloc_request-(-I1-, -E2-, -E3-,
+                                                          -E4-)-;
+               with binding: [rule starting on line 1.E4 --> device;
+                             rule starting on line 1.E3 --> sizeof(struct
+                             dasd_psf_cuir_response);
+                             rule starting on line 1.E2 --> 1;
+                             rule starting on line 1.E0 --> cqr]
+     binding out = []
+     transform one node: 11
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
++++ /tmp/cocci-output-19907-03bec1-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
+@@ -5,7 +5,9 @@ static int dasd_eckd_psf_cuir_response(s
+   struct dasd_ccw_req *cqr;
+   struct ccw1 *ccw;
+   int rc;
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1, sizeof(struct dasd_psf_cuir_response), device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1,
++                             sizeof(struct dasd_psf_cuir_response), device,
++                             NULL);
+   if (IS_ERR(cqr))
+     {
+       DBF_DEV_EVENT(DBF_WARNING, device, "%s", "Could not allocate PSF-CUIR request");
+Check duplication for 1 files

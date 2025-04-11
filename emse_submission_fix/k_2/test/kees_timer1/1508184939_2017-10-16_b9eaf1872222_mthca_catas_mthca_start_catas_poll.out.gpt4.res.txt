@@ -1,0 +1,48 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type timer_struct = struct timer_list;
+identifier T;
+expression F, D;
+@@
+- init_timer(&T);
+- T.function = F;
+- T.data = D;
++ setup_timer(&T, F, D);
+@@
+type timer_struct = struct timer_list;
+identifier T;
+expression F;
+@@
+- init_timer(&T);
+- T.function = F;
++ setup_timer(&T, F, 0UL);
+
+
+
+warning: rule starting on line 1: metavariable timer_struct not used in the - or context code
+warning: rule starting on line 10: metavariable timer_struct not used in the - or context code
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_mthca_catas_mthca_start_catas_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule starting on line 10 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 10 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

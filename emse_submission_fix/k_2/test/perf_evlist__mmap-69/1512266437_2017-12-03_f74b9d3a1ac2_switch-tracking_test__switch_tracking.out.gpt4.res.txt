@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression evlist, pages;
+@@
+- perf_evlist__mmap(evlist, pages, false)
++ perf_evlist__mmap(evlist, pages)
+
+
+
+warning: line 4: should false be a metavariable?
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 204
+               with rule_elem: -perf_evlist__mmap
+                                 >>> perf_evlist__mmap(evlist, pages)
+                               -(-evlist-, -pages-, -false-)
+               with binding: [rule starting on line 1.pages --> UINT_MAX;
+                             rule starting on line 1.evlist --> evlist]
+     binding out = []
+     transform one node: 204
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
++++ /tmp/cocci-output-18165-24c472-1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
+@@ -133,7 +133,7 @@ int test__switch_tracking(struct test *t
+       err = 0;
+       goto out;
+     }
+-  err = perf_evlist__mmap(evlist, UINT_MAX, false);
++  err = perf_evlist__mmap(evlist, UINT_MAX);
+   if (err)
+     {
+       pr_debug("perf_evlist__mmap failed!\n");
+Check duplication for 1 files

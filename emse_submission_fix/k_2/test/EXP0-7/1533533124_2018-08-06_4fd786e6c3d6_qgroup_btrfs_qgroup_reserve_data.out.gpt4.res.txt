@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type btrfs_root_type;
+expression root_var;
+@@
+- root_var->objectid
++ root_var->root_key.objectid
+
+
+
+warning: rule starting on line 1: metavariable btrfs_root_type not used in the - or context code
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 14
+               with rule_elem: -root_var
+                                 >>> root_var->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root_var --> root]
+     binding out = []
+     transform one node: 14
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
++++ /tmp/cocci-output-17820-c45945-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
+@@ -7,7 +7,7 @@ int btrfs_qgroup_reserve_data(struct ino
+   u64 orig_reserved;
+   u64 to_reserve;
+   int ret;
+-  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &root->fs_info->flags) || !is_fstree(root->objectid) || len == 0)
++  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &root->fs_info->flags) || !is_fstree(root->root_key.objectid) || len == 0)
+     return 0;
+ 
+   if (WARN_ON(!reserved_ret))
+Check duplication for 1 files

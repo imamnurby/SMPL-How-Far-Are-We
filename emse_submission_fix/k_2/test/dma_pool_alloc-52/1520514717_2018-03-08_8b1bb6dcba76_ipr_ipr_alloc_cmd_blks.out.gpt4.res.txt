@@ -1,0 +1,20 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier pool_function;
+identifier buffer_name, dma_addr;
+identifier struct_type; // The relevant struct type being initialized by memset
+@@
+- buffer_name = dma_pool_alloc(pool_function, ..., &dma_addr);
++ buffer_name = dma_pool_zalloc(pool_function, ..., &dma_addr);
+  ...
+- memset(buffer_name, 0, sizeof(struct_type));
+
+
+
+File "./dma_pool_alloc-52/sp_out.final.gpt4.cocci", line 7, column 47, charpos = 256
+  around = '...',
+  whole content = + buffer_name = dma_pool_zalloc(pool_function, ..., &dma_addr);

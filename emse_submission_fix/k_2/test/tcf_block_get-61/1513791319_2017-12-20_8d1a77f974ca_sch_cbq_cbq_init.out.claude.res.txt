@@ -1,0 +1,77 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(...) {
+<...
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+...>
+}
+@add_extack depends on add_sch@
+expression block, filter_list;
+identifier fn;
+@@
+fn(..., struct netlink_ext_ack *extack, ...) {
+<...
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+...>
+}
+
+
+
+warning: line 15: should extack be a metavariable?
+warning: line 17: should sch be a metavariable?
+HANDLING: ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+add_sch = 
+-----------------------------------------------------------------------
+dependencies for rule add_sch satisfied:
+binding in = []
+binding relevant in = []
+     (ONCE) USING optional_storage builtin isomorphism
+     transformation info is empty
+     binding out = []
+-----------------------------------------------------------------------
+add_extack = 
+-----------------------------------------------------------------------
+dependencies for rule add_extack satisfied:
+add_sch satisfied
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 46
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [add_extack.filter_list --> &q->link.filter_list;
+                             add_extack.block --> &q->link.block]
+     binding out = []
+     transform one node: 46
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
++++ /tmp/cocci-output-19051-899217-1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
+@@ -18,7 +18,7 @@ static int cbq_init(struct Qdisc *sch, s
+   q->link.R_tab = qdisc_get_rtab(r, tb[TCA_CBQ_RTAB], extack);
+   if (!q->link.R_tab)
+     return -EINVAL;
+-  err = tcf_block_get(&q->link.block, &q->link.filter_list, sch);
++  err = tcf_block_get(&q->link.block, &q->link.filter_list, sch, extack);
+   if (err)
+     goto put_rtab;
+   err = qdisc_class_hash_init(&q->clhash);
+Check duplication for 1 files

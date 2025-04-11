@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression arg1, arg2;
+@@
+- free_bootmem(arg1, arg2)
++ memblock_free(arg1, arg2)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_smp_64_pcpu_free_bootmem.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 6
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(arg1, arg2)
+                               -(-arg1-, -arg2-)
+               with binding: [rule starting on line 1.arg2 --> size;
+                             rule starting on line 1.arg1 --> __pa(ptr)]
+     binding out = []
+     transform one node: 6
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_smp_64_pcpu_free_bootmem.c.sanitized.c
++++ /tmp/cocci-output-17991-626f46-1540937361_2018-10-30_2013288f7238_smp_64_pcpu_free_bootmem.c.sanitized.c
+@@ -1 +1,2 @@
+-static void __init pcpu_free_bootmem(void *ptr, size_t size) { free_bootmem(__pa(ptr), size); }
+\ No newline at end of file
++static void __init pcpu_free_bootmem(void *ptr, size_t size) { memblock_free(__pa(ptr),
++									     size); }
+\ No newline at end of file
+Check duplication for 1 files

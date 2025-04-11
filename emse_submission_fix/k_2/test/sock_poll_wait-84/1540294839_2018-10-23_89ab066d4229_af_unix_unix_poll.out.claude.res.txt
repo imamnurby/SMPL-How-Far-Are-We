@@ -1,0 +1,37 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+identifier sock;
+@@
+(
+struct socket *sock;
+|
+struct socket *sock = ...;
+|
+sock = ...;
+)
+...
+- sock_poll_wait(file, wait);
++ sock_poll_wait(file, sock, wait);
+
+
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

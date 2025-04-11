@@ -1,0 +1,70 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I0, I1, I2, I3;
+expression E4, E5;
+typedef __poll_t;
+typedef poll_table;
+@@
+  __poll_t I0(struct file *I1, struct socket *I2, poll_table *I3)  
+  {
+  ...
+- sock_poll_wait(E4, E5); 
++ sock_poll_wait(E4, I2, E5); 
+  ...
+  }
+// Infered from: (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_tcp_tcp_poll.{c,res.c}: tcp_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.{c,res.c}: rxrpc_poll), (./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_rxrpc_rxrpc_poll.{c,res.c}: rxrpc_poll)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 2/2(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 8
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(E4, I2, E5);
+                               -(-E4-, -E5-)-;
+               with binding: [rule starting on line 1.E5 --> wait;
+                             rule starting on line 1.E4 --> file;
+                             rule starting on line 1.I2 --> id sock]
+     binding out = []
+     transform one node: 8
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
++++ /tmp/cocci-output-20432-3b905e-1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
+@@ -2,7 +2,7 @@ __poll_t datagram_poll(struct file *file
+ {
+   struct sock *sk = sock->sk;
+   __poll_t mask;
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   mask = 0;
+ 
+   if (sk->sk_err || !skb_queue_empty(&sk->sk_error_queue))
+Check duplication for 1 files

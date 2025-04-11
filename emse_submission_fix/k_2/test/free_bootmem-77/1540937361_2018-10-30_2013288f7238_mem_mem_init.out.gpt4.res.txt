@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression arg1, arg2;
+@@
+- free_bootmem(arg1, arg2)
++ memblock_free(arg1, arg2)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_mem_mem_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(arg1, arg2)
+                               -(-arg1-, -arg2-)
+               with binding: [rule starting on line 1.arg2 --> uml_reserved -
+                             brk_end;
+                             rule starting on line 1.arg1 --> __pa(brk_end)]
+     binding out = []
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_mem_mem_init.c.sanitized.c
++++ /tmp/cocci-output-17956-276948-1540937361_2018-10-30_2013288f7238_mem_mem_init.c.sanitized.c
+@@ -5,7 +5,7 @@ void __init mem_init(void)
+ 
+   brk_end = (unsigned long)UML_ROUND_UP(sbrk(0));
+   map_memory(brk_end, __pa(brk_end), uml_reserved - brk_end, 1, 1, 0);
+-  free_bootmem(__pa(brk_end), uml_reserved - brk_end);
++  memblock_free(__pa(brk_end), uml_reserved - brk_end);
+   uml_reserved = brk_end;
+ 
+   free_all_bootmem();
+Check duplication for 1 files

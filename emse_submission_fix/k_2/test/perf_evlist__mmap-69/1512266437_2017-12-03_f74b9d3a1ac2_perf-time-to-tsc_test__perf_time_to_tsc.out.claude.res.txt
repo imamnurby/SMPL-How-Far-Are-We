@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2;
+@@
+- perf_evlist__mmap(E1, E2, false)
++ perf_evlist__mmap(E1, E2)
+
+
+
+warning: line 4: should false be a metavariable?
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 34
+               with rule_elem: -perf_evlist__mmap
+                                 >>> perf_evlist__mmap(E1, E2)
+                               -(-E1-, -E2-, -false-)
+               with binding: [rule starting on line 1.E2 --> UINT_MAX;
+                             rule starting on line 1.E1 --> evlist]
+     binding out = []
+     transform one node: 34
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
++++ /tmp/cocci-output-18744-1e8422-1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
+@@ -35,7 +35,7 @@ int test__perf_time_to_tsc(struct test *
+   evsel->attr.disabled = 1;
+   evsel->attr.enable_on_exec = 0;
+   CHECK__(perf_evlist__open(evlist));
+-  CHECK__(perf_evlist__mmap(evlist, UINT_MAX, false));
++  CHECK__(perf_evlist__mmap(evlist, UINT_MAX));
+   pc = evlist->mmap[0].base;
+   ret = perf_read_tsc_conversion(pc, &tc);
+   if (ret)
+Check duplication for 1 files

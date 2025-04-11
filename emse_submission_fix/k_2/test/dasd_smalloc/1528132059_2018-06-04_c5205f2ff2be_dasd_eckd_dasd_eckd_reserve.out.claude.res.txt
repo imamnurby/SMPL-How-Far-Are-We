@@ -1,0 +1,23 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic_type, count, datasize, memdev;
+expression req;
+@@
+(
+// Case 1: Context where req is available (typically in req-handling functions)
+- dasd_smalloc_request(magic_type, count, datasize, memdev)
++ dasd_smalloc_request(magic_type, count, datasize, memdev, blk_mq_rq_to_pdu(req))
+|
+// Case 2: Context where req is not available
+- dasd_smalloc_request(magic_type, count, datasize, memdev)
++ dasd_smalloc_request(magic_type, count, datasize, memdev, NULL)
+)
+
+
+
+warning: rule starting on line 1: metavariable req not used in the - or context code
+error: rule starting on line 1: req appears only in + code

@@ -1,0 +1,31 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I9;
+expression E1, E2, E4, E7, E8, E0, E3, E5, E6;
+@@
+- E0 = ttm_bo_init(&E1->ttm.bdev, &E2->bo, E3, E4, &E2->placement,                  E5 >> PAGE_SHIFT, false, NULL, E6, E7, E8, I9); 
++ E0 = ttm_bo_init(&E1->ttm.bdev, &E2->bo, E3, E4, &E2->placement,                  E5 >> PAGE_SHIFT, false, E6, E7, E8, I9); 
+// Infered from: (./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.{c,res.c}: nouveau_bo_new), (./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.{c,res.c}: nouveau_bo_new), (./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.{c,res.c}: ast_bo_create), (./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_ast_ttm_ast_bo_create.{c,res.c}: ast_bo_create)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 2/2(100%)
+
+
+// ---------------------------------------------
+
+warning: line 5: should false be a metavariable?
+(ONCE) Expected tokens ttm_bo_init ttm placement false bo bdev PAGE_SHIFT
+Skipping: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
+Check duplication for 0 files
+-o can not be applied because there are no modified files

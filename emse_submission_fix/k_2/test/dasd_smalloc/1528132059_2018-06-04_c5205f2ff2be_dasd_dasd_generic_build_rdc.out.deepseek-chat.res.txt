@@ -1,0 +1,16 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic, cp_length, data_size, device;
+expression req;
+@@
+- dasd_smalloc_request(magic, cp_length, data_size, device)
++ dasd_smalloc_request(magic, cp_length, data_size, device, req ? blk_mq_rq_to_pdu(req) : NULL)
+
+
+
+warning: rule starting on line 1: metavariable req not used in the - or context code
+error: rule starting on line 1: req appears only in + code

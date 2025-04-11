@@ -1,0 +1,80 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier I2, I3;
+expression E0, E1, E4, E5;
+@@
+- E0 = dma_pool_alloc(E1->I2, I3, &E4); 
++ E0 = dma_pool_zalloc(E1->I2, I3, &E4); 
+  ...
+- memset(E0, 0, E5); 
+// Infered from: (./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_bsg_qla84xx_updatefw.{c.sanitized.c,res.c.sanitized.res.c}: qla84xx_updatefw), (./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.{c.sanitized.c,res.c.sanitized.res.c}: ep_bd_list_alloc)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 2/2(100%)
+
+
+// ---------------------------------------------
+
+HANDLING: ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 235
+               with rule_elem: -E0
+                                 >>> E0 = dma_pool_zalloc(E1->I2, I3, &E4);
+                                -= -dma_pool_alloc-(-E1-->-I2-, -I3-, -&-E4-)-;
+               with binding: [rule starting on line 1.E4 --> ctx->fcp_cmnd_dma;
+                             rule starting on line 1.I3 --> id GFP_ATOMIC;
+                             rule starting on line 1.I2 --> id fcp_cmnd_dma_pool;
+                             rule starting on line 1.E1 --> ha;
+                             rule starting on line 1.E0 --> ctx->fcp_cmnd]
+          transform state: 308
+               with rule_elem: -memset-(-E0-, -0-, -E5-)-;
+               with binding: [rule starting on line 1.E0 --> ctx->fcp_cmnd]
+     binding out = []
+     transform one node: 308
+     transform one node: 235
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
++++ /tmp/cocci-output-19980-9a97a2-1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
+@@ -123,7 +123,8 @@ int qla82xx_start_scsi(srb_t *sp)
+           goto queuing_error;
+         }
+       memset(ctx, 0, sizeof(struct ct6_dsd));
+-      ctx->fcp_cmnd = dma_pool_alloc(ha->fcp_cmnd_dma_pool, GFP_ATOMIC, &ctx->fcp_cmnd_dma);
++      ctx->fcp_cmnd = dma_pool_zalloc(ha->fcp_cmnd_dma_pool, GFP_ATOMIC,
++                                      &ctx->fcp_cmnd_dma);
+       if (!ctx->fcp_cmnd)
+         {
+           ql_log(ql_log_fatal, vha, 0x3011, "Failed to allocate fcp_cmnd for cmd=%p.\n", cmd);
+@@ -172,7 +173,6 @@ int qla82xx_start_scsi(srb_t *sp)
+       int_to_scsilun(cmd->device->lun, &cmd_pkt->lun);
+       host_to_fcp_swap((uint8_t *)&cmd_pkt->lun, sizeof(cmd_pkt->lun));
+ 
+-      memset(ctx->fcp_cmnd, 0, sizeof(struct fcp_cmnd));
+       int_to_scsilun(cmd->device->lun, &ctx->fcp_cmnd->lun);
+       ctx->fcp_cmnd->additional_cdb_len = additional_cdb_len;
+       if (cmd->sc_data_direction == DMA_TO_DEVICE)
+Check duplication for 1 files
