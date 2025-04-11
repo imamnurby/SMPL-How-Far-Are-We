@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./random_ether_addr-84/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr;
+@@
+- random_ether_addr(addr)
++ eth_random_addr(addr)
+
+HANDLING: ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_qlcnic_sriov_common_qlcnic_sriov_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 117
+               with rule_elem: -random_ether_addr
+                                 >>> eth_random_addr(addr)
+                               -(-addr-)
+               with binding: [rule starting on line 1.addr --> vp->mac]
+     binding out = []
+     transform one node: 117
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_qlcnic_sriov_common_qlcnic_sriov_init.c.sanitized.c
++++ /tmp/cocci-output-32053-3eb5a7-1529689860_2018-06-22_6c1f0a1ffb7c_qlcnic_sriov_common_qlcnic_sriov_init.c.sanitized.c
+@@ -66,7 +66,7 @@ int qlcnic_sriov_init(struct qlcnic_adap
+           vp->max_tx_bw = MAX_BW;
+           vp->min_tx_bw = MIN_BW;
+           vp->spoofchk = false;
+-          random_ether_addr(vp->mac);
++          eth_random_addr(vp->mac);
+           dev_info(&adapter->pdev->dev, "MAC Address %pM is configured for VF %d\n", vp->mac, i);
+         }
+     }
+Check duplication for 1 files
