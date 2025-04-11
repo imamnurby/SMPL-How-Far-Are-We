@@ -1,0 +1,1 @@
+ERROR: File ./snd_soc/1524629994_2018-04-25_e4b31b816c47_mtk-afe-fe-dai_mtk_afe_fe_trigger.res.c.c.sanitized.c does not exist: No such file or directory
