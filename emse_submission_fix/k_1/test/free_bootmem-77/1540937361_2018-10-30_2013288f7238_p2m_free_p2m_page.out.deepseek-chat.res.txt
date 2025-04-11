@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
-+++ /tmp/cocci-output-4099455-de2dfe-1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
++++ /tmp/cocci-output-93552-de9a76-1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
 @@ -2,7 +2,7 @@ static void __ref free_p2m_page(void *p)
  {
    if (unlikely(!slab_is_available()))

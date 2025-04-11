@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1424769208_2015-02-24_8d4a40b_setup_parse_setup_data.c.sanitized.c
-+++ /tmp/cocci-output-4099420-f73a82-1424769208_2015-02-24_8d4a40b_setup_parse_setup_data.c.sanitized.c
++++ /tmp/cocci-output-93517-d7e0c7-1424769208_2015-02-24_8d4a40b_setup_parse_setup_data.c.sanitized.c
 @@ -10,7 +10,7 @@ static void __init parse_setup_data(void
        data_len = data->len + sizeof(struct setup_data);
        data_type = data->type;

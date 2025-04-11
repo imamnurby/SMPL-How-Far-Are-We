@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1424769208_2015-02-24_8d4a40bc0651_setup_e820_reserve_setup_data.c.sanitized.c
-+++ /tmp/cocci-output-4098023-ea96e7-1424769208_2015-02-24_8d4a40bc0651_setup_e820_reserve_setup_data.c.sanitized.c
++++ /tmp/cocci-output-92805-550372-1424769208_2015-02-24_8d4a40bc0651_setup_e820_reserve_setup_data.c.sanitized.c
 @@ -10,7 +10,7 @@ static void __init e820_reserve_setup_da
        e820_update_range(pa_data, sizeof(*data) + data->len, E820_RAM, E820_RESERVED_KERN);
        found = 1;

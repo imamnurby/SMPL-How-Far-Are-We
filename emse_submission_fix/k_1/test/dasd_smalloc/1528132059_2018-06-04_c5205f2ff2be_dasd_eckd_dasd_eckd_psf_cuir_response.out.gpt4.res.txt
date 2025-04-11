@@ -43,7 +43,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
-+++ /tmp/cocci-output-4097904-a554d6-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
++++ /tmp/cocci-output-92680-d22d92-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_psf_cuir_response.c.sanitized.c
 @@ -5,7 +5,9 @@ static int dasd_eckd_psf_cuir_response(s
    struct dasd_ccw_req *cqr;
    struct ccw1 *ccw;

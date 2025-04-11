@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_qgroup_free_reserved_data.c.sanitized.c
-+++ /tmp/cocci-output-4099201-306347-1533533124_2018-08-06_4fd786e6c3d6_qgroup_qgroup_free_reserved_data.c.sanitized.c
++++ /tmp/cocci-output-93307-7146d5-1533533124_2018-08-06_4fd786e6c3d6_qgroup_qgroup_free_reserved_data.c.sanitized.c
 @@ -29,7 +29,8 @@ static int qgroup_free_reserved_data(str
          goto out;
        freed += changeset.bytes_changed;

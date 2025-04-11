@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_smu_smu_init.c.sanitized.c
-+++ /tmp/cocci-output-4099483-669809-1540937361_2018-10-30_2013288f7238_smu_smu_init.c.sanitized.c
++++ /tmp/cocci-output-93580-e73e69-1540937361_2018-10-30_2013288f7238_smu_smu_init.c.sanitized.c
 @@ -80,7 +80,7 @@ fail_msg_node:
  fail_db_node:
    of_node_put(smu->db_node);

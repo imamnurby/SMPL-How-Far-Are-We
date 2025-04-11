@@ -4,10 +4,10 @@ processing semantic patch file: ./free_bootmem-77/sp_out.final.gpt4.cocci
 with isos from: /usr/bin/../lib/coccinelle/standard.iso
 -----------------------------------------------------------------------
 @@
-expression pg, pgend;
+expression x, y;
 @@
-- if (pg < pgend) free_bootmem(pg, pgend - pg);
-+ if (pg < pgend) memblock_free(pg, pgend - pg);
+- free_bootmem(x, y)
++ memblock_free(x, y)
 
 
 
@@ -22,7 +22,29 @@ rule starting on line 1 =
 dependencies for rule rule starting on line 1 satisfied:
 binding in = []
 binding relevant in = []
+     transformation info returned:
+          transform state: 136
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(x, y)
+                               -(-x-, -y-)
+               with binding: [rule starting on line 1.y --> sizeof(struct
+                             smu_device);
+                             rule starting on line 1.x --> __pa(smu)]
+     binding out = []
+     transform one node: 136
 -----------------------------------------------------------------------
 Finished
 -----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_smu_smu_init.c.sanitized.c
++++ /tmp/cocci-output-92861-62f98e-1540937361_2018-10-30_2013288f7238_smu_smu_init.c.sanitized.c
+@@ -80,7 +80,7 @@ fail_msg_node:
+ fail_db_node:
+   of_node_put(smu->db_node);
+ fail_bootmem:
+-  free_bootmem(__pa(smu), sizeof(struct smu_device));
++  memblock_free(__pa(smu), sizeof(struct smu_device));
+   smu = NULL;
+ fail_np:
+   of_node_put(np);
 Check duplication for 1 files

@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_builtin-top_perf_top__start_counters.c.sanitized.c
-+++ /tmp/cocci-output-4098163-5808d4-1512266437_2017-12-03_f74b9d3a1ac2_builtin-top_perf_top__start_counters.c.sanitized.c
++++ /tmp/cocci-output-92981-8ab530-1512266437_2017-12-03_f74b9d3a1ac2_builtin-top_perf_top__start_counters.c.sanitized.c
 @@ -21,7 +21,7 @@ static int perf_top__start_counters(stru
          goto out_err;
        }

@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_python_pyrf_evlist__mmap.c.sanitized.c
-+++ /tmp/cocci-output-4098205-9158bc-1512266437_2017-12-03_f74b9d3a1ac2_python_pyrf_evlist__mmap.c.sanitized.c
++++ /tmp/cocci-output-93023-413f3a-1512266437_2017-12-03_f74b9d3a1ac2_python_pyrf_evlist__mmap.c.sanitized.c
 @@ -5,7 +5,7 @@ static PyObject *pyrf_evlist__mmap(struc
    int pages = 128, overwrite = false;
    if (!PyArg_ParseTupleAndKeywords(args, kwargs, "|ii", kwlist, &pages, &overwrite))

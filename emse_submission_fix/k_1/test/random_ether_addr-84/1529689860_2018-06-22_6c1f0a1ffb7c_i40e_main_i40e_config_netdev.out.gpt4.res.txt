@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_i40e_main_i40e_config_netdev.c.sanitized.c
-+++ /tmp/cocci-output-4098264-278833-1529689860_2018-06-22_6c1f0a1ffb7c_i40e_main_i40e_config_netdev.c.sanitized.c
++++ /tmp/cocci-output-93079-320be2-1529689860_2018-06-22_6c1f0a1ffb7c_i40e_main_i40e_config_netdev.c.sanitized.c
 @@ -43,7 +43,7 @@ static int i40e_config_netdev(struct i40
      {
  

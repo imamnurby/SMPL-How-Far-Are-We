@@ -53,7 +53,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
-+++ /tmp/cocci-output-4097797-c02775-1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
++++ /tmp/cocci-output-92579-aac700-1533533124_2018-08-06_4fd786e6c3d6_ref-verify_btrfs_ref_tree_mod.c.sanitized.c
 @@ -37,7 +37,7 @@ int btrfs_ref_tree_mod(struct btrfs_root
    __save_stack_trace(ra);
    INIT_LIST_HEAD(&ra->list);

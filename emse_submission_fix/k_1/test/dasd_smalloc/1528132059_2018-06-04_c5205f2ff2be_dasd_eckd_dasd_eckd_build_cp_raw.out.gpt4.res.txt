@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_raw.c.sanitized.c
-+++ /tmp/cocci-output-4097869-f9e57b-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_raw.c.sanitized.c
++++ /tmp/cocci-output-92645-667df9-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_raw.c.sanitized.c
 @@ -56,7 +56,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
    size = ALIGN(size, 8);
    datasize = size + cidaw * sizeof(unsigned long);

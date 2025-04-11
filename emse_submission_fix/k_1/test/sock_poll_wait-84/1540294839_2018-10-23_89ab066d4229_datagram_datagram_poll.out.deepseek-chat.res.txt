@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
-+++ /tmp/cocci-output-4099687-b6d5fb-1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
++++ /tmp/cocci-output-93868-dbeb8b-1540294839_2018-10-23_89ab066d4229_datagram_datagram_poll.c.sanitized.c
 @@ -2,7 +2,7 @@ __poll_t datagram_poll(struct file *file
  {
    struct sock *sk = sock->sk;

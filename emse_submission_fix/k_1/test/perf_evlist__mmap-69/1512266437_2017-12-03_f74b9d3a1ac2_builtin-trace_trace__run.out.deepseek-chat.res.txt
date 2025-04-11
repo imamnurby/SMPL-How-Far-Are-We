@@ -33,13 +33,13 @@ binding relevant in = []
                              rule starting on line 1.evlist --> evlist]
      binding out = []
      transform one node: 238
-FLOW: deadcode detected: File "/tmp/cocci_small_output-4099554-9ea7d9-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c", line 184
+FLOW: deadcode detected: File "/tmp/cocci_small_output-93651-4c116c-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c", line 184
 -----------------------------------------------------------------------
 Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
-+++ /tmp/cocci-output-4099554-4cd79b-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
++++ /tmp/cocci-output-93651-559130-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
 @@ -104,7 +104,7 @@ static int trace__run(struct trace *trac
    err = perf_evlist__apply_filters(evlist, &evsel);
    if (err < 0)

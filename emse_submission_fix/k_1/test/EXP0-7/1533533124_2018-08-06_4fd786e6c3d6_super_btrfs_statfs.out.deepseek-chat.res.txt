@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
-+++ /tmp/cocci-output-4099232-b1999f-1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
++++ /tmp/cocci-output-93335-5efd04-1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
 @@ -67,7 +67,7 @@ static int btrfs_statfs(struct dentry *d
    buf->f_fsid.val[0] = be32_to_cpu(fsid[0]) ^ be32_to_cpu(fsid[2]);
    buf->f_fsid.val[1] = be32_to_cpu(fsid[1]) ^ be32_to_cpu(fsid[3]);

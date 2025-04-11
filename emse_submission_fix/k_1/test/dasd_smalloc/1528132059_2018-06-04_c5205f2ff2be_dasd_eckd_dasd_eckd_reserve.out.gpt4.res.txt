@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_reserve.c.sanitized.c
-+++ /tmp/cocci-output-4097946-669c08-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_reserve.c.sanitized.c
++++ /tmp/cocci-output-92722-7d20a7-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_reserve.c.sanitized.c
 @@ -7,7 +7,7 @@ static int dasd_eckd_reserve(struct dasd
    if (!capable(CAP_SYS_ADMIN))
      return -EACCES;

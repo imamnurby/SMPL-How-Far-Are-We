@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
-+++ /tmp/cocci-output-4097748-3ed818-1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
++++ /tmp/cocci-output-92530-6dea3b-1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
 @@ -33,7 +33,7 @@ static long btrfs_ioctl_default_subvol(s
        ret = PTR_ERR(new_root);
        goto out;

@@ -40,7 +40,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check.c.sanitized.c
-+++ /tmp/cocci-output-4099253-09af35-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check.c.sanitized.c
++++ /tmp/cocci-output-93356-983a0b-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check.c.sanitized.c
 @@ -29,7 +29,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
        datasize = sizeof(struct DE_eckd_data) + sizeof(struct LO_eckd_data);
      }

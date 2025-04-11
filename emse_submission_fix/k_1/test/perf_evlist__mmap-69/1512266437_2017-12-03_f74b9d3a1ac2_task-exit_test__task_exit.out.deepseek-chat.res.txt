@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_task-exit_test__task_exit.c.sanitized.c
-+++ /tmp/cocci-output-4099599-51de0c-1512266437_2017-12-03_f74b9d3a1ac2_task-exit_test__task_exit.c.sanitized.c
++++ /tmp/cocci-output-93696-f06655-1512266437_2017-12-03_f74b9d3a1ac2_task-exit_test__task_exit.c.sanitized.c
 @@ -54,7 +54,7 @@ int test__task_exit(struct test *test __
        pr_debug("Couldn't open the evlist: %s\n", str_error_r(-err, sbuf, sizeof(sbuf)));
        goto out_delete_evlist;

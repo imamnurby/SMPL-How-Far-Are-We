@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_single.c.sanitized.c
-+++ /tmp/cocci-output-4097855-04bbc3-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_single.c.sanitized.c
++++ /tmp/cocci-output-92631-b64b16-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_single.c.sanitized.c
 @@ -63,7 +63,8 @@ private
        datasize += count * sizeof(struct LO_eckd_data);
      }

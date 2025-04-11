@@ -51,7 +51,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_esas2r_main_esas2r_kickoff_timer.c.sanitized.c
-+++ /tmp/cocci-output-4098095-15d08a-1508184939_2017-10-16_b9eaf1872222_esas2r_main_esas2r_kickoff_timer.c.sanitized.c
++++ /tmp/cocci-output-92913-2c5329-1508184939_2017-10-16_b9eaf1872222_esas2r_main_esas2r_kickoff_timer.c.sanitized.c
 @@ -1,8 +1,6 @@
  void esas2r_kickoff_timer(struct esas2r_adapter *a)
  {

@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_format.c.sanitized.c
-+++ /tmp/cocci-output-4097883-3c73e5-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_format.c.sanitized.c
++++ /tmp/cocci-output-92659-ff7783-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_format.c.sanitized.c
 @@ -66,7 +66,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
        return ERR_PTR(-EINVAL);
      }

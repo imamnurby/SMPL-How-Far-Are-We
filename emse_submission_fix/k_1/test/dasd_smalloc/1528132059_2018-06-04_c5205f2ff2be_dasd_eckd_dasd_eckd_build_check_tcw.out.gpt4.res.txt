@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check_tcw.c.sanitized.c
-+++ /tmp/cocci-output-4097848-41fc22-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check_tcw.c.sanitized.c
++++ /tmp/cocci-output-92624-c90a74-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_check_tcw.c.sanitized.c
 @@ -17,7 +17,7 @@ static struct dasd_ccw_req *dasd_eckd_bu
    count = rpt * (fdata->stop_unit - fdata->start_unit + 1);
  

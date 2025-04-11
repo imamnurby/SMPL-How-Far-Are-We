@@ -40,7 +40,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
-+++ /tmp/cocci-output-4099246-f6c44a-1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
++++ /tmp/cocci-output-93349-f3e726-1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
 @@ -3,7 +3,7 @@ static struct dasd_ccw_req *dasd_generic
    struct dasd_ccw_req *cqr;
    struct ccw1 *ccw;

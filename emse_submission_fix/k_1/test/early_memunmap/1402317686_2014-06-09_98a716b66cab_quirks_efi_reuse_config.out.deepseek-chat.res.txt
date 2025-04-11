@@ -43,7 +43,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1402317686_2014-06-09_98a716b66cab_quirks_efi_reuse_config.c.sanitized.c
-+++ /tmp/cocci-output-4099385-96a663-1402317686_2014-06-09_98a716b66cab_quirks_efi_reuse_config.c.sanitized.c
++++ /tmp/cocci-output-93482-f5c070-1402317686_2014-06-09_98a716b66cab_quirks_efi_reuse_config.c.sanitized.c
 @@ -31,9 +31,9 @@ int __init efi_reuse_config(u64 tables,
          ((efi_config_table_64_t *)p)->table = data->smbios;
        p += sz;

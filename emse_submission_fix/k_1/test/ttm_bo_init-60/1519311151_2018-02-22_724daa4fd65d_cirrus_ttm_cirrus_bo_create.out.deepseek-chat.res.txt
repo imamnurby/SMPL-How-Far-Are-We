@@ -48,7 +48,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_cirrus_ttm_cirrus_bo_create.c.sanitized.c
-+++ /tmp/cocci-output-4099756-d937db-1519311151_2018-02-22_724daa4fd65d_cirrus_ttm_cirrus_bo_create.c.sanitized.c
++++ /tmp/cocci-output-93931-792fd4-1519311151_2018-02-22_724daa4fd65d_cirrus_ttm_cirrus_bo_create.c.sanitized.c
 @@ -16,7 +16,10 @@ int cirrus_bo_create(struct drm_device *
    cirrusbo->bo.bdev = &cirrus->ttm.bdev;
    cirrus_ttm_placement(cirrusbo, TTM_PL_FLAG_VRAM | TTM_PL_FLAG_SYSTEM);

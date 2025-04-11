@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_iterate_inode_refs.c.sanitized.c
-+++ /tmp/cocci-output-4099135-8510e2-1533533124_2018-08-06_4fd786e6c3d6_backref_iterate_inode_refs.c.sanitized.c
++++ /tmp/cocci-output-93241-b85413-1533533124_2018-08-06_4fd786e6c3d6_backref_iterate_inode_refs.c.sanitized.c
 @@ -40,7 +40,8 @@ static int iterate_inode_refs(u64 inum,
          {
            name_len = btrfs_inode_ref_name_len(eb, iref);

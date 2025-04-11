@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_cpsw_cpsw_probe_dual_emac.c.sanitized.c
-+++ /tmp/cocci-output-4098233-1bf186-1529689860_2018-06-22_6c1f0a1ffb7c_cpsw_cpsw_probe_dual_emac.c.sanitized.c
++++ /tmp/cocci-output-93051-a1968d-1529689860_2018-06-22_6c1f0a1ffb7c_cpsw_cpsw_probe_dual_emac.c.sanitized.c
 @@ -23,7 +23,7 @@ static int cpsw_probe_dual_emac(struct c
      }
    else

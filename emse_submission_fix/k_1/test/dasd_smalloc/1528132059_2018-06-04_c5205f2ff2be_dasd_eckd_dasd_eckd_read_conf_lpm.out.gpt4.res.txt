@@ -53,7 +53,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
-+++ /tmp/cocci-output-4097918-da7c31-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
++++ /tmp/cocci-output-92694-20bdc7-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
 @@ -17,14 +17,14 @@ static int dasd_eckd_read_conf_lpm(struc
        ret = -ENOMEM;
        goto out_error;

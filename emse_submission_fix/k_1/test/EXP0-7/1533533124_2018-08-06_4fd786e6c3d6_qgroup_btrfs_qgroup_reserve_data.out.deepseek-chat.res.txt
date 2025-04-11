@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
-+++ /tmp/cocci-output-4099191-559ab4-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
++++ /tmp/cocci-output-93300-8b1ec6-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_reserve_data.c.sanitized.c
 @@ -7,7 +7,7 @@ int btrfs_qgroup_reserve_data(struct ino
    u64 orig_reserved;
    u64 to_reserve;

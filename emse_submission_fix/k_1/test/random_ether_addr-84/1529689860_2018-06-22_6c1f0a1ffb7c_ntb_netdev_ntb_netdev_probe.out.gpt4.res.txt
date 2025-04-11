@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_ntb_netdev_ntb_netdev_probe.c.sanitized.c
-+++ /tmp/cocci-output-4098295-5fffec-1529689860_2018-06-22_6c1f0a1ffb7c_ntb_netdev_ntb_netdev_probe.c.sanitized.c
++++ /tmp/cocci-output-93113-81569f-1529689860_2018-06-22_6c1f0a1ffb7c_ntb_netdev_ntb_netdev_probe.c.sanitized.c
 @@ -20,7 +20,7 @@ static int ntb_netdev_probe(struct devic
    ndev->priv_flags |= IFF_LIVE_ADDR_CHANGE;
    ndev->hw_features = ndev->features;

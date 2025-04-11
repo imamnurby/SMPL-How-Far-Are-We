@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_extent-tree_btrfs_drop_snapshot.c.sanitized.c
-+++ /tmp/cocci-output-4099149-7c89a3-1533533124_2018-08-06_4fd786e6c3d6_extent-tree_btrfs_drop_snapshot.c.sanitized.c
++++ /tmp/cocci-output-93258-4107b8-1533533124_2018-08-06_4fd786e6c3d6_extent-tree_btrfs_drop_snapshot.c.sanitized.c
 @@ -11,7 +11,7 @@ int btrfs_drop_snapshot(struct btrfs_roo
    int ret;
    int level;

@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_backward-ring-buffer_do_test.c.sanitized.c
-+++ /tmp/cocci-output-4099533-78472c-1512266437_2017-12-03_f74b9d3a1ac2_backward-ring-buffer_do_test.c.sanitized.c
++++ /tmp/cocci-output-93630-b709a2-1512266437_2017-12-03_f74b9d3a1ac2_backward-ring-buffer_do_test.c.sanitized.c
 @@ -2,7 +2,7 @@ static int do_test(struct perf_evlist *e
  {
    int err;

@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_track.c.sanitized.c
-+++ /tmp/cocci-output-4097862-ee7890-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_track.c.sanitized.c
++++ /tmp/cocci-output-92638-31eea1-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_cmd_track.c.sanitized.c
 @@ -30,7 +30,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
    cplength = 1 + trkcount;
    datasize = sizeof(struct PFX_eckd_data) + cidaw * sizeof(unsigned long);

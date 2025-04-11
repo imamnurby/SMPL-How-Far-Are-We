@@ -43,7 +43,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
-+++ /tmp/cocci-output-4099497-9673ed-1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
++++ /tmp/cocci-output-93594-26353b-1540937361_2018-10-30_2013288f7238_xhci-dbc_early_xdbc_setup_hardware.c.sanitized.c
 @@ -13,9 +13,9 @@ int __init early_xdbc_setup_hardware(voi
        xdbc_free_ring(&xdbc.out_ring);
        xdbc_free_ring(&xdbc.in_ring);

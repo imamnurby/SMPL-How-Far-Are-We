@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_hw_ath9k_hw_init_macaddr.c.sanitized.c
-+++ /tmp/cocci-output-4098257-2ab485-1529689860_2018-06-22_6c1f0a1ffb7c_hw_ath9k_hw_init_macaddr.c.sanitized.c
++++ /tmp/cocci-output-93072-6529d4-1529689860_2018-06-22_6c1f0a1ffb7c_hw_ath9k_hw_init_macaddr.c.sanitized.c
 @@ -16,7 +16,7 @@ static void ath9k_hw_init_macaddr(struct
    if (is_valid_ether_addr(common->macaddr))
      return;

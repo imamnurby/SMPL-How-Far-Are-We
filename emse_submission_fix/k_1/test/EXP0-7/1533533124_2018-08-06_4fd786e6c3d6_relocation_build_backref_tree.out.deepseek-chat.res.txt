@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
-+++ /tmp/cocci-output-4099218-5e9112-1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
++++ /tmp/cocci-output-93321-e62fcf-1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
 @@ -214,7 +214,9 @@ again:
        eb = path2->nodes[level];
        if (btrfs_node_blockptr(eb, path2->slots[level]) != cur->bytenr)

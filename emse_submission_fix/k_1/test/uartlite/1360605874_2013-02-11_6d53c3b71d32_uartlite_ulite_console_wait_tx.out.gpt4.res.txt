@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_console_wait_tx.c.sanitized.c
-+++ /tmp/cocci-output-4098411-59e73a-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_console_wait_tx.c.sanitized.c
++++ /tmp/cocci-output-93217-117a08-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_console_wait_tx.c.sanitized.c
 @@ -5,7 +5,7 @@ static void ulite_console_wait_tx(struct
  
    for (i = 0; i < 100000; i++)

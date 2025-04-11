@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_psf_ssc.c.sanitized.c
-+++ /tmp/cocci-output-4099305-504a25-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_psf_ssc.c.sanitized.c
++++ /tmp/cocci-output-93405-97894c-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_psf_ssc.c.sanitized.c
 @@ -3,7 +3,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
    struct dasd_ccw_req *cqr;
    struct dasd_psf_ssc_data *psf_ssc_data;

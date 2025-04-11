@@ -48,7 +48,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_mgag200_ttm_mgag200_bo_create.c.sanitized.c
-+++ /tmp/cocci-output-4099770-97fe0f-1519311151_2018-02-22_724daa4fd65d_mgag200_ttm_mgag200_bo_create.c.sanitized.c
++++ /tmp/cocci-output-93945-8f9048-1519311151_2018-02-22_724daa4fd65d_mgag200_ttm_mgag200_bo_create.c.sanitized.c
 @@ -16,7 +16,9 @@ int mgag200_bo_create(struct drm_device
    mgabo->bo.bdev = &mdev->ttm.bdev;
    mgag200_ttm_placement(mgabo, TTM_PL_FLAG_VRAM | TTM_PL_FLAG_SYSTEM);

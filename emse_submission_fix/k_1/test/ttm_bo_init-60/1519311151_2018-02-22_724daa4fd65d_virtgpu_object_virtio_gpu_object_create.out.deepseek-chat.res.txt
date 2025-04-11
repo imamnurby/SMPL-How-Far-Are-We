@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
-+++ /tmp/cocci-output-4099784-8c6739-1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
++++ /tmp/cocci-output-93959-fd3adf-1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
 @@ -22,7 +22,9 @@ int virtio_gpu_object_create(struct virt
      }
    bo->dumb = false;

@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_mm_init_free_memmap.c.sanitized.c
-+++ /tmp/cocci-output-4099448-66c9b6-1540937361_2018-10-30_2013288f7238_mm_init_free_memmap.c.sanitized.c
++++ /tmp/cocci-output-93545-b42bf7-1540937361_2018-10-30_2013288f7238_mm_init_free_memmap.c.sanitized.c
 @@ -10,5 +10,5 @@ static inline void free_memmap(unsigned
    pgend = (unsigned long)__pa(end_pg) & PAGE_MASK;
  

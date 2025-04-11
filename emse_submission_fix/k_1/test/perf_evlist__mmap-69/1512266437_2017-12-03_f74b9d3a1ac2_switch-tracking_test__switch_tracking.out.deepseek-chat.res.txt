@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
-+++ /tmp/cocci-output-4099592-9da4bb-1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
++++ /tmp/cocci-output-93689-662caf-1512266437_2017-12-03_f74b9d3a1ac2_switch-tracking_test__switch_tracking.c.sanitized.c
 @@ -133,7 +133,7 @@ int test__switch_tracking(struct test *t
        err = 0;
        goto out;

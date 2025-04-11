@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_bridge_loop_avoidance_batadv_bla_periodic_work.c.sanitized.c
-+++ /tmp/cocci-output-4098226-e4bc1a-1529689860_2018-06-22_6c1f0a1ffb7c_bridge_loop_avoidance_batadv_bla_periodic_work.c.sanitized.c
++++ /tmp/cocci-output-93044-207272-1529689860_2018-06-22_6c1f0a1ffb7c_bridge_loop_avoidance_batadv_bla_periodic_work.c.sanitized.c
 @@ -22,7 +22,7 @@ static void batadv_bla_periodic_work(str
    if (atomic_dec_and_test(&bat_priv->bla.loopdetect_next))
      {

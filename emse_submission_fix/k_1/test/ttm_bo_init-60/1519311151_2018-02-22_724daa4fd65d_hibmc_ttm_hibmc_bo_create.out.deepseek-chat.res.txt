@@ -48,7 +48,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_hibmc_ttm_hibmc_bo_create.c.sanitized.c
-+++ /tmp/cocci-output-4099763-8fc8df-1519311151_2018-02-22_724daa4fd65d_hibmc_ttm_hibmc_bo_create.c.sanitized.c
++++ /tmp/cocci-output-93938-f970bf-1519311151_2018-02-22_724daa4fd65d_hibmc_ttm_hibmc_bo_create.c.sanitized.c
 @@ -20,7 +20,9 @@ int hibmc_bo_create(struct drm_device *d
    hibmcbo->bo.bdev = &hibmc->bdev;
    hibmc_ttm_placement(hibmcbo, TTM_PL_FLAG_VRAM | TTM_PL_FLAG_SYSTEM);

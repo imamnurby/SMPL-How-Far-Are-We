@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_snid.c.sanitized.c
-+++ /tmp/cocci-output-4099371-c21747-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_snid.c.sanitized.c
++++ /tmp/cocci-output-93468-1e724b-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_snid.c.sanitized.c
 @@ -10,7 +10,8 @@ static int dasd_eckd_snid(struct dasd_de
    if (copy_from_user(&usrparm, argp, sizeof(usrparm)))
      return -EFAULT;

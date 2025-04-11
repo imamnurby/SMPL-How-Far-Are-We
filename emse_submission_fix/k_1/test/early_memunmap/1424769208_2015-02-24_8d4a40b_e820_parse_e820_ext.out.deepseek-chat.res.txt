@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1424769208_2015-02-24_8d4a40b_e820_parse_e820_ext.c.sanitized.c
-+++ /tmp/cocci-output-4099399-fa0712-1424769208_2015-02-24_8d4a40b_e820_parse_e820_ext.c.sanitized.c
++++ /tmp/cocci-output-93496-34c00d-1424769208_2015-02-24_8d4a40b_e820_parse_e820_ext.c.sanitized.c
 @@ -8,7 +8,7 @@ void __init parse_e820_ext(u64 phys_addr
    extmap = (struct e820entry *)(sdata->data);
    __append_e820_map(extmap, entries);

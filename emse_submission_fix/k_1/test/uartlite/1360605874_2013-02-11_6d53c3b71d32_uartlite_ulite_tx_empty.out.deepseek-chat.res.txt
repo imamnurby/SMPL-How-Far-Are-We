@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_tx_empty.c.sanitized.c
-+++ /tmp/cocci-output-4099805-70b6c3-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_tx_empty.c.sanitized.c
++++ /tmp/cocci-output-93980-536496-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_tx_empty.c.sanitized.c
 @@ -3,7 +3,7 @@ static unsigned int ulite_tx_empty(struc
    unsigned long flags;
    unsigned int ret;

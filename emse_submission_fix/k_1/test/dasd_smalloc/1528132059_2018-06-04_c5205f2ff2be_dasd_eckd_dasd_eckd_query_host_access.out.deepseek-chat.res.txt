@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_query_host_access.c.sanitized.c
-+++ /tmp/cocci-output-4099329-54f062-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_query_host_access.c.sanitized.c
++++ /tmp/cocci-output-93426-c3b047-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_query_host_access.c.sanitized.c
 @@ -12,7 +12,9 @@ static int dasd_eckd_query_host_access(s
  
    if (!(private->features.feature[14] & 0x80))

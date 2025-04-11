@@ -43,7 +43,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
-+++ /tmp/cocci-output-4099504-d2d6c5-1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
++++ /tmp/cocci-output-93601-183a2d-1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
 @@ -31,8 +31,8 @@ free_and_quit:
    xdbc_free_ring(&xdbc.evt_ring);
    xdbc_free_ring(&xdbc.out_ring);

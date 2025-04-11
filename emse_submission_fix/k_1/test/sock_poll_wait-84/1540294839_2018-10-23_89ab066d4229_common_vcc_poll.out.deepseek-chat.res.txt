@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
-+++ /tmp/cocci-output-4099680-84a075-1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
++++ /tmp/cocci-output-93861-1967ee-1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
 @@ -3,7 +3,7 @@ __poll_t vcc_poll(struct file *file, str
    struct sock *sk = sock->sk;
    struct atm_vcc *vcc;

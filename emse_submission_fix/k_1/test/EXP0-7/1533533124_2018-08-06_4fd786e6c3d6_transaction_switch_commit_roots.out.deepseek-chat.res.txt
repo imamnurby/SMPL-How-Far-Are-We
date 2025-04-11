@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
-+++ /tmp/cocci-output-4099239-a46824-1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
++++ /tmp/cocci-output-93342-b77a55-1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
 @@ -8,7 +8,7 @@ static noinline void switch_commit_roots
      list_del_init(&root->dirty_list);
      free_extent_buffer(root->commit_root);

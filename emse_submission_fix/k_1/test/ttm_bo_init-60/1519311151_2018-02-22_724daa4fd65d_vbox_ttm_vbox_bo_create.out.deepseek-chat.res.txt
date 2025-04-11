@@ -48,7 +48,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_vbox_ttm_vbox_bo_create.c.sanitized.c
-+++ /tmp/cocci-output-4099777-c084e8-1519311151_2018-02-22_724daa4fd65d_vbox_ttm_vbox_bo_create.c.sanitized.c
++++ /tmp/cocci-output-93952-fb53fc-1519311151_2018-02-22_724daa4fd65d_vbox_ttm_vbox_bo_create.c.sanitized.c
 @@ -13,7 +13,9 @@ int vbox_bo_create(struct drm_device *de
    vboxbo->bo.bdev = &vbox->ttm.bdev;
    vbox_ttm_placement(vboxbo, TTM_PL_FLAG_VRAM | TTM_PL_FLAG_SYSTEM);

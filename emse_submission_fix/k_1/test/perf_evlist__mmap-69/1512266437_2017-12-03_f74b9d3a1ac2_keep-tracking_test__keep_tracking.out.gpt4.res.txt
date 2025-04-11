@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
-+++ /tmp/cocci-output-4098177-29c8f7-1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
++++ /tmp/cocci-output-92995-1e2e32-1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
 @@ -35,7 +35,7 @@ int test__keep_tracking(struct test *tes
        err = TEST_SKIP;
        goto out_err;

@@ -41,7 +41,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_netcp_core_netcp_create_interface.c.sanitized.c
-+++ /tmp/cocci-output-4098288-fda333-1529689860_2018-06-22_6c1f0a1ffb7c_netcp_core_netcp_create_interface.c.sanitized.c
++++ /tmp/cocci-output-93103-441807-1529689860_2018-06-22_6c1f0a1ffb7c_netcp_core_netcp_create_interface.c.sanitized.c
 @@ -69,7 +69,7 @@ static int netcp_create_interface(struct
        if (is_valid_ether_addr(efuse_mac_addr))
          ether_addr_copy(ndev->dev_addr, efuse_mac_addr);

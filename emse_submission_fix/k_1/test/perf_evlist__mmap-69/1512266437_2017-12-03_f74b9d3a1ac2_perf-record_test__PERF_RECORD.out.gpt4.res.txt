@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_perf-record_test__PERF_RECORD.c.sanitized.c
-+++ /tmp/cocci-output-4098191-29bed5-1512266437_2017-12-03_f74b9d3a1ac2_perf-record_test__PERF_RECORD.c.sanitized.c
++++ /tmp/cocci-output-93009-a29ec8-1512266437_2017-12-03_f74b9d3a1ac2_perf-record_test__PERF_RECORD.c.sanitized.c
 @@ -77,7 +77,7 @@ int test__PERF_RECORD(struct test *test
        goto out_delete_evlist;
      }

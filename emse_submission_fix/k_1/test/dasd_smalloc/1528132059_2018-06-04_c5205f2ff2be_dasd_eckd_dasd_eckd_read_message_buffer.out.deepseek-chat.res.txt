@@ -42,7 +42,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
-+++ /tmp/cocci-output-4099350-1b75c6-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
++++ /tmp/cocci-output-93447-3d1e82-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_message_buffer.c.sanitized.c
 @@ -5,7 +5,9 @@ static int dasd_eckd_read_message_buffer
    struct dasd_ccw_req *cqr;
    struct ccw1 *ccw;

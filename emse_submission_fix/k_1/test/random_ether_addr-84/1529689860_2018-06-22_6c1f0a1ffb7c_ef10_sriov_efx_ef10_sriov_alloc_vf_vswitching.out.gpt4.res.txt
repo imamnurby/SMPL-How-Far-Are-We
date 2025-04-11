@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_ef10_sriov_efx_ef10_sriov_alloc_vf_vswitching.c.sanitized.c
-+++ /tmp/cocci-output-4098240-922275-1529689860_2018-06-22_6c1f0a1ffb7c_ef10_sriov_efx_ef10_sriov_alloc_vf_vswitching.c.sanitized.c
++++ /tmp/cocci-output-93058-7be1e2-1529689860_2018-06-22_6c1f0a1ffb7c_ef10_sriov_efx_ef10_sriov_alloc_vf_vswitching.c.sanitized.c
 @@ -8,7 +8,7 @@ static int efx_ef10_sriov_alloc_vf_vswit
      return -ENOMEM;
    for (i = 0; i < efx->vf_count; i++)
