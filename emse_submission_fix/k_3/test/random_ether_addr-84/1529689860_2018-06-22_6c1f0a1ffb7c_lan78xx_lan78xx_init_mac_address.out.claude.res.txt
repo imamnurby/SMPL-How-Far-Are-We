@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_lan78xx_lan78xx_init_mac_address.c.sanitized.c
-+++ /tmp/cocci-output-65104-a28f69-1529689860_2018-06-22_6c1f0a1ffb7c_lan78xx_lan78xx_init_mac_address.c.sanitized.c
++++ /tmp/cocci-output-76333-ac0169-1529689860_2018-06-22_6c1f0a1ffb7c_lan78xx_lan78xx_init_mac_address.c.sanitized.c
 @@ -26,7 +26,7 @@ static void lan78xx_init_mac_address(str
        else
          {

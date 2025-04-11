@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
-+++ /tmp/cocci-output-64712-cc72d0-1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
++++ /tmp/cocci-output-75950-73922e-1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
 @@ -5,11 +5,10 @@ int qla4xxx_get_chap(struct scsi_qla_hos
    uint32_t offset = 0, chap_size;
    struct ql4_chap_table *chap_table;

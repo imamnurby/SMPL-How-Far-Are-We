@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518860473_2018-02-17_6de84023d31b_bcm-flexrm-mailbox_flexrm_startup.c.sanitized.c
-+++ /tmp/cocci-output-64740-11dce3-1518860473_2018-02-17_6de84023d31b_bcm-flexrm-mailbox_flexrm_startup.c.sanitized.c
++++ /tmp/cocci-output-75981-fcf3bc-1518860473_2018-02-17_6de84023d31b_bcm-flexrm-mailbox_flexrm_startup.c.sanitized.c
 @@ -27,14 +27,14 @@ static int flexrm_startup(struct mbox_ch
        flexrm_write_desc(ring->bd_base + off, d);
      }

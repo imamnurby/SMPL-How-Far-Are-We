@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_hfsc_hfsc_change_class.c.sanitized.c
-+++ /tmp/cocci-output-65265-ae38d7-1507896057_2017-10-13_69d78ef25c7b_sch_hfsc_hfsc_change_class.c.sanitized.c
++++ /tmp/cocci-output-76503-edaec1-1507896057_2017-10-13_69d78ef25c7b_sch_hfsc_hfsc_change_class.c.sanitized.c
 @@ -95,7 +95,7 @@ static int hfsc_change_class(struct Qdis
    cl = kzalloc(sizeof(struct hfsc_class), GFP_KERNEL);
    if (cl == NULL)

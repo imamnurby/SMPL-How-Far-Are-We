@@ -54,7 +54,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_umem_init_battery_timer.c.sanitized.c
-+++ /tmp/cocci-output-64969-52faae-1508184939_2017-10-16_b9eaf1872222_umem_init_battery_timer.c.sanitized.c
++++ /tmp/cocci-output-76204-d05e65-1508184939_2017-10-16_b9eaf1872222_umem_init_battery_timer.c.sanitized.c
 @@ -1,7 +1,6 @@
  static void init_battery_timer(void)
  {

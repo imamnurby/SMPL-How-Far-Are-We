@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_qfq_qfq_init_qdisc.c.sanitized.c
-+++ /tmp/cocci-output-65321-d3fa23-1507896057_2017-10-13_69d78ef25c7b_sch_qfq_qfq_init_qdisc.c.sanitized.c
++++ /tmp/cocci-output-76562-1253db-1507896057_2017-10-13_69d78ef25c7b_sch_qfq_qfq_init_qdisc.c.sanitized.c
 @@ -4,7 +4,7 @@ static int qfq_init_qdisc(struct Qdisc *
    struct qfq_group *grp;
    int i, j, err;

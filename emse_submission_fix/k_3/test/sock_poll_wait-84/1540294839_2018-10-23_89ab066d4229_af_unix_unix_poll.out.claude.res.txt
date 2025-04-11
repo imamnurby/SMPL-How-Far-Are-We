@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
-+++ /tmp/cocci-output-65187-26c8e5-1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
++++ /tmp/cocci-output-76422-f6d26b-1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
 @@ -2,7 +2,7 @@ static __poll_t unix_poll(struct file *f
  {
    struct sock *sk = sock->sk;

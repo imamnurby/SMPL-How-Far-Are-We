@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518634820_2018-02-15_8d35a9dc4244_ql4_os_qla4xxx_delete_chap.c.sanitized.c
-+++ /tmp/cocci-output-64719-82b7c1-1518634820_2018-02-15_8d35a9dc4244_ql4_os_qla4xxx_delete_chap.c.sanitized.c
++++ /tmp/cocci-output-75958-8874c6-1518634820_2018-02-15_8d35a9dc4244_ql4_os_qla4xxx_delete_chap.c.sanitized.c
 @@ -7,10 +7,9 @@ static int qla4xxx_delete_chap(struct Sc
    uint32_t offset = 0;
    uint32_t chap_size;

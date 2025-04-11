@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_change_class.c.sanitized.c
-+++ /tmp/cocci-output-65349-ac05f0-1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_change_class.c.sanitized.c
++++ /tmp/cocci-output-76590-2d2267-1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_change_class.c.sanitized.c
 @@ -103,7 +103,7 @@ static int cbq_change_class(struct Qdisc
    cl = kzalloc(sizeof(*cl), GFP_KERNEL);
    if (cl == NULL)

@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
-+++ /tmp/cocci-output-65251-2cd351-1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
++++ /tmp/cocci-output-76486-9bb2ec-1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
 @@ -9,7 +9,7 @@ static int dsmark_init(struct Qdisc *sch
    pr_debug("%s(sch %p,[qdisc %p],opt %p)\n", __func__, sch, p, opt);
    if (!opt)

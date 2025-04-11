@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_socket_tipc_poll.c.sanitized.c
-+++ /tmp/cocci-output-65222-59159a-1540294839_2018-10-23_89ab066d4229_socket_tipc_poll.c.sanitized.c
++++ /tmp/cocci-output-76457-05a3eb-1540294839_2018-10-23_89ab066d4229_socket_tipc_poll.c.sanitized.c
 @@ -3,7 +3,7 @@ static __poll_t tipc_poll(struct file *f
    struct sock *sk = sock->sk;
    struct tipc_sock *tsk = tipc_sk(sk);

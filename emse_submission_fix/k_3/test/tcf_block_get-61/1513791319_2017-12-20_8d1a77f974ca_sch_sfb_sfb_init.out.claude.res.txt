@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_sfb_sfb_init.c.sanitized.c
-+++ /tmp/cocci-output-65419-9bbfef-1513791319_2017-12-20_8d1a77f974ca_sch_sfb_sfb_init.c.sanitized.c
++++ /tmp/cocci-output-76660-ea0cec-1513791319_2017-12-20_8d1a77f974ca_sch_sfb_sfb_init.c.sanitized.c
 @@ -2,7 +2,7 @@ static int sfb_init(struct Qdisc *sch, s
  {
    struct sfb_sched_data *q = qdisc_priv(sch);

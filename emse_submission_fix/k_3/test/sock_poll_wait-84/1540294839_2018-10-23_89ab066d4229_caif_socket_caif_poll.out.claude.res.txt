@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_caif_socket_caif_poll.c.sanitized.c
-+++ /tmp/cocci-output-65194-82dc6f-1540294839_2018-10-23_89ab066d4229_caif_socket_caif_poll.c.sanitized.c
++++ /tmp/cocci-output-76429-70d8f9-1540294839_2018-10-23_89ab066d4229_caif_socket_caif_poll.c.sanitized.c
 @@ -3,7 +3,7 @@ static __poll_t caif_poll(struct file *f
    struct sock *sk = sock->sk;
    __poll_t mask;

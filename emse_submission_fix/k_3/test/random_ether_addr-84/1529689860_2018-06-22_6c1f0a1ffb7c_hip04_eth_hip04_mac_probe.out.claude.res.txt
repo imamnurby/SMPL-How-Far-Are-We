@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_hip04_eth_hip04_mac_probe.c.sanitized.c
-+++ /tmp/cocci-output-65076-a3e459-1529689860_2018-06-22_6c1f0a1ffb7c_hip04_eth_hip04_mac_probe.c.sanitized.c
++++ /tmp/cocci-output-76305-57ef4c-1529689860_2018-06-22_6c1f0a1ffb7c_hip04_eth_hip04_mac_probe.c.sanitized.c
 @@ -82,7 +82,7 @@ static int hip04_mac_probe(struct platfo
    if (priv->phy_mode == PHY_INTERFACE_MODE_MII)
      hip04_config_port(ndev, SPEED_100, DUPLEX_FULL);

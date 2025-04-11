@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_fq_codel_fq_codel_init.c.sanitized.c
-+++ /tmp/cocci-output-65258-d9f0ba-1507896057_2017-10-13_69d78ef25c7b_sch_fq_codel_fq_codel_init.c.sanitized.c
++++ /tmp/cocci-output-76493-504062-1507896057_2017-10-13_69d78ef25c7b_sch_fq_codel_fq_codel_init.c.sanitized.c
 @@ -20,7 +20,7 @@ static int fq_codel_init(struct Qdisc *s
        if (err)
          return err;

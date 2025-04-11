@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_hfsc_hfsc_init_qdisc.c.sanitized.c
-+++ /tmp/cocci-output-65384-b949bb-1513791319_2017-12-20_8d1a77f974ca_sch_hfsc_hfsc_init_qdisc.c.sanitized.c
++++ /tmp/cocci-output-76625-ebe472-1513791319_2017-12-20_8d1a77f974ca_sch_hfsc_hfsc_init_qdisc.c.sanitized.c
 @@ -12,7 +12,7 @@ static int hfsc_init_qdisc(struct Qdisc
    if (err < 0)
      return err;

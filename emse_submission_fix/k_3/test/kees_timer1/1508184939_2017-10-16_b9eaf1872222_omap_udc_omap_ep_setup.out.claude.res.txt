@@ -61,7 +61,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
-+++ /tmp/cocci-output-64947-f4cd23-1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
++++ /tmp/cocci-output-76182-888535-1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
 @@ -64,9 +64,7 @@ static unsigned omap_ep_setup(char *name
          }
        if (dbuf && addr)

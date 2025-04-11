@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
-+++ /tmp/cocci-output-65159-2cef32-1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
++++ /tmp/cocci-output-76388-101433-1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
 @@ -4,7 +4,7 @@ __poll_t af_alg_poll(struct file *file,
    struct alg_sock *ask = alg_sk(sk);
    struct af_alg_ctx *ctx = ask->private;

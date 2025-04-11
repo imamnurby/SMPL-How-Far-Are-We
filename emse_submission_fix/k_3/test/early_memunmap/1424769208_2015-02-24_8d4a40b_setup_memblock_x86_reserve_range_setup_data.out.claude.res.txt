@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1424769208_2015-02-24_8d4a40b_setup_memblock_x86_reserve_range_setup_data.c.sanitized.c
-+++ /tmp/cocci-output-64782-329d14-1424769208_2015-02-24_8d4a40b_setup_memblock_x86_reserve_range_setup_data.c.sanitized.c
++++ /tmp/cocci-output-76023-1c28a0-1424769208_2015-02-24_8d4a40b_setup_memblock_x86_reserve_range_setup_data.c.sanitized.c
 @@ -8,6 +8,6 @@ static void __init memblock_x86_reserve_
        data = early_memremap(pa_data, sizeof(*data));
        memblock_reserve(pa_data, sizeof(*data) + data->len);

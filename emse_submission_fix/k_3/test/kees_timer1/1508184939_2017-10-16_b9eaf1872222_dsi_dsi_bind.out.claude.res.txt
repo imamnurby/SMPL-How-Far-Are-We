@@ -60,7 +60,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_dsi_dsi_bind.c.sanitized.c
-+++ /tmp/cocci-output-64903-9f5bba-1508184939_2017-10-16_b9eaf1872222_dsi_dsi_bind.c.sanitized.c
++++ /tmp/cocci-output-76144-435773-1508184939_2017-10-16_b9eaf1872222_dsi_dsi_bind.c.sanitized.c
 @@ -24,9 +24,7 @@ static int dsi_bind(struct device *dev,
    sema_init(&dsi->bus_lock, 1);
    INIT_DEFERRABLE_WORK(&dsi->framedone_timeout_work, dsi_framedone_timeout_work_callback);

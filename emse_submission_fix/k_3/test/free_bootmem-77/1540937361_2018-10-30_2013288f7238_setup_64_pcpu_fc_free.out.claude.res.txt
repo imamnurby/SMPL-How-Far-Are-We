@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_setup_64_pcpu_fc_free.c.sanitized.c
-+++ /tmp/cocci-output-64831-3ef9cd-1540937361_2018-10-30_2013288f7238_setup_64_pcpu_fc_free.c.sanitized.c
++++ /tmp/cocci-output-76072-531883-1540937361_2018-10-30_2013288f7238_setup_64_pcpu_fc_free.c.sanitized.c
 @@ -1 +1,2 @@
 -static void __init pcpu_fc_free(void *ptr, size_t size) { free_bootmem(__pa(ptr), size); }
 \ No newline at end of file

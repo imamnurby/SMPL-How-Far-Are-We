@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_ingress_ingress_init.c.sanitized.c
-+++ /tmp/cocci-output-65300-543f9a-1507896057_2017-10-13_69d78ef25c7b_sch_ingress_ingress_init.c.sanitized.c
++++ /tmp/cocci-output-76541-90dbf0-1507896057_2017-10-13_69d78ef25c7b_sch_ingress_ingress_init.c.sanitized.c
 @@ -3,7 +3,7 @@ static int ingress_init(struct Qdisc *sc
    struct ingress_sched_data *q = qdisc_priv(sch);
    struct net_device *dev = qdisc_dev(sch);

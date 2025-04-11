@@ -44,7 +44,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_free_meta.c.sanitized.c
-+++ /tmp/cocci-output-64614-58126c-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_free_meta.c.sanitized.c
++++ /tmp/cocci-output-75849-8bd0a6-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_free_meta.c.sanitized.c
 @@ -1,11 +1,11 @@
  void __btrfs_qgroup_free_meta(struct btrfs_root *root, int num_bytes, enum btrfs_qgroup_rsv_type type)
  {

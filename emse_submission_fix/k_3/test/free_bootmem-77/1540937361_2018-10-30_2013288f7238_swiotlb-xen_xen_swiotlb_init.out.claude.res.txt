@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_swiotlb-xen_xen_swiotlb_init.c.sanitized.c
-+++ /tmp/cocci-output-64859-c5c7c2-1540937361_2018-10-30_2013288f7238_swiotlb-xen_xen_swiotlb_init.c.sanitized.c
++++ /tmp/cocci-output-76100-4e6e5a-1540937361_2018-10-30_2013288f7238_swiotlb-xen_xen_swiotlb_init.c.sanitized.c
 @@ -40,7 +40,7 @@ retry:
    if (rc)
      {

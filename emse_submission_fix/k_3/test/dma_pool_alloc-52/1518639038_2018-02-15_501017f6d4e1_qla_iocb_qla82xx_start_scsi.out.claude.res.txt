@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
-+++ /tmp/cocci-output-64726-d23910-1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
++++ /tmp/cocci-output-75967-150953-1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
 @@ -123,7 +123,8 @@ int qla82xx_start_scsi(srb_t *sp)
            goto queuing_error;
          }

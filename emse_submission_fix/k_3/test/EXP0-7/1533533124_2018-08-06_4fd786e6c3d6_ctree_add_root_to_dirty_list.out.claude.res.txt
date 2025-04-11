@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
-+++ /tmp/cocci-output-64593-e8865e-1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
++++ /tmp/cocci-output-75828-ea4e66-1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
 @@ -7,7 +7,7 @@ static void add_root_to_dirty_list(struc
    if (!test_and_set_bit(BTRFS_ROOT_DIRTY, &root->state))
      {

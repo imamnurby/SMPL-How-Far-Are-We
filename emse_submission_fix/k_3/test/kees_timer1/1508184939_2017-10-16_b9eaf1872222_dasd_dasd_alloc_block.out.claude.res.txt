@@ -61,7 +61,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_block.c.sanitized.c
-+++ /tmp/cocci-output-64896-22c52d-1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_block.c.sanitized.c
++++ /tmp/cocci-output-76137-484d1e-1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_block.c.sanitized.c
 @@ -10,9 +10,7 @@ struct dasd_block *dasd_alloc_block(void
    tasklet_init(&block->tasklet, (void (*)(unsigned long))dasd_block_tasklet, (unsigned long)block);
    INIT_LIST_HEAD(&block->ccw_queue);

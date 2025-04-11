@@ -5,25 +5,50 @@ with isos from: /usr/bin/../lib/coccinelle/standard.iso
 -----------------------------------------------------------------------
 @@
 expression dev, bo, size, type, placement, page_align, interruptible;
-expression acc_size, sg, res_obj, destroy;
-expression ret;
+expression acc_size, sg, robj, destroy;
 @@
-(
-ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
--                 NULL, acc_size,
-+                 acc_size,
-                  sg, res_obj, destroy)
-|
-ret = ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible,
--                 NULL, acc_size,
-+                 acc_size,
-                  sg, res_obj, destroy);
-)
+ttm_bo_init(dev, bo, size, type, placement, page_align, interruptible, 
+-           NULL, acc_size, 
++           acc_size, 
+            sg, robj, destroy)
 
 
 
-minus: parse error: 
-  File "./ttm_bo_init-60/sp_out.final.claude.cocci", line 15, column 39, charpos = 496
-  around = ';',
-  whole content =                   sg, res_obj, destroy);
-
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 43
+               with rule_elem: ttm_bo_init(dev, bo, size, type, placement,
+                                           page_align, interruptible, -NULL-,
+                                           -acc_size-, 
+                                             <<< acc_size, 
+                                           sg, robj, destroy)
+               with binding: [rule starting on line 1.acc_size --> acc_size]
+     binding out = []
+     transform one node: 43
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
++++ /tmp/cocci-output-76702-dc8b53-1519311151_2018-02-22_724daa4fd65d_virtgpu_object_virtio_gpu_object_create.c.sanitized.c
+@@ -22,7 +22,8 @@ int virtio_gpu_object_create(struct virt
+     }
+   bo->dumb = false;
+   virtio_gpu_init_ttm_placement(bo, pinned);
+-  ret = ttm_bo_init(&vgdev->mman.bdev, &bo->tbo, size, type, &bo->placement, 0, !kernel, NULL, acc_size, NULL, NULL, &virtio_gpu_ttm_bo_destroy);
++  ret = ttm_bo_init(&vgdev->mman.bdev, &bo->tbo, size, type, &bo->placement, 0, !kernel,
++                    acc_size, NULL, NULL, &virtio_gpu_ttm_bo_destroy);
+ 
+   if (ret != 0)
+     return ret;
+Check duplication for 1 files

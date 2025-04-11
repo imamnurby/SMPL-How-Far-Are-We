@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529774878_2018-06-23_6d2b0f7b9c1e_ieee80211_softmac_ieee80211_start_ibss_wq.c.sanitized.c
-+++ /tmp/cocci-output-65132-e1494d-1529774878_2018-06-23_6d2b0f7b9c1e_ieee80211_softmac_ieee80211_start_ibss_wq.c.sanitized.c
++++ /tmp/cocci-output-76361-cc9b93-1529774878_2018-06-23_6d2b0f7b9c1e_ieee80211_softmac_ieee80211_start_ibss_wq.c.sanitized.c
 @@ -28,7 +28,7 @@ static void ieee80211_start_ibss_wq(stru
      {
        printk("creating new IBSS cell\n");

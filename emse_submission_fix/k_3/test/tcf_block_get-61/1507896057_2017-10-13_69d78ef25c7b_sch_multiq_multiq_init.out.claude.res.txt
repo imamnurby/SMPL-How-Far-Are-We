@@ -58,7 +58,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_multiq_multiq_init.c.sanitized.c
-+++ /tmp/cocci-output-65307-0920a6-1507896057_2017-10-13_69d78ef25c7b_sch_multiq_multiq_init.c.sanitized.c
++++ /tmp/cocci-output-76548-c697f0-1507896057_2017-10-13_69d78ef25c7b_sch_multiq_multiq_init.c.sanitized.c
 @@ -5,7 +5,7 @@ static int multiq_init(struct Qdisc *sch
    q->queues = NULL;
    if (opt == NULL)

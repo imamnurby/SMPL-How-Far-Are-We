@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_smc_smc_poll.c.sanitized.c
-+++ /tmp/cocci-output-65173-ccd379-1540294839_2018-10-23_89ab066d4229_af_smc_smc_poll.c.sanitized.c
++++ /tmp/cocci-output-76405-8fac9a-1540294839_2018-10-23_89ab066d4229_af_smc_smc_poll.c.sanitized.c
 @@ -17,7 +17,7 @@ static __poll_t smc_poll(struct file *fi
    else
      {

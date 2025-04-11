@@ -54,7 +54,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_clocksource_clocksource_start_watchdog.c.sanitized.c
-+++ /tmp/cocci-output-64886-908a59-1508184939_2017-10-16_b9eaf1872222_clocksource_clocksource_start_watchdog.c.sanitized.c
++++ /tmp/cocci-output-76127-5ab59a-1508184939_2017-10-16_b9eaf1872222_clocksource_clocksource_start_watchdog.c.sanitized.c
 @@ -2,8 +2,7 @@ static inline void clocksource_start_wat
  {
    if (watchdog_running || !watchdog || list_empty(&watchdog_list))

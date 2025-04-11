@@ -36,7 +36,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
-+++ /tmp/cocci-output-65439-99f5e8-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
++++ /tmp/cocci-output-76716-c60585-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
 @@ -1 +1,2 @@
 -static void ulite_start_tx(struct uart_port *port) { ulite_transmit(port, ioread32be(port->membase + ULITE_STATUS)); }
 \ No newline at end of file

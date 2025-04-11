@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_reserve_meta.c.sanitized.c
-+++ /tmp/cocci-output-64621-82d236-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_reserve_meta.c.sanitized.c
++++ /tmp/cocci-output-75856-e9a08f-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_reserve_meta.c.sanitized.c
 @@ -2,7 +2,7 @@ int __btrfs_qgroup_reserve_meta(struct b
  {
    struct btrfs_fs_info *fs_info = root->fs_info;

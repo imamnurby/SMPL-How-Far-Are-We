@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518711906_2018-02-15_61b142afb2e2_megaraid_sas_base_megasas_create_frame_pool.c.sanitized.c
-+++ /tmp/cocci-output-64733-7b8b05-1518711906_2018-02-15_61b142afb2e2_megaraid_sas_base_megasas_create_frame_pool.c.sanitized.c
++++ /tmp/cocci-output-75974-aedbbe-1518711906_2018-02-15_61b142afb2e2_megaraid_sas_base_megasas_create_frame_pool.c.sanitized.c
 @@ -32,7 +32,8 @@ static int megasas_create_frame_pool(str
    for (i = 0; i < max_cmd; i++)
      {

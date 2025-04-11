@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529735368_2018-06-22_8e5c88bfbb8c_board_ath25_find_config.c.sanitized.c
-+++ /tmp/cocci-output-65125-53cc19-1529735368_2018-06-22_8e5c88bfbb8c_board_ath25_find_config.c.sanitized.c
++++ /tmp/cocci-output-76354-d321b1-1529735368_2018-06-22_8e5c88bfbb8c_board_ath25_find_config.c.sanitized.c
 @@ -40,10 +40,10 @@ int __init ath25_find_config(phys_addr_t
            pr_info("Fixing up empty mac addresses\n");
            config->reset_config_gpio = 0xffff;

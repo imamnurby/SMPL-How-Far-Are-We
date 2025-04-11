@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
-+++ /tmp/cocci-output-65356-0cea50-1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
++++ /tmp/cocci-output-76597-a8b854-1513791319_2017-12-20_8d1a77f974ca_sch_cbq_cbq_init.c.sanitized.c
 @@ -18,7 +18,7 @@ static int cbq_init(struct Qdisc *sch, s
    q->link.R_tab = qdisc_get_rtab(r, tb[TCA_CBQ_RTAB], extack);
    if (!q->link.R_tab)

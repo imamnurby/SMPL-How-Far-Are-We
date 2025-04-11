@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
-+++ /tmp/cocci-output-65342-541c82-1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
++++ /tmp/cocci-output-76583-e713ff-1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
 @@ -10,7 +10,7 @@ static int atm_tc_init(struct Qdisc *sch
    if (!p->link.q)
      p->link.q = &noop_qdisc;

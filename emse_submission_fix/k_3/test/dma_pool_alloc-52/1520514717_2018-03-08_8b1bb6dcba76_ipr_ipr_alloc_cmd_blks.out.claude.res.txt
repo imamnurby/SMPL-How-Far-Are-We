@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
-+++ /tmp/cocci-output-64747-0c07a1-1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
++++ /tmp/cocci-output-75988-54f857-1520514717_2018-03-08_8b1bb6dcba76_ipr_ipr_alloc_cmd_blks.c.sanitized.c
 @@ -48,13 +48,12 @@ static int ipr_alloc_cmd_blks(struct ipr
      }
    for (i = 0; i < IPR_NUM_CMD_BLKS; i++)

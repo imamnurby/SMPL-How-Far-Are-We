@@ -35,7 +35,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_lan743x_main_lan743x_mac_init.c.sanitized.c
-+++ /tmp/cocci-output-65097-f26c1d-1529689860_2018-06-22_6c1f0a1ffb7c_lan743x_main_lan743x_mac_init.c.sanitized.c
++++ /tmp/cocci-output-76326-665c40-1529689860_2018-06-22_6c1f0a1ffb7c_lan743x_main_lan743x_mac_init.c.sanitized.c
 @@ -33,7 +33,7 @@ static int lan743x_mac_init(struct lan74
        mac_address_valid = false;
      }
