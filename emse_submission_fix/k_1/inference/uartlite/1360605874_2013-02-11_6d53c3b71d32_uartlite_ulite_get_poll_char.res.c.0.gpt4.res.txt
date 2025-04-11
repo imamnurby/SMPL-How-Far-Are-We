@@ -1,1 +1,0 @@
-ERROR: File ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_get_poll_char.res.c.c.sanitized.c does not exist: No such file or directory
