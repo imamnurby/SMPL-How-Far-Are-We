@@ -31,8 +31,8 @@ free_and_quit:
   xdbc_free_ring(&xdbc.evt_ring);
   xdbc_free_ring(&xdbc.out_ring);
   xdbc_free_ring(&xdbc.in_ring);
-  free_bootmem(xdbc.table_dma, PAGE_SIZE);
-  free_bootmem(xdbc.out_dma, PAGE_SIZE);
+  memblock_free(xdbc.table_dma, PAGE_SIZE);
+  memblock_free(xdbc.out_dma, PAGE_SIZE);
   writel(0, &xdbc.xdbc_reg->control);
   early_iounmap(xdbc.xhci_base, xdbc.xhci_length);
   return ret;

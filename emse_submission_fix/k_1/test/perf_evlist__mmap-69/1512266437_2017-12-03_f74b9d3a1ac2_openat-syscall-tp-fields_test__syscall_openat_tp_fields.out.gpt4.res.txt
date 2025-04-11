@@ -38,7 +38,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_openat-syscall-tp-fields_test__syscall_openat_tp_fields.c.sanitized.c
-+++ /tmp/cocci-output-4098184-a0dfe7-1512266437_2017-12-03_f74b9d3a1ac2_openat-syscall-tp-fields_test__syscall_openat_tp_fields.c.sanitized.c
++++ /tmp/cocci-output-93002-7dbe07-1512266437_2017-12-03_f74b9d3a1ac2_openat-syscall-tp-fields_test__syscall_openat_tp_fields.c.sanitized.c
 @@ -43,7 +43,7 @@ int test__syscall_openat_tp_fields(struc
        pr_debug("perf_evlist__open: %s\n", str_error_r(errno, sbuf, sizeof(sbuf)));
        goto out_delete_evlist;

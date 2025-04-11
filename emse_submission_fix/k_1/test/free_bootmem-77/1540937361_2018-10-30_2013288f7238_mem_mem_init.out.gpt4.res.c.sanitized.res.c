@@ -5,7 +5,7 @@ void __init mem_init(void)
 
   brk_end = (unsigned long)UML_ROUND_UP(sbrk(0));
   map_memory(brk_end, __pa(brk_end), uml_reserved - brk_end, 1, 1, 0);
-  free_bootmem(__pa(brk_end), uml_reserved - brk_end);
+  memblock_free(__pa(brk_end), uml_reserved - brk_end);
   uml_reserved = brk_end;
 
   free_all_bootmem();

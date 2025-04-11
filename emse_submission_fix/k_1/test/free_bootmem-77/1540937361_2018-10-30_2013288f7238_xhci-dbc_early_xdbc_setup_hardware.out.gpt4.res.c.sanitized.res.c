@@ -13,9 +13,9 @@ int __init early_xdbc_setup_hardware(void)
       xdbc_free_ring(&xdbc.out_ring);
       xdbc_free_ring(&xdbc.in_ring);
       if (xdbc.table_dma)
-        free_bootmem(xdbc.table_dma, PAGE_SIZE);
+        memblock_free(xdbc.table_dma, PAGE_SIZE);
       if (xdbc.out_dma)
-        free_bootmem(xdbc.out_dma, PAGE_SIZE);
+        memblock_free(xdbc.out_dma, PAGE_SIZE);
       xdbc.table_base = NULL;
       xdbc.out_buf = NULL;
     }

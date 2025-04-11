@@ -40,7 +40,7 @@ retry:
   if (rc)
     {
       if (early)
-        free_bootmem(__pa(xen_io_tlb_start), PAGE_ALIGN(bytes));
+        memblock_free(__pa(xen_io_tlb_start), PAGE_ALIGN(bytes));
       else
         {
           free_pages((unsigned long)xen_io_tlb_start, order);

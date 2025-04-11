@@ -37,7 +37,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
-+++ /tmp/cocci-output-4099582-821ce7-1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
++++ /tmp/cocci-output-93679-901444-1512266437_2017-12-03_f74b9d3a1ac2_perf-time-to-tsc_test__perf_time_to_tsc.c.sanitized.c
 @@ -35,7 +35,7 @@ int test__perf_time_to_tsc(struct test *
    evsel->attr.disabled = 1;
    evsel->attr.enable_on_exec = 0;
