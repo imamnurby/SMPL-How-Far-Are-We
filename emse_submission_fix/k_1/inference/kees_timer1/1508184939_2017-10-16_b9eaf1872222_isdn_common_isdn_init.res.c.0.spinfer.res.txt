@@ -93,7 +93,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_isdn_common_isdn_init.c.sanitized.c
-+++ /tmp/cocci-output-4043263-08d44e-1508184939_2017-10-16_b9eaf1872222_isdn_common_isdn_init.c.sanitized.c
++++ /tmp/cocci-output-4075670-9827fc-1508184939_2017-10-16_b9eaf1872222_isdn_common_isdn_init.c.sanitized.c
 @@ -8,8 +8,7 @@ static int __init isdn_init(void)
        printk(KERN_WARNING "isdn: Could not allocate device-struct.\n");
        return -EIO;

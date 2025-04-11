@@ -99,7 +99,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_device.c.sanitized.c
-+++ /tmp/cocci-output-4043234-4bb09a-1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_device.c.sanitized.c
++++ /tmp/cocci-output-4075656-8db5f1-1508184939_2017-10-16_b9eaf1872222_dasd_dasd_alloc_device.c.sanitized.c
 @@ -25,9 +25,7 @@ struct dasd_device *dasd_alloc_device(vo
    atomic_set(&device->tasklet_scheduled, 0);
    tasklet_init(&device->tasklet, (void (*)(unsigned long))dasd_device_tasklet, (unsigned long)device);

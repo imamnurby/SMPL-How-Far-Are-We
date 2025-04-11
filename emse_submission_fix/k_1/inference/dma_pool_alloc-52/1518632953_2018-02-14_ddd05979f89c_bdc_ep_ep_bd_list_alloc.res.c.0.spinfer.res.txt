@@ -60,7 +60,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
-+++ /tmp/cocci-output-4043192-cdb18c-1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
++++ /tmp/cocci-output-4075635-48172e-1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
 @@ -23,7 +23,8 @@ static int ep_bd_list_alloc(struct bdc_e
        bd_table = kzalloc(sizeof(struct bd_table), GFP_ATOMIC);
        if (!bd_table)

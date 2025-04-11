@@ -99,7 +99,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_fas216_fas216_init.c.sanitized.c
-+++ /tmp/cocci-output-4043248-773cc6-1508184939_2017-10-16_b9eaf1872222_fas216_fas216_init.c.sanitized.c
++++ /tmp/cocci-output-4075663-b0addd-1508184939_2017-10-16_b9eaf1872222_fas216_fas216_init.c.sanitized.c
 @@ -11,9 +11,7 @@ int fas216_init(struct Scsi_Host *host)
    info->rst_dev_status = -1;
    info->rst_bus_status = -1;

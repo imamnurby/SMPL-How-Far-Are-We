@@ -47,7 +47,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./random_ether_addr-84/1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.c.sanitized.c
-+++ /tmp/cocci-output-4043291-1f55eb-1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.c.sanitized.c
++++ /tmp/cocci-output-4075684-b64ac0-1529689860_2018-06-22_6c1f0a1ffb7c_gemini_gemini_ethernet_port_probe.c.sanitized.c
 @@ -106,7 +106,7 @@ static int gemini_ethernet_port_probe(st
      {
        dev_dbg(dev, "ethernet address 0x%08x%08x%08x invalid\n", port->mac_addr[0], port->mac_addr[1], port->mac_addr[2]);

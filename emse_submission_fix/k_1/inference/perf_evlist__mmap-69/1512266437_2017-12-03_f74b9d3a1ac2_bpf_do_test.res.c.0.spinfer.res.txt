@@ -52,7 +52,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_bpf_do_test.c.sanitized.c
-+++ /tmp/cocci-output-4043277-5c6cc5-1512266437_2017-12-03_f74b9d3a1ac2_bpf_do_test.c.sanitized.c
++++ /tmp/cocci-output-4075677-2d8829-1512266437_2017-12-03_f74b9d3a1ac2_bpf_do_test.c.sanitized.c
 @@ -51,7 +51,7 @@ static int do_test(struct bpf_object *ob
        pr_debug("perf_evlist__open: %s\n", str_error_r(errno, sbuf, sizeof(sbuf)));
        goto out_delete_evlist;

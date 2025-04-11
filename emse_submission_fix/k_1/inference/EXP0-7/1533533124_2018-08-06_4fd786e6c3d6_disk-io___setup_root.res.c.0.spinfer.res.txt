@@ -63,7 +63,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
-+++ /tmp/cocci-output-4043136-6706a5-1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
++++ /tmp/cocci-output-4075607-11d15b-1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
 @@ -5,7 +5,7 @@ static void __setup_root(struct btrfs_ro
    root->commit_root = NULL;
    root->state = 0;

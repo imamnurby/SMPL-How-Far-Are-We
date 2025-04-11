@@ -49,7 +49,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./early_memunmap/1424769208_2015-02-24_8d4a40bc0651_setup_relocate_initrd.c.sanitized.c
-+++ /tmp/cocci-output-4043206-c9619a-1424769208_2015-02-24_8d4a40bc0651_setup_relocate_initrd.c.sanitized.c
++++ /tmp/cocci-output-4075642-332f5b-1424769208_2015-02-24_8d4a40bc0651_setup_relocate_initrd.c.sanitized.c
 @@ -26,7 +26,7 @@ static void __init relocate_initrd(void)
        mapaddr = ramdisk_image & PAGE_MASK;
        p = early_memremap(mapaddr, clen + slop);

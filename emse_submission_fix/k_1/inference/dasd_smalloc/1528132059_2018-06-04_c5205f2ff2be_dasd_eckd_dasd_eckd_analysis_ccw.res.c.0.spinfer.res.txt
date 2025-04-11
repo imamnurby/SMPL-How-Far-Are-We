@@ -59,7 +59,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
-+++ /tmp/cocci-output-4043178-676eb4-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
++++ /tmp/cocci-output-4075628-27eb4c-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
 @@ -9,7 +9,8 @@ static struct dasd_ccw_req *dasd_eckd_an
    int i;
    cplength = 8;

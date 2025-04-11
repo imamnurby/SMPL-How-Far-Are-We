@@ -70,7 +70,7 @@ Finished
 -----------------------------------------------------------------------
 diff = 
 --- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
-+++ /tmp/cocci-output-4043150-d80c83-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
++++ /tmp/cocci-output-4075614-5a5781-1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.c.sanitized.c
 @@ -15,7 +15,9 @@ static int __btrfs_qgroup_release_data(s
      trace_op = QGROUP_FREE;
    trace_btrfs_qgroup_release_data(inode, start, len, changeset.bytes_changed, trace_op);
