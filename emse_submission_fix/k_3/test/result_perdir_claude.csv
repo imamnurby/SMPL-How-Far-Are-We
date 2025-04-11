@@ -11,5 +11,5 @@ snd_soc,0.0,0.0,0.0
 sock_poll_wait-84,1.0,1.0,1.0
 tcaction,0.0,0.0,0.0
 tcf_block_get-61,1.0,0.74,0.74
-ttm_bo_init-60,0.0,0.0,0.0
+ttm_bo_init-60,1.0,1.0,1.0
 uartlite,1.0,1.0,1.0
