@@ -1,0 +1,24 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags, dma;
+identifier table;
+expression size;
+@@
+- table->start_bd = dma_pool_alloc(pool, flags, dma);
++ table->start_bd = dma_pool_zalloc(pool, flags, dma);
+  if (!table->start_bd)
+    {
+      ...
+    }
+- memset(table->start_bd, 0, size);
+
+
+
+(ONCE) Expected tokens start_bd memset dma_pool_alloc
+Skipping: ./dma_pool_alloc-52/1518639038_2018-02-15_501017f6d4e1_qla_iocb_qla82xx_start_scsi.c.sanitized.c
+Check duplication for 0 files
+-o can not be applied because there are no modified files

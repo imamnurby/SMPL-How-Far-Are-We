@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+@@
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock, wait)
+
+
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(file, sock, wait)
+                               -(-file-, -wait-)
+               with binding: [rule starting on line 1.wait --> wait;
+                             rule starting on line 1.file --> file]
+     binding out = []
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
++++ /tmp/cocci-output-4099680-84a075-1540294839_2018-10-23_89ab066d4229_common_vcc_poll.c.sanitized.c
+@@ -3,7 +3,7 @@ __poll_t vcc_poll(struct file *file, str
+   struct sock *sk = sock->sk;
+   struct atm_vcc *vcc;
+   __poll_t mask;
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   mask = 0;
+   vcc = ATM_SD(sock);
+ 
+Check duplication for 1 files

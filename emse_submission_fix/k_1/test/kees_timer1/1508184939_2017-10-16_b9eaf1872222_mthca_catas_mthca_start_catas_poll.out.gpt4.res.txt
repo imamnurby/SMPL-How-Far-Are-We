@@ -1,0 +1,30 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer_variable, function_name, data_expression;
+@@
+- init_timer(&timer_variable);
+- timer_variable.function = function_name;
+- timer_variable.data = data_expression;
++ setup_timer(&timer_variable, function_name, data_expression);
+
+
+
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_mthca_catas_mthca_start_catas_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

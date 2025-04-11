@@ -1,0 +1,48 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ 
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 17
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+     binding out = []
+     transform one node: 17
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
++++ /tmp/cocci-output-4098530-0dbe26-1533533124_2018-08-06_4fd786e6c3d6_transaction_switch_commit_roots.c.sanitized.c
+@@ -8,7 +8,7 @@ static noinline void switch_commit_roots
+     list_del_init(&root->dirty_list);
+     free_extent_buffer(root->commit_root);
+     root->commit_root = btrfs_root_node(root);
+-    if (is_fstree(root->objectid))
++    if (is_fstree(root->root_key.objectid))
+       btrfs_unpin_free_ino(root);
+     clear_btree_io_tree(&root->dirty_log_pages);
+   }
+Check duplication for 1 files

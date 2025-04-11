@@ -1,0 +1,66 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer_variable, function_name, data_expression;
+@@
+- init_timer(&timer_variable);
+- timer_variable.function = function_name;
+- timer_variable.data = data_expression;
++ setup_timer(&timer_variable, function_name, data_expression);
+
+
+
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 109
+               with rule_elem: -init_timer-(-&-timer_variable-)-;
+               with binding: [rule starting on line 1.timer_variable --> ep->timer]
+          transform state: 110
+               with rule_elem: -timer_variable-.-function -= -function_name-;
+               with binding: [rule starting on line 1.function_name --> pio_out_timer;
+                             rule starting on line 1.timer_variable --> ep->timer]
+          transform state: 111
+               with rule_elem: -timer_variable
+                                 >>> setup_timer(&timer_variable,
+                                                 function_name,
+                                                 data_expression);
+                               -.-data -= -data_expression-;
+               with binding: [rule starting on line 1.data_expression --> (unsigned
+                             long)ep;
+                             rule starting on line 1.function_name --> pio_out_timer;
+                             rule starting on line 1.timer_variable --> ep->timer]
+     binding out = []
+     transform one node: 111
+     transform one node: 110
+     transform one node: 109
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
++++ /tmp/cocci-output-4098126-4f39cf-1508184939_2017-10-16_b9eaf1872222_omap_udc_omap_ep_setup.c.sanitized.c
+@@ -64,9 +64,7 @@ static unsigned omap_ep_setup(char *name
+         }
+       if (dbuf && addr)
+         epn_rxtx |= UDC_EPN_RX_DB;
+-      init_timer(&ep->timer);
+-      ep->timer.function = pio_out_timer;
+-      ep->timer.data = (unsigned long)ep;
++      setup_timer(&ep->timer, pio_out_timer, (unsigned long)ep);
+     }
+   if (addr)
+     epn_rxtx |= UDC_EPN_RX_VALID;
+Check duplication for 1 files

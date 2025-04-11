@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2;
+@@
+- free_bootmem(E1, E2)
++ memblock_free(E1, E2)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 12
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(E1, E2)
+                               -(-E1-, -E2-)
+               with binding: [rule starting on line 1.E2 --> PAGE_SIZE;
+                             rule starting on line 1.E1 --> (unsigned long)p]
+     binding out = []
+     transform one node: 12
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
++++ /tmp/cocci-output-4098670-bc4962-1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
+@@ -2,7 +2,7 @@ static void __ref free_p2m_page(void *p)
+ {
+   if (unlikely(!slab_is_available()))
+     {
+-      free_bootmem((unsigned long)p, PAGE_SIZE);
++      memblock_free((unsigned long)p, PAGE_SIZE);
+       return;
+     }
+   free_page((unsigned long)p);
+Check duplication for 1 files

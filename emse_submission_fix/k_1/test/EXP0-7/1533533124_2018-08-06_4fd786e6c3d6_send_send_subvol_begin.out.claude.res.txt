@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ 
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_send_send_subvol_begin.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 37
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> send_root]
+          transform state: 59
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> send_root]
+     binding out = []
+     transform one node: 59
+     transform one node: 37
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_send_send_subvol_begin.c.sanitized.c
++++ /tmp/cocci-output-4098516-bf7ed3-1533533124_2018-08-06_4fd786e6c3d6_send_send_subvol_begin.c.sanitized.c
+@@ -18,7 +18,7 @@ static int send_subvol_begin(struct send
+       btrfs_free_path(path);
+       return -ENOMEM;
+     }
+-  key.objectid = send_root->objectid;
++  key.objectid = send_root->root_key.objectid;
+   key.type = BTRFS_ROOT_BACKREF_KEY;
+   key.offset = 0;
+   ret = btrfs_search_slot_for_read(send_root->fs_info->tree_root, &key, path, 1, 0);
+@@ -31,7 +31,7 @@ static int send_subvol_begin(struct send
+     }
+   leaf = path->nodes[0];
+   btrfs_item_key_to_cpu(leaf, &key, path->slots[0]);
+-  if (key.type != BTRFS_ROOT_BACKREF_KEY || key.objectid != send_root->objectid)
++  if (key.type != BTRFS_ROOT_BACKREF_KEY || key.objectid != send_root->root_key.objectid)
+     {
+       ret = -ENOENT;
+       goto out;
+Check duplication for 1 files

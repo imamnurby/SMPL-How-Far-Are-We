@@ -1,0 +1,59 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier root;
+@@
+- root->objectid
++ root->root_key.objectid
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_convert_reserved_meta.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 7
+               with rule_elem: -root
+                                 >>> root->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root --> id root]
+          transform state: 16
+               with rule_elem: -root
+                                 >>> root->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root --> id root]
+     binding out = []
+     transform one node: 16
+     transform one node: 7
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_convert_reserved_meta.c.sanitized.c
++++ /tmp/cocci-output-4097769-6a0ab0-1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_convert_reserved_meta.c.sanitized.c
+@@ -1,10 +1,10 @@
+ void btrfs_qgroup_convert_reserved_meta(struct btrfs_root *root, int num_bytes)
+ {
+   struct btrfs_fs_info *fs_info = root->fs_info;
+-  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &fs_info->flags) || !is_fstree(root->objectid))
++  if (!test_bit(BTRFS_FS_QUOTA_ENABLED, &fs_info->flags) || !is_fstree(root->root_key.objectid))
+     return;
+ 
+   num_bytes = sub_root_meta_rsv(root, num_bytes, BTRFS_QGROUP_RSV_META_PREALLOC);
+   trace_qgroup_meta_convert(root, num_bytes);
+-  qgroup_convert_meta(fs_info, root->objectid, num_bytes);
++  qgroup_convert_meta(fs_info, root->root_key.objectid, num_bytes);
+ }
+\ No newline at end of file
+Check duplication for 1 files

@@ -1,0 +1,53 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier mmap_func = perf_evlist__mmap;
+expression evlist, pages, extra_arg;
+@@
+- mmap_func(evlist, pages, extra_arg)
++ mmap_func(evlist, pages)
+
+
+
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+FLOW: deadcode detected: File "./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c", line 184
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 238
+               with rule_elem: -mmap_func
+                                 >>> mmap_func(evlist, pages)
+                               -(-evlist-, -pages-, -extra_arg-)
+               with binding: [rule starting on line 1.pages --> trace->opts.mmap_pages;
+                             rule starting on line 1.evlist --> evlist;
+                             rule starting on line 1.mmap_func --> id perf_evlist__mmap]
+     binding out = []
+     transform one node: 238
+FLOW: deadcode detected: File "/tmp/cocci_small_output-4098170-903180-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c", line 184
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
++++ /tmp/cocci-output-4098170-e24a96-1512266437_2017-12-03_f74b9d3a1ac2_builtin-trace_trace__run.c.sanitized.c
+@@ -104,7 +104,7 @@ static int trace__run(struct trace *trac
+   err = perf_evlist__apply_filters(evlist, &evsel);
+   if (err < 0)
+     goto out_error_apply_filters;
+-  err = perf_evlist__mmap(evlist, trace->opts.mmap_pages, false);
++  err = perf_evlist__mmap(evlist, trace->opts.mmap_pages);
+   if (err < 0)
+     goto out_error_mmap;
+   if (!target__none(&trace->opts.target) && !trace->opts.initial_delay)
+Check duplication for 1 files

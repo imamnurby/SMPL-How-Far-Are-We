@@ -1,0 +1,51 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier mmap_func = perf_evlist__mmap;
+expression evlist, pages, extra_arg;
+@@
+- mmap_func(evlist, pages, extra_arg)
++ mmap_func(evlist, pages)
+
+
+
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 39
+               with rule_elem: -mmap_func
+                                 >>> mmap_func(evlist, pages)
+                               -(-evlist-, -pages-, -extra_arg-)
+               with binding: [rule starting on line 1.pages --> UINT_MAX;
+                             rule starting on line 1.evlist --> evlist;
+                             rule starting on line 1.mmap_func --> id perf_evlist__mmap]
+     binding out = []
+     transform one node: 39
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
++++ /tmp/cocci-output-4098177-29c8f7-1512266437_2017-12-03_f74b9d3a1ac2_keep-tracking_test__keep_tracking.c.sanitized.c
+@@ -35,7 +35,7 @@ int test__keep_tracking(struct test *tes
+       err = TEST_SKIP;
+       goto out_err;
+     }
+-  CHECK__(perf_evlist__mmap(evlist, UINT_MAX, false));
++  CHECK__(perf_evlist__mmap(evlist, UINT_MAX));
+ 
+   perf_evlist__enable(evlist);
+   comm = "Test COMM 1";
+Check duplication for 1 files

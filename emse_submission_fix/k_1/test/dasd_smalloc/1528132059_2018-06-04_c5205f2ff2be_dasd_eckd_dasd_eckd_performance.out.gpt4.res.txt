@@ -1,0 +1,59 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier dasd_smalloc_request;
+identifier device;
+expression type, count, size;
+@@
+- dasd_smalloc_request(type, count, size, device)
++ dasd_smalloc_request(type, count, size, device, NULL)
+
+
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_performance.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 11
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(type, count, size,
+                                                          device, NULL)
+                               -(-type-, -count-, -size-, -device-)
+               with binding: [rule starting on line 1.device --> id device;
+                             rule starting on line 1.size --> (sizeof(struct
+                             dasd_psf_prssd_data) + sizeof(struct
+                             dasd_rssd_perf_stats_t));
+                             rule starting on line 1.count --> 1 + 1;
+                             rule starting on line 1.type --> DASD_ECKD_MAGIC;
+                             rule starting on line 1.dasd_smalloc_request --> id dasd_smalloc_request]
+     binding out = []
+     transform one node: 11
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_performance.c.sanitized.c
++++ /tmp/cocci-output-4097897-0f1d31-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_performance.c.sanitized.c
+@@ -5,7 +5,9 @@ static int dasd_eckd_performance(struct
+   struct dasd_ccw_req *cqr;
+   struct ccw1 *ccw;
+   int rc;
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1 + 1, (sizeof(struct dasd_psf_prssd_data) + sizeof(struct dasd_rssd_perf_stats_t)), device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1 + 1,
++                             (sizeof(struct dasd_psf_prssd_data) + sizeof(struct dasd_rssd_perf_stats_t)),
++                             device, NULL);
+   if (IS_ERR(cqr))
+     {
+       DBF_DEV_EVENT(DBF_WARNING, device, "%s", "Could not allocate initialization request");
+Check duplication for 1 files

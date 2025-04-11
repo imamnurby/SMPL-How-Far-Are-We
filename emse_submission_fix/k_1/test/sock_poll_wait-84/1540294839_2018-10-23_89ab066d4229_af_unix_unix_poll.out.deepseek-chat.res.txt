@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+@@
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock, wait)
+
+
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 8
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(file, sock, wait)
+                               -(-file-, -wait-)
+               with binding: [rule starting on line 1.wait --> wait;
+                             rule starting on line 1.file --> file]
+     binding out = []
+     transform one node: 8
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
++++ /tmp/cocci-output-4099666-e3f0ef-1540294839_2018-10-23_89ab066d4229_af_unix_unix_poll.c.sanitized.c
+@@ -2,7 +2,7 @@ static __poll_t unix_poll(struct file *f
+ {
+   struct sock *sk = sock->sk;
+   __poll_t mask;
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   mask = 0;
+ 
+   if (sk->sk_err)
+Check duplication for 1 files

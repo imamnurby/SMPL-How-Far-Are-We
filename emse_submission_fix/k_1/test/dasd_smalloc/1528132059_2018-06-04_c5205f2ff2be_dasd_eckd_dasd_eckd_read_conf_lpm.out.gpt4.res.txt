@@ -1,0 +1,74 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier dasd_smalloc_request;
+identifier device;
+expression type, count, size;
+@@
+- dasd_smalloc_request(type, count, size, device)
++ dasd_smalloc_request(type, count, size, device, NULL)
+
+
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 33
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(type, count, size,
+                                                          device, NULL)
+                               -(-type-, -count-, -size-, -device-)
+               with binding: [rule starting on line 1.device --> id device;
+                             rule starting on line 1.size --> 0;
+                             rule starting on line 1.count --> 1;
+                             rule starting on line 1.type --> DASD_ECKD_MAGIC;
+                             rule starting on line 1.dasd_smalloc_request --> id dasd_smalloc_request]
+          transform state: 45
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(type, count, size,
+                                                          device, NULL)
+                               -(-type-, -count-, -size-, -device-)
+               with binding: [rule starting on line 1.device --> id lpm;
+                             rule starting on line 1.size --> rcd_buf;
+                             rule starting on line 1.count --> cqr;
+                             rule starting on line 1.type --> device;
+                             rule starting on line 1.dasd_smalloc_request --> id dasd_eckd_fill_rcd_cqr]
+     binding out = []
+     transform one node: 45
+     transform one node: 33
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
++++ /tmp/cocci-output-4097918-da7c31-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_read_conf_lpm.c.sanitized.c
+@@ -17,14 +17,14 @@ static int dasd_eckd_read_conf_lpm(struc
+       ret = -ENOMEM;
+       goto out_error;
+     }
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1, 0, device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 1, 0, device, NULL);
+   if (IS_ERR(cqr))
+     {
+       DBF_DEV_EVENT(DBF_WARNING, device, "%s", "Could not allocate RCD request");
+       ret = -ENOMEM;
+       goto out_error;
+     }
+-  dasd_eckd_fill_rcd_cqr(device, cqr, rcd_buf, lpm);
++  dasd_eckd_fill_rcd_cqr(device, cqr, rcd_buf, lpm, NULL);
+   cqr->callback = read_conf_cb;
+   ret = dasd_sleep_on(cqr);
+ 
+Check duplication for 1 files

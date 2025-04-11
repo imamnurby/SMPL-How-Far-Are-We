@@ -1,0 +1,26 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression exts, a;
+identifier actions;
+@@
+- LIST_HEAD(actions);
++ int i;
+  ...
+- tcf_exts_to_list(exts, &actions);
+- list_for_each_entry(a, &actions, list)
++ tcf_exts_for_each_action(i, a, exts)
+  {
+    ...
+  }
+
+
+
+minus: parse error: 
+  File "./tcaction/sp_out.final.claude.cocci", line 9, column 2, charpos = 121
+  around = 'list_for_each_entry',
+  whole content = - list_for_each_entry(a, &actions, list)
+

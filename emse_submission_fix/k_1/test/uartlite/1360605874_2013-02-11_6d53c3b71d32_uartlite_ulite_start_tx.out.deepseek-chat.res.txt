@@ -1,0 +1,48 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./uartlite/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression port;
+constant reg;
+@@
+- ioread32be(port->membase + reg)
++ uart_in32(reg, port)
+
+
+
+HANDLING: ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     (ONCE) warning: ULITE_STATUS treated as a constant
+     transformation info returned:
+          transform state: 6
+               with rule_elem: -ioread32be
+                                 >>> uart_in32(reg, port)
+                               -(-port-->-membase -+ -reg-)
+               with binding: [rule starting on line 1.reg --> ULITE_STATUS;
+                             rule starting on line 1.port --> port]
+     binding out = []
+     transform one node: 6
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./uartlite/1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
++++ /tmp/cocci-output-4099798-2c61c1-1360605874_2013-02-11_6d53c3b71d32_uartlite_ulite_start_tx.c.sanitized.c
+@@ -1 +1,2 @@
+-static void ulite_start_tx(struct uart_port *port) { ulite_transmit(port, ioread32be(port->membase + ULITE_STATUS)); }
+\ No newline at end of file
++static void ulite_start_tx(struct uart_port *port) { ulite_transmit(port,
++								    uart_in32(ULITE_STATUS, port)); }
+\ No newline at end of file
+Check duplication for 1 files

@@ -1,0 +1,16 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier f;
+expression sock, wait;
+@@
+- sock_poll_wait(f, wait)
++ sock_poll_wait(f, sock, wait)
+
+
+
+warning: rule starting on line 1: metavariable sock not used in the - or context code
+error: rule starting on line 1: sock appears only in + code

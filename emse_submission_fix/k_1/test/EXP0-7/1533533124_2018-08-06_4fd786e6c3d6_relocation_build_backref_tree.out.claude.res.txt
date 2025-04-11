@@ -1,0 +1,56 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ 
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 431
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+          transform state: 431
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> node_key]
+     binding out = []
+     transform one node: 431
+     transform one node: 431
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
++++ /tmp/cocci-output-4098509-901048-1533533124_2018-08-06_4fd786e6c3d6_relocation_build_backref_tree.c.sanitized.c
+@@ -214,7 +214,9 @@ again:
+       eb = path2->nodes[level];
+       if (btrfs_node_blockptr(eb, path2->slots[level]) != cur->bytenr)
+         {
+-          btrfs_err(root->fs_info, "couldn't find block (%llu) (level %d) in tree (%llu) with key (%llu %u %llu)", cur->bytenr, level - 1, root->objectid, node_key->objectid, node_key->type, node_key->offset);
++          btrfs_err(root->fs_info, "couldn't find block (%llu) (level %d) in tree (%llu) with key (%llu %u %llu)", cur->bytenr, level - 1,
++                    root->root_key.objectid, node_key->root_key.objectid,
++                    node_key->type, node_key->offset);
+           err = -ENOENT;
+           goto out;
+         }
+Check duplication for 1 files

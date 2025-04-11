@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer_variable, function_name, data_expression;
+@@
+- init_timer(&timer_variable);
+- timer_variable.function = function_name;
+- timer_variable.data = data_expression;
++ setup_timer(&timer_variable, function_name, data_expression);
+
+
+
+(ONCE) Expected tokens init_timer function data
+Skipping: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_clocksource_clocksource_start_watchdog.c.sanitized.c
+Check duplication for 0 files
+-o can not be applied because there are no modified files

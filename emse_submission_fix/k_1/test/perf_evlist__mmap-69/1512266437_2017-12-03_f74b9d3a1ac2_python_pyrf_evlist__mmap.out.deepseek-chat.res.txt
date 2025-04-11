@@ -1,0 +1,29 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./perf_evlist__mmap-69/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression evlist, mmap_pages;
+@@
+- perf_evlist__mmap(evlist, mmap_pages, false)
++ perf_evlist__mmap(evlist, mmap_pages)
+
+
+
+warning: line 4: should false be a metavariable?
+HANDLING: ./perf_evlist__mmap-69/1512266437_2017-12-03_f74b9d3a1ac2_python_pyrf_evlist__mmap.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

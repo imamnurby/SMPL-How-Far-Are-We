@@ -1,0 +1,76 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier dasd_smalloc_request;
+identifier device;
+expression type, count, size;
+@@
+- dasd_smalloc_request(type, count, size, device)
++ dasd_smalloc_request(type, count, size, device, NULL)
+
+
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_tpm_track.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 72
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(type, count, size,
+                                                          device, NULL)
+                               -(-type-, -count-, -size-, -device-)
+               with binding: [rule starting on line 1.device --> id startdev;
+                             rule starting on line 1.size --> itcw_size;
+                             rule starting on line 1.count --> 0;
+                             rule starting on line 1.type --> DASD_ECKD_MAGIC;
+                             rule starting on line 1.dasd_smalloc_request --> id dasd_smalloc_request]
+          transform state: 161
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(type, count, size,
+                                                          device, NULL)
+                               -(-type-, -count-, -size-, -device-)
+               with binding: [rule starting on line 1.device --> id part_len;
+                             rule starting on line 1.size --> dst;
+                             rule starting on line 1.count --> tidaw_flags;
+                             rule starting on line 1.type --> itcw;
+                             rule starting on line 1.dasd_smalloc_request --> id itcw_add_tidaw]
+     binding out = []
+     transform one node: 161
+     transform one node: 72
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_tpm_track.c.sanitized.c
++++ /tmp/cocci-output-4097876-df3db8-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_build_cp_tpm_track.c.sanitized.c
+@@ -40,7 +40,7 @@ static struct dasd_ccw_req *dasd_eckd_bu
+     ctidaw += (last_trk - first_trk);
+ 
+   itcw_size = itcw_calc_size(0, ctidaw, 0);
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 0, itcw_size, startdev);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, 0, itcw_size, startdev, NULL);
+   if (IS_ERR(cqr))
+     return cqr;
+ 
+@@ -95,7 +95,8 @@ static struct dasd_ccw_req *dasd_eckd_bu
+               }
+             else
+               tidaw_flags = 0;
+-            last_tidaw = itcw_add_tidaw(itcw, tidaw_flags, dst, part_len);
++            last_tidaw = itcw_add_tidaw(itcw, tidaw_flags, dst, part_len,
++                                        NULL);
+             if (IS_ERR(last_tidaw))
+               {
+                 ret = -EINVAL;
+Check duplication for 1 files

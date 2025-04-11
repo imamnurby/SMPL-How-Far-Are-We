@@ -1,0 +1,63 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags, dma;
+expression ptr;
+expression size;
+@@
+- ptr = dma_pool_alloc(pool, flags, dma);
++ ptr = dma_pool_zalloc(pool, flags, dma);
+  ...
+- memset(ptr, 0, size);
+
+
+
+HANDLING: ./dma_pool_alloc-52/1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 12
+               with rule_elem: -ptr
+                                 >>> ptr = dma_pool_zalloc(pool, flags, dma);
+                                -= -dma_pool_alloc-(-pool-, -flags-, -dma-)-;
+               with binding: [rule starting on line 1.dma --> &chap_dma;
+                             rule starting on line 1.flags --> GFP_KERNEL;
+                             rule starting on line 1.pool --> ha->chap_dma_pool;
+                             rule starting on line 1.ptr --> chap_table]
+          transform state: 21
+               with rule_elem: -memset-(-ptr-, -0-, -size-)-;
+               with binding: [rule starting on line 1.ptr --> chap_table]
+     binding out = []
+     transform one node: 21
+     transform one node: 12
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dma_pool_alloc-52/1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
++++ /tmp/cocci-output-4098558-e6bec4-1518634820_2018-02-15_8d35a9dc4244_ql4_mbx_qla4xxx_get_chap.c.sanitized.c
+@@ -5,11 +5,10 @@ int qla4xxx_get_chap(struct scsi_qla_hos
+   uint32_t offset = 0, chap_size;
+   struct ql4_chap_table *chap_table;
+   dma_addr_t chap_dma;
+-  chap_table = dma_pool_alloc(ha->chap_dma_pool, GFP_KERNEL, &chap_dma);
++  chap_table = dma_pool_zalloc(ha->chap_dma_pool, GFP_KERNEL, &chap_dma);
+   if (chap_table == NULL)
+     return -ENOMEM;
+   chap_size = sizeof(struct ql4_chap_table);
+-  memset(chap_table, 0, chap_size);
+   if (is_qla40XX(ha))
+     offset = FLASH_CHAP_OFFSET | (idx * chap_size);
+   else
+Check duplication for 1 files

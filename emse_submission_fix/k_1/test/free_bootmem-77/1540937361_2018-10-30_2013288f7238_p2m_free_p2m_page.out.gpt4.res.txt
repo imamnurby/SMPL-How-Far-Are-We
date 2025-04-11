@@ -1,0 +1,28 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pg, pgend;
+@@
+- if (pg < pgend) free_bootmem(pg, pgend - pg);
++ if (pg < pgend) memblock_free(pg, pgend - pg);
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

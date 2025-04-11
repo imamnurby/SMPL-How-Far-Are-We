@@ -1,0 +1,53 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic, cplength, datasize, device;
+@@
+- dasd_smalloc_request(magic, cplength, datasize, device)
++ dasd_smalloc_request(magic, cplength, datasize, device, NULL)
+
+
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(magic, cplength,
+                                                          datasize, device,
+                                                          NULL)
+                               -(-magic-, -cplength-, -datasize-, -device-)
+               with binding: [rule starting on line 1.device --> device;
+                             rule starting on line 1.datasize --> rdc_buffer_size;
+                             rule starting on line 1.cplength --> 1;
+                             rule starting on line 1.magic --> magic]
+     binding out = []
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
++++ /tmp/cocci-output-4099246-f6c44a-1528132059_2018-06-04_c5205f2ff2be_dasd_dasd_generic_build_rdc.c.sanitized.c
+@@ -3,7 +3,7 @@ static struct dasd_ccw_req *dasd_generic
+   struct dasd_ccw_req *cqr;
+   struct ccw1 *ccw;
+   unsigned long *idaw;
+-  cqr = dasd_smalloc_request(magic, 1, rdc_buffer_size, device);
++  cqr = dasd_smalloc_request(magic, 1, rdc_buffer_size, device, NULL);
+   if (IS_ERR(cqr))
+     {
+ 
+Check duplication for 1 files
