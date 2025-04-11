@@ -1,0 +1,15 @@
+root,is_cocci_valid,precision,recall
+EXP0-7,1.0,0.97,0.97
+dasd_smalloc,0.0,0.0,0.0
+dma_pool_alloc-52,1.0,0.86,0.86
+early_memunmap,1.0,1.0,1.0
+free_bootmem-77,1.0,1.0,1.0
+kees_timer1,0.0,0.0,0.0
+perf_evlist__mmap-69,1.0,0.91,0.91
+random_ether_addr-84,1.0,1.0,1.0
+snd_soc,0.0,0.0,0.0
+sock_poll_wait-84,1.0,0.0,0.0
+tcaction,1.0,0.0,0.0
+tcf_block_get-61,1.0,1.0,1.0
+ttm_bo_init-60,1.0,1.0,1.0
+uartlite,1.0,1.0,1.0
