@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression e_magic, e_cplength, e_datasize, e_device;
+expression e_extra;
+@@
+- dasd_smalloc_request(e_magic, e_cplength, e_datasize, e_device)
++ dasd_smalloc_request(e_magic, e_cplength, e_datasize, e_device, e_extra)
+@@
+expression e_magic, e_cplength, e_datasize, e_device;
+@@
+- dasd_smalloc_request(e_magic, e_cplength, e_datasize, e_device)
++ dasd_smalloc_request(e_magic, e_cplength, e_datasize, e_device, NULL)
+
+warning: rule starting on line 1: metavariable e_extra not used in the - or context code
+error: rule starting on line 1: e_extra appears only in + code

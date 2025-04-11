@@ -1,0 +1,33 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags, dma;
+identifier table;
+expression size;
+@@
+- table->start_bd = dma_pool_alloc(pool, flags, dma);
++ table->start_bd = dma_pool_zalloc(pool, flags, dma);
+  if (!table->start_bd)
+    {
+      ...
+    }
+- memset(table->start_bd, 0, size);
+
+HANDLING: ./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

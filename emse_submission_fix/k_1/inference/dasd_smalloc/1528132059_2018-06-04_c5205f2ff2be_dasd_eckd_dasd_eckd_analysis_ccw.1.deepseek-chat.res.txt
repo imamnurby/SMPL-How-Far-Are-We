@@ -1,0 +1,52 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dasd_smalloc/final_response_1.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression magic, cplength, datasize, device;
+@@
+- dasd_smalloc_request(magic, cplength, datasize, device)
++ dasd_smalloc_request(magic, cplength, datasize, device, NULL)
+
+HANDLING: ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 15
+               with rule_elem: -dasd_smalloc_request
+                                 >>> dasd_smalloc_request(magic, cplength,
+                                                          datasize, device,
+                                                          NULL)
+                               -(-magic-, -cplength-, -datasize-, -device-)
+               with binding: [rule starting on line 1.device --> device;
+                             rule starting on line 1.datasize --> datasize;
+                             rule starting on line 1.cplength --> cplength;
+                             rule starting on line 1.magic --> DASD_ECKD_MAGIC]
+     binding out = []
+     transform one node: 15
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dasd_smalloc/1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
++++ /tmp/cocci-output-4051998-835a89-1528132059_2018-06-04_c5205f2ff2be_dasd_eckd_dasd_eckd_analysis_ccw.c.sanitized.c
+@@ -9,7 +9,8 @@ static struct dasd_ccw_req *dasd_eckd_an
+   int i;
+   cplength = 8;
+   datasize = sizeof(struct DE_eckd_data) + 2 * sizeof(struct LO_eckd_data);
+-  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, cplength, datasize, device);
++  cqr = dasd_smalloc_request(DASD_ECKD_MAGIC, cplength, datasize, device,
++                             NULL);
+   if (IS_ERR(cqr))
+     return cqr;
+   ccw = cqr->cpaddr;
+Check duplication for 1 files

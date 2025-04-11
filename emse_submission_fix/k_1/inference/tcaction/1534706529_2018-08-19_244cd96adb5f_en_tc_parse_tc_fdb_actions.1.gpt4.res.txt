@@ -1,0 +1,25 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1;
+type T1;
+identifier I, A;
+iterator L;
+@@
+- LIST_HEAD(I);
+...
+- tcf_exts_to_list(E1, &I);
+- L(A, &I, list) {
++ int I;
++ tcf_exts_for_each_action(I, A, E1) {
+...
+}
+
+plus: parse error: 
+  File "./tcaction/final_response_1.gpt4.cocci", line 12, column 27, charpos = 162
+  around = 'I',
+  whole content = + tcf_exts_for_each_action(I, A, E1) {
+

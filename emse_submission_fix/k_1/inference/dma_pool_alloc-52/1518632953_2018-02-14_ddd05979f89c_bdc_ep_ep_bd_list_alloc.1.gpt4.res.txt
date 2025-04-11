@@ -1,0 +1,18 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier pool_func, alloc_func = dma_pool_alloc, zalloc_func = dma_pool_zalloc;
+expression pool, flags, dma_addr_var, target_mem;
+constant size;
+@@
+- target_mem = alloc_func(pool, flags, &dma_addr_var);
++ target_mem = zalloc_func(pool, flags, &dma_addr_var);
+  ... when != target_mem
+- memset(target_mem, 0, size);
+
+warning: rule starting on line 1: metavariable zalloc_func not used in the - or context code
+warning: rule starting on line 1: metavariable pool_func not used in the - or context code
+error: rule starting on line 1: zalloc_func appears only in + code

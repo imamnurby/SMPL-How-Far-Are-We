@@ -1,0 +1,8 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./random_ether_addr-84/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+
+unexpected code before the first rule: [0; (69, ("", [0], [0]))]
+

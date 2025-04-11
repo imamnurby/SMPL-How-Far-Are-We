@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@add_sch@
+expression q;
+expression E;
+@@
+- tcf_block_get(&q->block, &q->filter_list)
++ tcf_block_get(&q->block, &q->filter_list, E)
+@add_extack@
+expression q, sch, extack;
+@@
+- tcf_block_get(&q->block, &q->filter_list, sch)
++ tcf_block_get(&q->block, &q->filter_list, sch, extack)
+
+warning: add_sch: metavariable E not used in the - or context code
+error: add_sch: E appears only in + code

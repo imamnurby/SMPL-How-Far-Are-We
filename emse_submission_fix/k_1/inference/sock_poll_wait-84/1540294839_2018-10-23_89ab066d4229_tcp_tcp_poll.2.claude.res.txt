@@ -1,0 +1,14 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/final_response_2.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+identifier sock;
+@@
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock, wait)
+
+warning: rule starting on line 1: metavariable sock not used in the - or context code
+error: rule starting on line 1: sock appears only in + code

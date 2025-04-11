@@ -1,0 +1,30 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./snd_soc/final_response_1.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression substream, dai;
+identifier rtd_var;
+expression component_var;
+@@
+- struct snd_soc_pcm_runtime *rtd_var = substream->private_data;
+- struct snd_soc_component *component_var = snd_soc_rtdcom_lookup(rtd_var, AFE_PCM_NAME);
+- struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component_var);
++ struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+@@
+expression substream, dai;
+identifier rtd_var;
+expression component_var;
+@@
+  struct snd_soc_pcm_runtime *rtd_var = substream->private_data;
+  ...
+- struct snd_soc_component *component_var = snd_soc_rtdcom_lookup(rtd_var, AFE_PCM_NAME);
+- struct mtk_base_afe *afe = snd_soc_component_get_drvdata(component_var);
++ struct mtk_base_afe *afe = snd_soc_dai_get_drvdata(dai);
+
+minus: parse error: 
+  File "./snd_soc/final_response_1.claude.cocci", line 7, column 28, charpos = 172
+  around = 'component_var',
+  whole content = - struct snd_soc_component *component_var = snd_soc_rtdcom_lookup(rtd_var, AFE_PCM_NAME);
+

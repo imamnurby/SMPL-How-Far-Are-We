@@ -1,0 +1,19 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./snd_soc/final_response_2.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression substream, dai, component_expr;
+identifier AFE_PCM_NAME;
+@@
+- struct snd_soc_pcm_runtime *rtd = substream->private_data;
+- struct snd_soc_component *component = snd_soc_rtdcom_lookup(rtd, AFE_PCM_NAME);
+- struct mtk_base_afe *component_expr = snd_soc_component_get_drvdata(component);
++ struct mtk_base_afe *component_expr = snd_soc_dai_get_drvdata(dai);
+
+minus: parse error: 
+  File "./snd_soc/final_response_2.gpt4.cocci", line 7, column 23, charpos = 240
+  around = 'component_expr',
+  whole content = - struct mtk_base_afe *component_expr = snd_soc_component_get_drvdata(component);
+

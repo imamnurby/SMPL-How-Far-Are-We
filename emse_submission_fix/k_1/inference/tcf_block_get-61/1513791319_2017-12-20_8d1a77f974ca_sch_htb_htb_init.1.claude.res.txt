@@ -1,0 +1,30 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@rule1@
+expression E1, E2;
+identifier FN;
+expression SCH;
+@@
+FN(...) {
+<...
+- tcf_block_get(E1, E2)
++ tcf_block_get(E1, E2, SCH)
+...>
+}
+@rule2@
+expression E1, E2, E3;
+identifier FN;
+expression EXTACK;
+@@
+FN(..., struct netlink_ext_ack *EXTACK, ...) {
+<...
+- tcf_block_get(E1, E2, E3)
++ tcf_block_get(E1, E2, E3, EXTACK)
+...>
+}
+
+warning: rule1: metavariable SCH not used in the - or context code
+error: rule1: SCH appears only in + code

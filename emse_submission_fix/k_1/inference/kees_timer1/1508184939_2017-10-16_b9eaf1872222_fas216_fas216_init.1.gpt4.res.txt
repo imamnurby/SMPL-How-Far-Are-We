@@ -1,0 +1,31 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+type T;
+identifier timer;
+expression cb_func, cb_data;
+@@
+- init_timer(&timer);
+- timer.function = cb_func;
+? timer.data = cb_data;
++ setup_timer(&timer, cb_func, cb_data);
+
+warning: rule starting on line 1: metavariable T not used in the - or context code
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_fas216_fas216_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

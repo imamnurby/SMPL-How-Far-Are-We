@@ -1,0 +1,66 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./dma_pool_alloc-52/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression pool, flags, dma;
+expression ptr;
+expression size;
+@@
+- ptr = dma_pool_alloc(pool, flags, dma);
++ ptr = dma_pool_zalloc(pool, flags, dma);
+  ...
+- memset(ptr, 0, size);
+
+HANDLING: ./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 44
+               with rule_elem: -ptr
+                                 >>> ptr = dma_pool_zalloc(pool, flags, dma);
+                                -= -dma_pool_alloc-(-pool-, -flags-, -dma-)-;
+               with binding: [rule starting on line 1.dma --> &dma;
+                             rule starting on line 1.flags --> GFP_ATOMIC;
+                             rule starting on line 1.pool --> bdc->bd_table_pool;
+                             rule starting on line 1.ptr --> bd_table->start_bd]
+          transform state: 60
+               with rule_elem: -memset-(-ptr-, -0-, -size-)-;
+               with binding: [rule starting on line 1.ptr --> bd_table->start_bd]
+     binding out = []
+     transform one node: 60
+     transform one node: 44
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./dma_pool_alloc-52/1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
++++ /tmp/cocci-output-4051762-9d8403-1518632953_2018-02-14_ddd05979f89c_bdc_ep_ep_bd_list_alloc.c.sanitized.c
+@@ -23,7 +23,8 @@ static int ep_bd_list_alloc(struct bdc_e
+       bd_table = kzalloc(sizeof(struct bd_table), GFP_ATOMIC);
+       if (!bd_table)
+         goto fail;
+-      bd_table->start_bd = dma_pool_alloc(bdc->bd_table_pool, GFP_ATOMIC, &dma);
++      bd_table->start_bd = dma_pool_zalloc(bdc->bd_table_pool, GFP_ATOMIC,
++                                           &dma);
+       if (!bd_table->start_bd)
+         {
+           kfree(bd_table);
+@@ -32,7 +33,6 @@ static int ep_bd_list_alloc(struct bdc_e
+       bd_table->dma = dma;
+       dev_dbg(bdc->dev, "index:%d start_bd:%p dma=%08llx prev_table:%p\n", index, bd_table->start_bd, (unsigned long long)bd_table->dma, prev_table);
+       ep->bd_list.bd_table_array[index] = bd_table;
+-      memset(bd_table->start_bd, 0, bd_p_tab * sizeof(struct bdc_bd));
+       if (prev_table)
+         chain_table(prev_table, bd_table, bd_p_tab);
+       prev_table = bd_table;
+Check duplication for 1 files

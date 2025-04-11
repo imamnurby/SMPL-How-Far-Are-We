@@ -1,0 +1,46 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/final_response_0.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@ 
+expression E;
+@@
+- E->objectid
++ E->root_key.objectid
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 11
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> root]
+     binding out = []
+     transform one node: 11
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
++++ /tmp/cocci-output-4051714-6b27d5-1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.c.sanitized.c
+@@ -5,7 +5,7 @@ static void __setup_root(struct btrfs_ro
+   root->commit_root = NULL;
+   root->state = 0;
+   root->orphan_cleanup_state = 0;
+-  root->objectid = objectid;
++  root->root_key.objectid = objectid;
+   root->last_trans = 0;
+   root->highest_objectid = 0;
+   root->nr_delalloc_inodes = 0;
+Check duplication for 1 files

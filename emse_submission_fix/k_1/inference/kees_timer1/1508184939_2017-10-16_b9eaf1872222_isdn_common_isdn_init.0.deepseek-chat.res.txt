@@ -1,0 +1,18 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer, function, data;
+@@
+- init_timer(&timer);
+- timer.function = function;
+- timer.data = data;
++ setup_timer(&timer, function, data);
+
+minus: parse error: 
+  File "./kees_timer1/final_response_0.deepseek-chat.cocci", line 5, column 8, charpos = 70
+  around = 'function',
+  whole content = - timer.function = function;
+

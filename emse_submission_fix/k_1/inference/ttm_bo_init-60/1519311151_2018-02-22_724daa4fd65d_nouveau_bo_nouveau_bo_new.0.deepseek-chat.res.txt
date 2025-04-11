@@ -1,0 +1,26 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./ttm_bo_init-60/final_response_0.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12;
+@@
+- ttm_bo_init(e1, e2, e3, e4, e5, e6, e7, NULL, e8, e9, e10, e11, e12)
++ ttm_bo_init(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12)
+
+HANDLING: ./ttm_bo_init-60/1519311151_2018-02-22_724daa4fd65d_nouveau_bo_nouveau_bo_new.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

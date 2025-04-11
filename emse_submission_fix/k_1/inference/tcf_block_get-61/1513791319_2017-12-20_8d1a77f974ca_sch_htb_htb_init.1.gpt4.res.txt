@@ -1,0 +1,22 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/final_response_1.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E2;
+identifier sch, extack;
+@@
+- tcf_block_get(E1, E2)
++ tcf_block_get(E1, E2, sch)
+	
+@@
+expression E1, E2;
+identifier sch, extack;
+@@
+- tcf_block_get(E1, E2, sch)
++ tcf_block_get(E1, E2, sch, extack)
+
+warning: rule starting on line 1: metavariable sch not used in the - or context code
+warning: rule starting on line 1: metavariable extack not used in the - or context code
+error: rule starting on line 1: sch appears only in + code
