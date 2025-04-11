@@ -1,0 +1,38 @@
+@@
+identifier priv, exts, parse_attr, flow, a;
+expression attr, rpriv, info;
+statement S;
+@@
+static int parse_tc_fdb_actions(struct mlx5e_priv *priv, struct tcf_exts *exts, struct mlx5e_tc_flow_parse_attr *parse_attr, struct mlx5e_tc_flow *flow)
+{
+  struct mlx5_esw_flow_attr *attr = flow->esw_attr;
+  struct mlx5e_rep_priv *rpriv = priv->ppriv;
+  struct ip_tunnel_info *info = NULL;
+  const struct tc_action *a;
+- LIST_HEAD(actions);
++ int i;
+  bool encap = false;
+  u32 action = 0;
+  int err;
+  if (!tcf_exts_has_actions(exts))
+    return -EINVAL;
+  attr->in_rep = rpriv->rep;
+  attr->in_mdev = priv->mdev;
+- tcf_exts_to_list(exts, &actions);
+- list_for_each_entry(a, &actions, list)
++ tcf_exts_for_each_action(i, a, exts)
+  {
+    S
+  }
+  attr->action = action;
+  if (!actions_match_supported(priv, exts, parse_attr, flow))
+    return -EOPNOTSUPP;
+  if (attr->out_count > 1 && !mlx5_esw_has_fwd_fdb(priv->mdev))
+  {
+    netdev_warn_once(priv->netdev, "current firmware doesn't support split rule for port mirroring\n");
+    return -EOPNOTSUPP;
+  }
+  return 0;
+}
+
+
