@@ -1,8 +1,8 @@
 @@
-expression E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11;
+expression dev, bo, size, type, place, align, persist, acc_size;
+expression e1, e2, e3;
 @@
-ttm_bo_init(E1, E2, E3, E4, E5, E6, E7, 
--           NULL, 
-            E8, E9, E10, E11)
+- ttm_bo_init(dev, bo, size, type, place, align, persist, NULL, acc_size, e1, e2, e3)
++ ttm_bo_init(dev, bo, size, type, place, align, persist, acc_size, e1, e2, e3)
 
 

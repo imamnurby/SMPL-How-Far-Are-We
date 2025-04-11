@@ -1,9 +1,9 @@
 @@
 identifier port;
-identifier membase;
-identifier offset;
+identifier REGISTER;
+expression MEMBASE;
 @@
-- ioread32be(port->membase + offset)
-+ uart_in32(offset, port)
+- ioread32be(MEMBASE + REGISTER)
++ uart_in32(REGISTER, port)
 
 

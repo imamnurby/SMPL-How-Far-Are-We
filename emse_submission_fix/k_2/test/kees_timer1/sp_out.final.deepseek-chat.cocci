@@ -1,10 +1,10 @@
 @@
-expression timer, func;
+expression timer, function;
 expression data;
 @@
 - init_timer(&timer);
-- timer.function = func;
+- timer.function = function;
 - timer.data = (unsigned long)data;
-+ setup_timer(&timer, func, (unsigned long)data);
++ setup_timer(&timer, function, (unsigned long)data);
 
 

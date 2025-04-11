@@ -1,12 +1,7 @@
 @@
-identifier func, sock;
-expression file, wait;
+expression file, sock, wait;
 @@
-func(...) {  
-  ...
 - sock_poll_wait(file, wait);
 + sock_poll_wait(file, sock, wait);
-  ...
-}
 
 
