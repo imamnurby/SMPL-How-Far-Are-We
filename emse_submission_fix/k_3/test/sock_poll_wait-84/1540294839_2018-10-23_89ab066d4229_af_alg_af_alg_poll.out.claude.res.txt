@@ -1,0 +1,49 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./sock_poll_wait-84/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression file, wait;
+@@
+- sock_poll_wait(file, wait)
++ sock_poll_wait(file, sock, wait)
+
+
+
+HANDLING: ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 10
+               with rule_elem: -sock_poll_wait
+                                 >>> sock_poll_wait(file, sock, wait)
+                               -(-file-, -wait-)
+               with binding: [rule starting on line 1.wait --> wait;
+                             rule starting on line 1.file --> file]
+     binding out = []
+     transform one node: 10
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./sock_poll_wait-84/1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
++++ /tmp/cocci-output-65159-2cef32-1540294839_2018-10-23_89ab066d4229_af_alg_af_alg_poll.c.sanitized.c
+@@ -4,7 +4,7 @@ __poll_t af_alg_poll(struct file *file,
+   struct alg_sock *ask = alg_sk(sk);
+   struct af_alg_ctx *ctx = ask->private;
+   __poll_t mask;
+-  sock_poll_wait(file, wait);
++  sock_poll_wait(file, sock, wait);
+   mask = 0;
+   if (!ctx->more || ctx->used)
+     mask |= EPOLLIN | EPOLLRDNORM;
+Check duplication for 1 files

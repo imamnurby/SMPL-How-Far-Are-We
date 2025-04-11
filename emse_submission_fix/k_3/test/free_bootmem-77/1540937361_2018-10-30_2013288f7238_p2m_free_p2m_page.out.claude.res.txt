@@ -1,0 +1,50 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, size;
+@@
+- free_bootmem(addr, size)
++ memblock_free(addr, size)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 12
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> (unsigned
+                             long)p]
+     binding out = []
+     transform one node: 12
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
++++ /tmp/cocci-output-64824-76d41f-1540937361_2018-10-30_2013288f7238_p2m_free_p2m_page.c.sanitized.c
+@@ -2,7 +2,7 @@ static void __ref free_p2m_page(void *p)
+ {
+   if (unlikely(!slab_is_available()))
+     {
+-      free_bootmem((unsigned long)p, PAGE_SIZE);
++      memblock_free((unsigned long)p, PAGE_SIZE);
+       return;
+     }
+   free_page((unsigned long)p);
+Check duplication for 1 files

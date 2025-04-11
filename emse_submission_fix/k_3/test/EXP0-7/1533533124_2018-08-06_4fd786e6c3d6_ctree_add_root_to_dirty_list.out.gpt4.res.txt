@@ -1,0 +1,48 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+identifier root;
+@@
+- root->objectid
++ root->root_key.objectid
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 21
+               with rule_elem: -root
+                                 >>> root->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.root --> id root]
+     binding out = []
+     transform one node: 21
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
++++ /tmp/cocci-output-63966-96248f-1533533124_2018-08-06_4fd786e6c3d6_ctree_add_root_to_dirty_list.c.sanitized.c
+@@ -7,7 +7,7 @@ static void add_root_to_dirty_list(struc
+   if (!test_and_set_bit(BTRFS_ROOT_DIRTY, &root->state))
+     {
+ 
+-      if (root->objectid == BTRFS_EXTENT_TREE_OBJECTID)
++      if (root->root_key.objectid == BTRFS_EXTENT_TREE_OBJECTID)
+         list_move_tail(&root->dirty_list, &fs_info->dirty_cowonly_roots);
+       else
+         list_move(&root->dirty_list, &fs_info->dirty_cowonly_roots);
+Check duplication for 1 files

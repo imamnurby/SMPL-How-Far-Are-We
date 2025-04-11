@@ -1,0 +1,62 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@rule1@
+expression block, filter_list;
+@@
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+@rule2@
+expression block, filter_list, sch;
+@@
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+
+
+
+HANDLING: ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule2 = 
+-----------------------------------------------------------------------
+dependencies for rule rule2 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 20
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [rule2.sch --> sch;
+                             rule2.filter_list --> &p->link.filter_list;
+                             rule2.block --> &p->link.block]
+     binding out = []
+     transform one node: 20
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
++++ /tmp/cocci-output-65342-541c82-1513791319_2017-12-20_8d1a77f974ca_sch_atm_atm_tc_init.c.sanitized.c
+@@ -10,7 +10,7 @@ static int atm_tc_init(struct Qdisc *sch
+   if (!p->link.q)
+     p->link.q = &noop_qdisc;
+   pr_debug("atm_tc_init: link (%p) qdisc %p\n", &p->link, p->link.q);
+-  err = tcf_block_get(&p->link.block, &p->link.filter_list, sch);
++  err = tcf_block_get(&p->link.block, &p->link.filter_list, sch, extack);
+   if (err)
+     return err;
+   p->link.vcc = NULL;
+Check duplication for 1 files

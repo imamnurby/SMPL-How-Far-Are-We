@@ -1,0 +1,31 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./kees_timer1/sp_out.final.gpt4.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression timer_obj, handler_func, timer_data;
+@@
+- init_timer(&timer_obj);
+- timer_obj.function = handler_func;
+- timer_obj.data = timer_data;
++ setup_timer(&timer_obj, handler_func, timer_data);
+
+
+
+HANDLING: ./kees_timer1/1508184939_2017-10-16_b9eaf1872222_hostap_hw_prism2_init_local_data.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+(ONCE) ast_to_flow: filter a directive
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

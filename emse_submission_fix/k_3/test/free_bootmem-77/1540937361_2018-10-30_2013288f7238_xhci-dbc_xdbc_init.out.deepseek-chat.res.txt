@@ -1,0 +1,58 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./free_bootmem-77/sp_out.final.deepseek-chat.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression addr, size;
+@@
+- free_bootmem(addr, size)
++ memblock_free(addr, size)
+
+
+
+HANDLING: ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 52
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> xdbc.table_dma]
+          transform state: 53
+               with rule_elem: -free_bootmem
+                                 >>> memblock_free(addr, size)
+                               -(-addr-, -size-)
+               with binding: [rule starting on line 1.size --> PAGE_SIZE;
+                             rule starting on line 1.addr --> xdbc.out_dma]
+     binding out = []
+     transform one node: 53
+     transform one node: 52
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./free_bootmem-77/1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
++++ /tmp/cocci-output-65722-162424-1540937361_2018-10-30_2013288f7238_xhci-dbc_xdbc_init.c.sanitized.c
+@@ -31,8 +31,8 @@ free_and_quit:
+   xdbc_free_ring(&xdbc.evt_ring);
+   xdbc_free_ring(&xdbc.out_ring);
+   xdbc_free_ring(&xdbc.in_ring);
+-  free_bootmem(xdbc.table_dma, PAGE_SIZE);
+-  free_bootmem(xdbc.out_dma, PAGE_SIZE);
++  memblock_free(xdbc.table_dma, PAGE_SIZE);
++  memblock_free(xdbc.out_dma, PAGE_SIZE);
+   writel(0, &xdbc.xdbc_reg->control);
+   early_iounmap(xdbc.xhci_base, xdbc.xhci_length);
+   return ret;
+Check duplication for 1 files

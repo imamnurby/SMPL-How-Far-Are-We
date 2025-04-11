@@ -1,0 +1,94 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E0, E1;
+@@
+- E0->objectid = E1; 
++ E0->root_key.objectid = E1; 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_disk-io___setup_root.{c.sanitized.c,res.c.sanitized.res.c}: __setup_root)
+// False positives: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.res.c.sanitized.res.c: btrfs_encode_fh)
+// Recall: 0.14, Precision: 0.50, Matching recall: 0.33
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- E0 = BTRFS_I(E1)->root->objectid; 
++ E0 = BTRFS_I(E1)->root->root_key.objectid; 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_encode_fh), (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_encode_fh)
+// Recall: 0.29, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->objectid, E1.bytes_changed,                           BTRFS_QGROUP_RSV_DATA); 
++ btrfs_qgroup_free_refroot(BTRFS_I(E0)->root->fs_info,                           BTRFS_I(E0)->root->root_key.objectid,                           E1.bytes_changed, BTRFS_QGROUP_RSV_DATA); 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup_btrfs_qgroup_check_reserved_leak.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_qgroup_check_reserved_leak), (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_qgroup___btrfs_qgroup_release_data.{c.sanitized.c,res.c.sanitized.res.c}: __btrfs_qgroup_release_data)
+// Recall: 0.29, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+@@
+expression E0, E1;
+@@
+- btrfs_debug(E0, "cleaner removing %llu", E1->objectid); 
++ btrfs_debug(E0, "cleaner removing %llu", E1->root_key.objectid); 
+// Infered from: (./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_transaction_btrfs_clean_one_deleted_snapshot.{c.sanitized.c,res.c.sanitized.res.c}: btrfs_clean_one_deleted_snapshot)
+// Recall: 0.14, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 4 rules):
+// -- Edit Location --
+// Recall: 0.83, Precision: 1.00
+// -- Node Change --
+// Recall: 0.86, Precision: 0.86
+// -- General --
+// Functions fully changed: 4/6(66%)
+
+/*
+Functions where the patch did not apply:
+ - ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_backref_btrfs_check_shared.c.sanitized.c: btrfs_check_shared
+*/
+/*
+Functions where the patch produced incorrect changes:
+ - ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_export_btrfs_encode_fh.c.sanitized.c: btrfs_encode_fh
+*/
+
+// ---------------------------------------------
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_ioctl_btrfs_ioctl_default_subvol.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule starting on line 11 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 11 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule starting on line 20 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 20 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+rule starting on line 29 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 29 satisfied:
+binding in = []
+binding relevant in = []
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+Check duplication for 1 files

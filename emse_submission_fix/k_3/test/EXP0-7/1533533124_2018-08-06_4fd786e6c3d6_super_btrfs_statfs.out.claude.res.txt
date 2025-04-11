@@ -1,0 +1,59 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./EXP0-7/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E;
+@@
+// Match and transform root->objectid to root->root_key.objectid
+(
+- E->objectid
++ E->root_key.objectid
+)
+
+
+
+HANDLING: ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 106
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> BTRFS_I(d_inode(dentry))->root]
+          transform state: 107
+               with rule_elem: -E
+                                 >>> E->root_key.objectid
+                               -->-objectid
+               with binding: [rule starting on line 1.E --> BTRFS_I(d_inode(dentry))->root]
+     binding out = []
+     transform one node: 107
+     transform one node: 106
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./EXP0-7/1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
++++ /tmp/cocci-output-64677-f08153-1533533124_2018-08-06_4fd786e6c3d6_super_btrfs_statfs.c.sanitized.c
+@@ -67,7 +67,7 @@ static int btrfs_statfs(struct dentry *d
+   buf->f_fsid.val[0] = be32_to_cpu(fsid[0]) ^ be32_to_cpu(fsid[2]);
+   buf->f_fsid.val[1] = be32_to_cpu(fsid[1]) ^ be32_to_cpu(fsid[3]);
+ 
+-  buf->f_fsid.val[0] ^= BTRFS_I(d_inode(dentry))->root->objectid >> 32;
+-  buf->f_fsid.val[1] ^= BTRFS_I(d_inode(dentry))->root->objectid;
++  buf->f_fsid.val[0] ^= BTRFS_I(d_inode(dentry))->root->root_key.objectid >> 32;
++  buf->f_fsid.val[1] ^= BTRFS_I(d_inode(dentry))->root->root_key.objectid;
+   return 0;
+ }
+\ No newline at end of file
+Check duplication for 1 files

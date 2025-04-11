@@ -1,0 +1,71 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcf_block_get-61/sp_out.final.claude.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@rule1@
+expression block, filter_list;
+@@
+- tcf_block_get(block, filter_list)
++ tcf_block_get(block, filter_list, sch)
+@rule2@
+expression block, filter_list, sch;
+@@
+- tcf_block_get(block, filter_list, sch)
++ tcf_block_get(block, filter_list, sch, extack)
+
+
+
+HANDLING: ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 20
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch)
+                               -(-block-, -filter_list-)
+               with binding: [rule1.filter_list --> &p->filter_list;
+                             rule1.block --> &p->block]
+     binding out = []
+     transform one node: 20
+-----------------------------------------------------------------------
+rule2 = 
+-----------------------------------------------------------------------
+dependencies for rule rule2 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 20
+               with rule_elem: -tcf_block_get
+                                 >>> tcf_block_get(block, filter_list, sch,
+                                                   extack)
+                               -(-block-, -filter_list-, -sch-)
+               with binding: [rule2.sch --> sch;
+                             rule2.filter_list --> &p->filter_list;
+                             rule2.block --> &p->block]
+     binding out = []
+     transform one node: 20
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcf_block_get-61/1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
++++ /tmp/cocci-output-65251-2cd351-1507896057_2017-10-13_69d78ef25c7b_sch_dsmark_dsmark_init.c.sanitized.c
+@@ -9,7 +9,7 @@ static int dsmark_init(struct Qdisc *sch
+   pr_debug("%s(sch %p,[qdisc %p],opt %p)\n", __func__, sch, p, opt);
+   if (!opt)
+     goto errout;
+-  err = tcf_block_get(&p->block, &p->filter_list);
++  err = tcf_block_get(&p->block, &p->filter_list, sch, extack);
+   if (err)
+     return err;
+   err = nla_parse_nested(tb, TCA_DSMARK_MAX, opt, dsmark_policy, NULL);
+Check duplication for 1 files

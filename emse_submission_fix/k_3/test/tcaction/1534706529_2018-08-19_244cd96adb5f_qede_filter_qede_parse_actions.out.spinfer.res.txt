@@ -1,0 +1,93 @@
+init_defs_builtins: /usr/bin/../lib/coccinelle/standard.h
+-----------------------------------------------------------------------
+processing semantic patch file: ./tcaction/sp_out.final.spinfer.cocci
+with isos from: /usr/bin/../lib/coccinelle/standard.iso
+-----------------------------------------------------------------------
+@@
+expression E1, E0;
+iterator name list_for_each_entry;
+iterator name tcf_exts_for_each_action;
+@@
+- LIST_HEAD(actions); 
++ int i; 
+  ...
+- tcf_exts_to_list(E0, &actions); 
+- list_for_each_entry (E1, &actions, list)  
++ tcf_exts_for_each_action (i, E1, E0)  
+  {
+  ...
+  }
+// Infered from: (./tcaction/1534706529_2018-08-19_244cd96adb5f_stmmac_tc_tc_fill_actions.{c.sanitized.c,res.c.sanitized.res.c}: tc_fill_actions), (./tcaction/1534706529_2018-08-19_244cd96adb5f_spectrum_flower_mlxsw_sp_flower_parse_actions.{c.sanitized.c,res.c.sanitized.res.c}: mlxsw_sp_flower_parse_actions), (./tcaction/1534706529_2018-08-19_244cd96adb5f_en_tc_parse_tc_fdb_actions.{c.sanitized.c,res.c.sanitized.res.c}: parse_tc_fdb_actions)
+// Recall: 1.00, Precision: 1.00, Matching recall: 1.00
+
+// ---------------------------------------------
+// Final metrics (for the combined 1 rules):
+// -- Edit Location --
+// Recall: 1.00, Precision: 1.00
+// -- Node Change --
+// Recall: 1.00, Precision: 1.00
+// -- General --
+// Functions fully changed: 3/3(100%)
+
+
+// ---------------------------------------------
+
+warning: line 6: should actions be a metavariable?
+warning: line 9: should actions be a metavariable?
+warning: line 10: should actions be a metavariable?
+warning: line 10: should list be a metavariable?
+HANDLING: ./tcaction/1534706529_2018-08-19_244cd96adb5f_qede_filter_qede_parse_actions.c.sanitized.c
+-----------------------------------------------------------------------
+let's go
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+-----------------------------------------------------------------------
+rule starting on line 1 = 
+-----------------------------------------------------------------------
+dependencies for rule rule starting on line 1 satisfied:
+binding in = []
+binding relevant in = []
+     transformation info returned:
+          transform state: 9
+               with rule_elem: -LIST_HEAD
+                                 >>> int i;
+                               -(-actions-)-;
+               with binding: []
+          transform state: 21
+               with rule_elem: -tcf_exts_to_list-(-E0-, -&-actions-)-;
+               with binding: [rule starting on line 1.E0 --> exts]
+          transform state: 22
+               with rule_elem: -list_for_each_entry -(-E1-, -&-actions-,
+                                                      -list-)
+                                 >>> tcf_exts_for_each_action(i, E1, E0)
+                                
+               with binding: [rule starting on line 1.E1 --> a;
+                             rule starting on line 1.E0 --> exts]
+     binding out = []
+     transform one node: 22
+     transform one node: 21
+     transform one node: 9
+-----------------------------------------------------------------------
+Finished
+-----------------------------------------------------------------------
+diff = 
+--- ./tcaction/1534706529_2018-08-19_244cd96adb5f_qede_filter_qede_parse_actions.c.sanitized.c
++++ /tmp/cocci-output-66780-66a0a2-1534706529_2018-08-19_244cd96adb5f_qede_filter_qede_parse_actions.c.sanitized.c
+@@ -3,14 +3,13 @@ static int qede_parse_actions(struct qed
+   int rc = -EINVAL, num_act = 0;
+   const struct tc_action *a;
+   bool is_drop = false;
+-  LIST_HEAD(actions);
++  int i;
+   if (!tcf_exts_has_actions(exts))
+     {
+       DP_NOTICE(edev, "No tc actions received\n");
+       return rc;
+     }
+-  tcf_exts_to_list(exts, &actions);
+-  list_for_each_entry(a, &actions, list)
++  tcf_exts_for_each_action(i, a, exts)
+   {
+     num_act++;
+     if (is_tcf_gact_shot(a))
+Check duplication for 1 files
