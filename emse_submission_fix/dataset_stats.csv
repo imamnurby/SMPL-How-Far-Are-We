@@ -1,0 +1,15 @@
+folder,num_of_function,num_of_variant,avg_LoC_diff,avg_tokens,max_tokens
+tcf_block_get-61,33,2,57.67,416.61,1188
+snd_soc,26,2,28.92,185.54,375
+kees_timer1,25,3,62.92,428.24,1305
+dasd_smalloc,24,2,83.96,524.88,1459
+EXP0-7,21,2,71.19,456.19,2688
+random_ether_addr-84,15,1,66.07,427.93,958
+perf_evlist__mmap-69,14,1,93.36,602.79,1311
+sock_poll_wait-84,13,1,24.23,199.62,324
+free_bootmem-77,13,1,21.08,151.46,491
+tcaction,11,1,57.27,310.91,574
+early_memunmap,11,1,23.45,171.36,252
+ttm_bo_init-60,9,1,32.11,299.33,719
+dma_pool_alloc-52,9,1,95.56,646.67,1889
+uartlite,6,1,15.17,94.5,218
