@@ -20,14 +20,16 @@ def check_c_files_exist(reference_path, current_path):
     # Collect reference C files
     for root, _, files in os.walk(reference_path):
         for file in fnmatch.filter(files, "*.c"):
-            relative_path = os.path.relpath(os.path.join(root, file), reference_path)
-            reference_c_files.append(relative_path)
+            if  "sanitized" not in file:
+                relative_path = os.path.relpath(os.path.join(root, file), reference_path)
+                reference_c_files.append(relative_path)
     
     # Collect current C files
     for root, _, files in os.walk(current_path):
         for file in fnmatch.filter(files, "*.c"):
-            relative_path = os.path.relpath(os.path.join(root, file), current_path)
-            current_c_files.append(relative_path)
+            if  "sanitized" not in file:
+                relative_path = os.path.relpath(os.path.join(root, file), current_path)
+                current_c_files.append(relative_path)
     
     # Check if all current C files exist in reference path
     missing_files = []
@@ -46,7 +48,7 @@ def check_c_files_exist(reference_path, current_path):
         return True
 
 if __name__ == "__main__":
-    reference_path = "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_3/test"
-    current_path = "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_1/test"
+    reference_path = "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_3/inference"
+    current_path = "/media/hdd2/yusuf/SMPL-How-Far-Are-We/emse_submission_fix/k_2/inference"
     
     check_c_files_exist(reference_path, current_path)
