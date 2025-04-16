@@ -1,0 +1,133 @@
+# Task
+Write a semantic patch for Coccinelle using the SmPL (Semantic Patch Language) based on all diffs specified under **# Input Diffs**. The background knowledge needed to generate semantic patches is specified under **# Background Knowledge**.
+
+# Input Diffs
+{input_diffs}
+
+# Output Format
+Output the analysis before the final answer. Do not output anything besides the semantic patch in the final answer! Do not include "```" inside the final answer.
+
+## Output Example
+[the analysis here]
+
+<final_answer>
+[the final semantic patch is here]
+</final_answer>
+
+# Background Knowledge
+## Collateral Evolutions
+The Linux operating system (OS) is evolving rapidly to improve performance and to provide new features. This evolution, however, makes it difficult to maintain platform-specific code such as device drivers. Indeed, an evolution in a driver support library often triggers the need for multiple collateral evolutions in dependent device drivers, to bring the drivers up to date with the new library API. Currently, collateral evolutions are mostly done manually. The large number of drivers, however, implies that this approach is time-consuming and unreliable, leading to subtle errors when modifications are not done consistently. Moreover, as these collateral evolutions are often poorly documented, the resulting maintenance is difficult and costly, frequently introducing mistakes. If a driver maintainer becomes unavailable, the driver quickly falls behind the rest of the OS.
+
+### Example 1: Adding an argument to `usb_submit_urb`
+The USB library function usb_submit_urb implements the passing of a message, which is implemented as a USB Request Block (urb). This function uses the kernel memory-allocation function, kmalloc, which must be passed a flag indicating the circumstances in which blocking is allowed. Up through Linux 2.5.3, the flag was chosen in the implementation of usb_submit_urb using the function in_interrupt() to check the status of interrupts, as blocking is not allowed when interrupts are disabled. Starting in Linux 2.5.4, usb_submit_urb it was found that this solution was unsatisfactory and that the caller should instead provide information about the calling context explicitly. Accordingly, an extra argument was added to usb_submit_urb, which should have one of the following values: GFP_KERNEL (no constraints), GFP_ATOMIC (blocking not allowed), or GFP_NOIO (blocking allowed but not I/O).
+
+With this change to the interface, the programmer of device-specific code must extend each call to usb_submit_urb with GFP_KERNEL, GFP_ATOMIC, or GFP_NOIO. Some guidance is given in the comments associated with the definition of usb_submit_urb. For example, GFP_ATOMIC is required when locks are held or in a completion handler. The modification is illustrated by the following example diff, extracted from drivers/usb/audio.c (later named drivers/usb/class/audio.c):
+
+--- a/original.c
++++ b/modified.c
+@@ -2,7 +2,7 @@
+ if (!usbin_retire_desc(u, urb) &&
+     u->flags & FLG_RUNNING &&
+     !usbin_prepare_desc(u, urb) &&
+-    (suret = usb_submit_urb(urb)) == 0) {{
++    (suret = usb_submit_urb(urb,GFP_ATOMIC)) == 0) {{
+   u->flags |= mask;
+ }} else {{
+   u->flags &= ~(mask | FLG_RUNNING);
+
+### Example 2: Changing the driver initialization protocol `check_region`
+The function check_region is used in the initialization of device drivers, in determining whether a given device is installed. In early versions of Linux, the kernel initializes device drivers sequentially. In this case, a driver determines whether its device is attached to a given port using the following protocol: (i) call check_region to find out whether the memory region associated with the port is already allocated to another driver, (ii) if not, then perform some driver-specific tests to identify the device attached to the port, and (iii) if the desired device is found, then call request_region to reserve the memory region for the current driver.
+
+In more recent versions of Linux, the kernel initializes device drivers concurrently. In this case, between the call to check_region and the call to request_region some other driver may claim the same memory region and initialize the device. To solve this problem, starting with Linux 2.4.2, device-specific code was rewritten to replace the call to check_region in step (i) with a call to request_region, to reserve the memory region. Given this change, if in step (ii) the expected device is not found, then release_region must be used to release the memory region. The transformation is illustrated by the modifications to drivers/char/logibusmouse.c between Linux 2.4.18 and 2.4.19:
+
+--- a/original.c
++++ b/modified.c
+@@ -1,13 +1,14 @@
+ static int __init logi_busmouse_init(void) {{
+-  if (check_region(LOGIBM_BASE, LOGIBM_EXTENT))
++  if (!request_region(LOGIBM_BASE, LOGIBM_EXTENT, "busmouse"))
+     return -EIO;
+   
+   outb(MSE_CONFIG_BYTE, MSE_CONFIG_PORT);
+   outb(MSE_SIGNATURE_BYTE, MSE_SIGNATURE_PORT);
+   udelay(100L);   /* wait for reply from mouse */
+-  if (inb(MSE_SIGNATURE_PORT) != MSE_SIGNATURE_BYTE)
++  if (inb(MSE_SIGNATURE_PORT) != MSE_SIGNATURE_BYTE) {{
++    release_region(LOGIBM_BASE, LOGIBM_EXTENT);
+     return -EIO;
+-  ...
+-  request_region(LOGIBM_BASE, LOGIBM_EXTENT, "busmouse");
++  }}
++  ...
+   msedev = register_busmouse(&busmouse);
+   if (msedev < 0) {{ ... }}
+   else printk(KERN_INFO "Logitech busmouse installed.\n");
+
+## Coccinelle
+Coccinelle is a program transformation engine developed to address the problem of collateral evolution in drivers. The key idea of Coccinelle is to shift the burden of collateral evolution from the driver maintainer to the OS developer who performs the original OS evolution, and who thus understands this evolution best. In our vision, the OS developer first uses the Coccinelle transformation language to write a semantic patch describing the required collateral evolution in device drivers and then uses the Coccinelle transformation tool to validate the semantic patch on the drivers in the Linux source distribution. When he has confidence in the correctness of the semantic patch, he distributes it for use by the maintainers of other drivers. Overall, Coccinelle will provide a means for formally documenting collateral evolutions and for easing the application of these evolutions to driver code.
+
+## Semantic Patches
+Our goal is to document and automate the kinds of collateral evolutions that occur in device driver code. Because Linux programmers are accustomed to manipulating program modifications in terms of patch files, we base our transformation language on the patch syntax, extending patches to semantic patches. But as opposed to a traditional patch, a single small semantic patch can modify hundreds of files, at thousands of code sites. This is because the features of our semantic patch language (SmPL) make a semantic patch generic by abstracting away the specific details and variations at each code site among all drivers. Semantic patches, and the associated transformation engine spatch, abstract away:
+- Differences in spacing, indentation, and comments
+- Choice of names given to variables (use of metavariables)
+- Irrelevant code (use of '...' operator)
+- Other variations in coding style (use of isomorphisms) e.g. if(!y) <=> if(y==NULL) <=> if(NULL==y)
+
+### Semantic Patch Example: Adding an argument to `usb_submit_urb` in **### Example 1**
+Here is the semantic patch for the usb_submit_urb collateral evolutions mentioned previously.
+
+@@
+expression lock, flags;
+expression urb;
+@@
+
+  spin_lock_irqsave(lock, flags);
+  <...
+- usb_submit_urb(urb)
++ usb_submit_urb(urb, GFP_ATOMIC)
+  ...>
+  spin_unlock_irqrestore(lock, flags);
+
+### Semantic Patch Example: Changing the driver initialization protocol in **### Example 2**
+Here is the semantic patch for the check_region collateral evolutions mentioned previously.
+
+@@ 
+expression e1, e2, e3; 
+@@
+
+- if(check_region(e1,e2)!=0)
++ if(!request_region(e1,e2,e3))
+  {{ ... return ...; }}
+  <...
++ release_region(e1);
+  return ...;
+  ...>
+- request_region(e1,e2,e3);
+
+## Semantic Patch Structure
+A semantic patch consists of a metavariable definition and a rule definition.
+    @@
+    // Metavariable definition
+    [the metavariable definition is here]
+    @@
+
+    // Rule definition
+    [the rule is here]
+
+A metavariable is a placeholder used to match different code elements in the code. Metavariables allow the semantic patch to abstract over code elements. A metavariable is defined as `<metavariable_type> <metavariable_name>`. The valid metavariable types are specified under **## Valid Metavariable Types**. A rule defines the transformation operation.
+
+## Valid Metavariable Types
+- identifier: matches the name of a structure field, macro, function, or variable. It can also represent a variable in an expression.
+- field: matches an identifier that is a structure field.
+- parameter: matches a parameter declaration in a function definition, not the arguments in a function call.
+- type: matches any type in code, such as function declarations or casts.
+- statement: matches any valid statement in C99.
+- declaration: matches variable declarations sharing the same type.
+- initializer: matches the right-hand side of a variable declaration.
+- expression: matches any valid C99 expression, including function calls, operations, and specific expression types using enum, struct, union types, or pointer levels.
+- constant: matches constants like numbers or uppercase macros.
+- symbol: declares identifiers as C identifiers in the rule body.
+- typedef: declares identifiers as types in the rule body.
+- attribute: matches attributes.
+- declarer: matches macros generating declarations.
+- iterator: matches macros used as loop headers.
