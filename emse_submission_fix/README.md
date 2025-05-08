@@ -50,12 +50,12 @@ The results are saved inside the following directories inside the `inference` an
 ```
 
 
-# Running the Experiments
+## Running the Experiments
 1. Make sure you have python 3.12. 
 2. Install the required libraries `pip install -r requirements.txt`
 3. You can run the experiment easily by using the provided notebook. For example, if you want to infer the semantic patch for GPT-4 at k=1, you can use the notebook `generate_sp_oai.ipynb`. This notebook will save the returned json, and will extract the generated semantic patch and save it as a `.cocci` file automatically. If you want to infer semantic patches using Spinfer, you can use the notebook `run_spinfer.ipynb`.
 
-# Error Analysis
+## Error Analysis
 The error analysis results are located inside the `test` directory in inside `k_1` and `k_3`. For example, inside `k_1/test`, you can find the following files:
 ```
 ├── error_analyis_claude_k1.csv             # The error analysis for Claude at k=1
