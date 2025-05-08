@@ -29,14 +29,6 @@ Each `k_1`, `k_2`, and `k_3` contains `inference` and `test` directories. The `i
 ├── compute_metrics_deepseek.ipynb          # Computing the patch validity, precision, and recall for DeepSeek
 ├── compute_metrics_gpt.ipynb               # Computing the patch validity, precision, and recall for GPT-4
 ├── compute_metrics_spinfer.ipynb           # Computing the patch validity, precision, and recall for Spinfer
-├── error_analyis_claude_k1.csv             # The error analysis for Claude at k=1
-├── error_analyis_claude_k3.csv             # The error analysis for Claude at k=3
-├── error_analyis_deepseek_k1.csv           # The error analysis for DeepSeek at k=1
-├── error_analyis_deepseek_k3.csv           # The error analysis for DeepSeek at k=3
-├── error_analyis_gpt4_k1.csv               # The error analysis for GPT-4 at k=1
-├── error_analyis_gpt4_k3.csv               # The error analysis for GPT-4 at k=3
-├── error_analyis_spinfer_k1.csv            # The error analysis for Spinfer at k=1
-└── error_analyis_spinfer_k3.csv            # The error analysis for Spinfer at k=3
 ```
 
 The results are saved inside the following directories inside the `inference` and `test` directories in each `k_1`, `k_2`, and `k_3`:
@@ -57,6 +49,23 @@ The results are saved inside the following directories inside the `inference` an
 └── uartlite
 ```
 
+
 # Inferring Semantic Patches
 1. Install the required libraries `pip install -r requirements.txt`
 2. You can run the experiment easily by using the provided notebook. For example, if you want to infer the semantic patch for GPT-4 at k=1, you can use the notebook `generate_sp_oai.ipynb`. This notebook will save the returned json, and will extract the generated semantic patch and save it as a `.cocci` file automatically. If you want to infer semantic patches using Spinfer, you can use the notebook `run_spinfer.ipynb`.
+
+# Error Analysis
+The error analysis results are located inside the `test` directory in inside `k_1` and `k_3`. For example, inside `k_1/test`, you can find the following files:
+```
+├── error_analyis_claude_k1.csv             # The error analysis for Claude at k=1
+├── error_analyis_deepseek_k1.csv           # The error analysis for DeepSeek at k=1
+├── error_analyis_gpt4_k1.csv               # The error analysis for GPT-4 at k=1
+└── error_analyis_spinfer_k1.csv            # The error analysis for Spinfer at k=1
+```
+
+Each excel file has the following columns:
+- `file_count`: the id of the file
+- `directory`: the name of the directory (e.g., `kees_timer1`)
+- `filename`: the name of the file 
+- `reason`: the explanation why the resulting transformation is not the same as the expected transformation
+- Columns with binary values that match our categorization in Figure 25.
